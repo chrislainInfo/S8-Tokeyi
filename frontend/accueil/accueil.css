@@ -89,12 +89,16 @@
 }
 
 #page-accueil #nav-session a:first-child {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: 2.75rem;
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-sm);
   background: var(--color-accent);
   color: var(--color-ink);
   font-weight: 600;
+  line-height: 1;
   text-decoration: none;
 }
 

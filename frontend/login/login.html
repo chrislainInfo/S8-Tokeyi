@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BraCovoit — Connexion</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body id="page-login">
+
+  <!-- NAVIGATION — TODO (Dev FS7) -->
+
+  <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
+  <div id="nav-session"></div>
+
+  <main>
+    <!-- =====================================================================
+         FORMULAIRE — TODO (Dev FS7)
+         Mettre en forme le formulaire de connexion : téléphone, mot de
+         passe. Prévoir un layout clair en colonne, avec des labels
+         visibles pour chaque champ.
+
+         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
+         ===================================================================== -->
+    <form id="form-login">
+      <label for="l-telephone">Téléphone</label>
+      <input type="tel" id="l-telephone" placeholder="066123456">
+
+      <label for="l-mot-de-passe">Mot de passe</label>
+      <input type="password" id="l-mot-de-passe">
+
+      <button type="submit">Se connecter</button>
+    </form>
+
+    <!-- Zone d'erreurs de validation — TODO (Dev FS7) : mettre en forme la
+         liste <ul><li> injectée par main.js en cas de formulaire invalide.
+         NE PAS MODIFIER l'id. -->
+    <div id="erreurs-form" hidden></div>
+
+    <!-- LIEN VERS INSCRIPTION — TODO (Dev FS7) : lien "Pas encore de compte ?
+         S'inscrire" pointant vers ../inscription/inscription.html -->
+  </main>
+
+  <div id="erreur-globale" hidden></div>
+
+  <script src="../functions.js"></script>
+  <script src="../main.js"></script>
+</body>
+</html>

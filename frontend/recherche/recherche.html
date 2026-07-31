@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BraCovoit — Recherche</title>
+  <link rel="stylesheet" href="recherche.css">
+</head>
+<body id="page-recherche">
+
+  <!-- NAVIGATION — TODO (Dev FS2) -->
+
+  <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
+  <div id="nav-session"></div>
+
+  <main>
+    <!-- =====================================================================
+         FILTRES — TODO (Dev FS2)
+         Mettre en forme la barre de filtres : sélecteur de quartier de
+         départ, champ de recherche libre, bouton de lancement. Layout en
+         ligne sur desktop, empilé sur mobile.
+
+         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
+         ===================================================================== -->
+    <section class="barre-filtres">
+      <select id="filtre-depart"></select>
+      <input type="text" id="champ-recherche" placeholder="Rechercher un quartier, un mot-clé...">
+      <button id="btn-rechercher">Rechercher</button>
+    </section>
+
+    <!-- =====================================================================
+         RÉSULTATS — TODO (Dev FS2)
+         main.js remplit ce conteneur avec des cartes .carte-trajet, chacune
+         contenant un <h3>, un <p class="heure">, un <p class="conducteur">,
+         un <p class="prix">, un <span class="badge badge-dispo|badge-limite|
+         badge-complet">, et un lien <a class="btn-voir">. Stylez ces
+         éléments (déjà présents dans le HTML généré par main.js — vous ne
+         les créez pas ici, vous écrivez le CSS qui les habille).
+         Layout : grille responsive (1 colonne mobile, 2-3 colonnes desktop).
+         Gérez aussi l'état "aucun résultat" (classe .aucun-resultat).
+
+         *** NE PAS MODIFIER l'id ci-dessous ***
+         ===================================================================== -->
+    <section id="liste-trajets"></section>
+  </main>
+
+  <div id="erreur-globale" hidden></div>
+
+  <!-- NE PAS MODIFIER -->
+  <script src="../functions.js"></script>
+  <script src="../main.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BraCovoit — Tableau de bord</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body id="page-dashboard">
+
+  <!-- NAVIGATION — TODO (Dev FS6) -->
+
+  <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
+  <div id="nav-session"></div>
+
+  <main>
+    <!-- =====================================================================
+         CARTES INDICATEURS — TODO (Dev FS6)
+         5 cartes chiffres clés. Layout : Grid responsive (1 colonne mobile,
+         2-3 tablette, 5 desktop).
+
+         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
+         ===================================================================== -->
+    <section class="grille-indicateurs">
+      <div class="carte-indicateur"><p class="label">Trajets disponibles</p><p id="d-trajets" class="valeur"></p></div>
+      <div class="carte-indicateur"><p class="label">Conducteurs actifs</p><p id="d-conducteurs" class="valeur"></p></div>
+      <div class="carte-indicateur"><p class="label">Réservations actives</p><p id="d-reservations" class="valeur"></p></div>
+      <div class="carte-indicateur"><p class="label">Note moyenne</p><p id="d-note" class="valeur"></p></div>
+      <div class="carte-indicateur"><p class="label">Taux d'annulation</p><p id="d-taux-annulation" class="valeur"></p></div>
+    </section>
+
+    <!-- =====================================================================
+         TOP CONDUCTEURS — TODO (Dev FS6)
+         main.js remplit cette liste ordonnée avec des <li> contenant un
+         rang, un nom, une note et un nombre de trajets. Stylez comme un
+         podium ou un classement numéroté.
+
+         *** NE PAS MODIFIER l'id ***
+         ===================================================================== -->
+    <section>
+      <h2>Top 3 conducteurs</h2>
+      <ol id="d-top-conducteurs"></ol>
+    </section>
+
+    <!-- TRAJET VEDETTE — TODO (Dev FS6) : mettre en avant visuellement
+         ce trajet (encart distinctif).
+         *** NE PAS MODIFIER l'id *** -->
+    <section>
+      <h2>Trajet vedette</h2>
+      <p id="d-trajet-top"></p>
+    </section>
+
+    <!-- =====================================================================
+         TABLEAU PAR QUARTIER — TODO (Dev FS6)
+         Mettre en forme le tableau (bordures, alternance de lignes,
+         responsive : passage en cartes empilées sous 600px si besoin).
+
+         *** NE PAS MODIFIER l'id ***
+         ===================================================================== -->
+    <section>
+      <h2>Répartition par quartier de départ</h2>
+      <table>
+        <thead><tr><th>Quartier</th><th>Nombre de trajets</th><th>Prix moyen</th></tr></thead>
+        <tbody id="d-trajets-par-quartier"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <div id="erreur-globale" hidden></div>
+
+  <script src="../functions.js"></script>
+  <script src="../main.js"></script>
+</body>
+</html>

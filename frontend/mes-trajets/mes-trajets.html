@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BraCovoit — Mes trajets</title>
+  <link rel="stylesheet" href="mes-trajets.css">
+</head>
+<body id="page-mes-trajets">
+
+  <!-- NAVIGATION — TODO (Dev FS5) -->
+
+  <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
+  <div id="nav-session"></div>
+
+  <main>
+    <!-- =====================================================================
+         RECHERCHE PAR NUMÉRO — TODO (Dev FS5)
+         Mettre en forme le bloc de saisie du numéro de téléphone, le
+         bouton de chargement et le filtre de statut. Layout en ligne sur
+         desktop, empilé sur mobile.
+
+         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
+         ===================================================================== -->
+    <section class="barre-recherche-tel">
+      <input type="text" id="mt-tel" placeholder="Votre numéro de téléphone">
+      <button id="btn-charger-mestrajets">Voir mes trajets</button>
+      <select id="mt-filtre-statut">
+        <option value="">Tous les statuts</option>
+        <option value="effectue">Effectués</option>
+        <option value="en_attente">En attente</option>
+        <option value="annule">Annulés</option>
+      </select>
+    </section>
+
+    <!-- TOTAL DÉPENSÉ — TODO (Dev FS5) : mettre en avant ce chiffre
+         visuellement (encart ou bandeau).
+         *** NE PAS MODIFIER l'id *** -->
+    <p class="total-depense">Total dépensé : <strong id="mt-total"></strong></p>
+
+    <!-- =====================================================================
+         LISTE DES RÉSERVATIONS — TODO (Dev FS5)
+         main.js remplit ce conteneur avec des cartes .carte-reservation,
+         chacune avec un <h3>, des <p> (date, conducteur, prix), et un
+         <span class="statut statut-effectue|statut-en_attente|statut-annule">.
+         Prévoyez une couleur distincte par statut. Layout en liste verticale
+         ou grille selon votre choix.
+
+         *** NE PAS MODIFIER l'id ***
+         ===================================================================== -->
+    <section id="mt-liste"></section>
+  </main>
+
+  <div id="erreur-globale" hidden></div>
+
+  <script src="../functions.js"></script>
+  <script src="../main.js"></script>
+</body>
+</html>

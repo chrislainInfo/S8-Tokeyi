@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BraCovoit — Proposer un trajet</title>
+  <link rel="stylesheet" href="proposer.css">
+</head>
+<body id="page-proposer">
+
+  <!-- NAVIGATION — TODO (Dev FS4) -->
+
+  <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
+  <div id="nav-session"></div>
+
+  <main>
+    <!-- =====================================================================
+         FORMULAIRE — TODO (Dev FS4)
+         Mettre en forme le formulaire de proposition de trajet : les deux
+         sélecteurs de quartier (départ/arrivée) sont remplis dynamiquement
+         par main.js via l'API /api/quartiers, vous stylez leur apparence.
+         Prévoir un layout clair en colonne, avec des labels visibles pour
+         chaque champ.
+
+         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
+         ===================================================================== -->
+    <form id="form-proposer">
+      <label for="p-depart">Quartier de départ</label>
+      <select id="p-depart"></select>
+
+      <label for="p-arrivee">Quartier d'arrivée</label>
+      <select id="p-arrivee"></select>
+
+      <label for="p-heure">Heure (HH:MM)</label>
+      <input type="text" id="p-heure" placeholder="07:30">
+
+      <label for="p-places">Places disponibles</label>
+      <input type="number" id="p-places" min="1" max="8">
+
+      <label for="p-prix">Prix par place (FCFA)</label>
+      <input type="number" id="p-prix" min="1">
+
+      <button type="submit">Publier mon trajet</button>
+    </form>
+
+    <!-- Zone d'erreurs de validation — TODO (Dev FS4) : mettre en forme la
+         liste <ul><li> injectée par main.js en cas de formulaire invalide.
+         NE PAS MODIFIER l'id. -->
+    <div id="erreurs-form" hidden></div>
+
+    <!-- BLOC D'AIDE — TODO (Dev FS4) : encart explicatif optionnel
+         (ex. rappel que le prix est libre, conseils de sécurité) -->
+  </main>
+
+  <div id="erreur-globale" hidden></div>
+
+  <script src="../functions.js"></script>
+  <script src="../main.js"></script>
+</body>
+</html>

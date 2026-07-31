@@ -1,0 +1,52 @@
+{
+  "quartiers": ["Bacongo", "Poto-Poto", "Moungali", "Talangaï", "Mfilou", "Makélékélé", "Ouenzé", "Kintélé"],
+  "conducteurs": [
+    {"id": 1, "nom": "Franck Mabiala",   "telephone": "066123456", "note": 4.8, "trajets_effectues": 42, "vehicule": "Toyota Corolla"},
+    {"id": 2, "nom": "Aurélie Bikindou", "telephone": "068234567", "note": 4.6, "trajets_effectues": 28, "vehicule": "Renault Logan"},
+    {"id": 3, "nom": "Jean Ondongo",     "telephone": "069345678", "note": 4.9, "trajets_effectues": 67, "vehicule": "Hyundai Accent"},
+    {"id": 4, "nom": "Sandra Malonga",   "telephone": "067456789", "note": 4.7, "trajets_effectues": 35, "vehicule": "Kia Rio"},
+    {"id": 5, "nom": "Prosper Mouyabi",  "telephone": "065567890", "note": 4.3, "trajets_effectues": 19, "vehicule": "Toyota Yaris"},
+    {"id": 6, "nom": "Christiane Nkaya", "telephone": "064678901", "note": 4.9, "trajets_effectues": 58, "vehicule": "Honda Civic"},
+    {"id": 7, "nom": "Sylvain Batantou", "telephone": "066789012", "note": 4.5, "trajets_effectues": 22, "vehicule": "Peugeot 208"},
+    {"id": 8, "nom": "Odette Kimbembe",  "telephone": "068890123", "note": 4.8, "trajets_effectues": 40, "vehicule": "Nissan Sentra"}
+  ],
+  "trajets": [
+    {"id": 1,  "conducteur_id": 1, "quartier_depart": "Bacongo",    "quartier_arrivee": "Poto-Poto",   "date": "2026-07-27", "heure": "07:30", "places_dispo": 3, "prix_place": 500, "commentaire": "Trajet régulier tous les jours"},
+    {"id": 2,  "conducteur_id": 3, "quartier_depart": "Moungali",   "quartier_arrivee": "Bacongo",     "date": "2026-07-27", "heure": "07:45", "places_dispo": 2, "prix_place": 500, "commentaire": "Passe par Poto-Poto"},
+    {"id": 3,  "conducteur_id": 2, "quartier_depart": "Talangaï",   "quartier_arrivee": "Poto-Poto",   "date": "2026-07-27", "heure": "08:00", "places_dispo": 4, "prix_place": 700, "commentaire": ""},
+    {"id": 4,  "conducteur_id": 4, "quartier_depart": "Mfilou",     "quartier_arrivee": "Moungali",    "date": "2026-07-27", "heure": "08:15", "places_dispo": 1, "prix_place": 600, "commentaire": ""},
+    {"id": 5,  "conducteur_id": 6, "quartier_depart": "Makélékélé", "quartier_arrivee": "Bacongo",     "date": "2026-07-27", "heure": "07:00", "places_dispo": 3, "prix_place": 400, "commentaire": "Départ tôt"},
+    {"id": 6,  "conducteur_id": 5, "quartier_depart": "Ouenzé",     "quartier_arrivee": "Poto-Poto",   "date": "2026-07-27", "heure": "08:30", "places_dispo": 2, "prix_place": 500, "commentaire": ""},
+    {"id": 7,  "conducteur_id": 7, "quartier_depart": "Kintélé",    "quartier_arrivee": "Talangaï",    "date": "2026-07-27", "heure": "07:15", "places_dispo": 4, "prix_place": 800, "commentaire": "Trajet quotidien"},
+    {"id": 8,  "conducteur_id": 8, "quartier_depart": "Bacongo",    "quartier_arrivee": "Moungali",    "date": "2026-07-27", "heure": "17:30", "places_dispo": 3, "prix_place": 500, "commentaire": "Retour du bureau"},
+    {"id": 9,  "conducteur_id": 1, "quartier_depart": "Poto-Poto",  "quartier_arrivee": "Bacongo",     "date": "2026-07-27", "heure": "17:45", "places_dispo": 2, "prix_place": 500, "commentaire": "Retour"},
+    {"id": 10, "conducteur_id": 3, "quartier_depart": "Bacongo",    "quartier_arrivee": "Moungali",    "date": "2026-07-27", "heure": "18:00", "places_dispo": 4, "prix_place": 600, "commentaire": ""},
+    {"id": 11, "conducteur_id": 2, "quartier_depart": "Poto-Poto",  "quartier_arrivee": "Talangaï",    "date": "2026-07-28", "heure": "07:30", "places_dispo": 3, "prix_place": 700, "commentaire": ""},
+    {"id": 12, "conducteur_id": 6, "quartier_depart": "Bacongo",    "quartier_arrivee": "Poto-Poto",   "date": "2026-07-28", "heure": "07:45", "places_dispo": 2, "prix_place": 500, "commentaire": "Trajet régulier"},
+    {"id": 13, "conducteur_id": 4, "quartier_depart": "Moungali",   "quartier_arrivee": "Mfilou",      "date": "2026-07-28", "heure": "08:00", "places_dispo": 3, "prix_place": 600, "commentaire": ""},
+    {"id": 14, "conducteur_id": 8, "quartier_depart": "Talangaï",   "quartier_arrivee": "Bacongo",     "date": "2026-07-28", "heure": "07:00", "places_dispo": 4, "prix_place": 800, "commentaire": ""},
+    {"id": 15, "conducteur_id": 7, "quartier_depart": "Kintélé",    "quartier_arrivee": "Poto-Poto",   "date": "2026-07-28", "heure": "07:30", "places_dispo": 2, "prix_place": 900, "commentaire": ""}
+  ],
+  "reservations": [
+    {"id": 1,  "trajet_id": 1,  "passager_nom": "Marie Loubota",      "passager_tel": "067111222", "date_reservation": "2026-04-05", "statut": "effectue"},
+    {"id": 2,  "trajet_id": 2,  "passager_nom": "Pierre Nkounkou",    "passager_tel": "068222333", "date_reservation": "2026-04-08", "statut": "effectue"},
+    {"id": 3,  "trajet_id": 3,  "passager_nom": "Estelle Mabiala",    "passager_tel": "069333444", "date_reservation": "2026-04-12", "statut": "effectue"},
+    {"id": 4,  "trajet_id": 5,  "passager_nom": "Alain Mouyabi",      "passager_tel": "066444555", "date_reservation": "2026-04-15", "statut": "annule"},
+    {"id": 5,  "trajet_id": 1,  "passager_nom": "Sophie Ondongo",     "passager_tel": "064555666", "date_reservation": "2026-04-20", "statut": "effectue"},
+    {"id": 6,  "trajet_id": 4,  "passager_nom": "Marc Kimbembe",      "passager_tel": "068666777", "date_reservation": "2026-05-02", "statut": "effectue"},
+    {"id": 7,  "trajet_id": 7,  "passager_nom": "Bernadette Malonga", "passager_tel": "067777888", "date_reservation": "2026-05-05", "statut": "effectue"},
+    {"id": 8,  "trajet_id": 6,  "passager_nom": "Prospère Nkaya",     "passager_tel": "069888999", "date_reservation": "2026-05-10", "statut": "effectue"},
+    {"id": 9,  "trajet_id": 8,  "passager_nom": "Divine Batantou",    "passager_tel": "065999000", "date_reservation": "2026-05-14", "statut": "effectue"},
+    {"id": 10, "trajet_id": 2,  "passager_nom": "Jules Bikindou",     "passager_tel": "066000111", "date_reservation": "2026-05-20", "statut": "effectue"},
+    {"id": 11, "trajet_id": 9,  "passager_nom": "Grâce Loubota",      "passager_tel": "064111333", "date_reservation": "2026-06-01", "statut": "effectue"},
+    {"id": 12, "trajet_id": 10, "passager_nom": "Franck Mouyabi",     "passager_tel": "068333555", "date_reservation": "2026-06-05", "statut": "effectue"},
+    {"id": 13, "trajet_id": 1,  "passager_nom": "Céline Nkounkou",    "passager_tel": "067555777", "date_reservation": "2026-06-10", "statut": "effectue"},
+    {"id": 14, "trajet_id": 5,  "passager_nom": "Rodrigue Mabiala",   "passager_tel": "069777999", "date_reservation": "2026-06-15", "statut": "annule"},
+    {"id": 15, "trajet_id": 3,  "passager_nom": "Aline Ondongo",      "passager_tel": "066999111", "date_reservation": "2026-06-20", "statut": "effectue"},
+    {"id": 16, "trajet_id": 12, "passager_nom": "Sacré Kimbembe",     "passager_tel": "064222444", "date_reservation": "2026-07-05", "statut": "effectue"},
+    {"id": 17, "trajet_id": 11, "passager_nom": "Odette Malonga",     "passager_tel": "068444666", "date_reservation": "2026-07-10", "statut": "en_attente"},
+    {"id": 18, "trajet_id": 14, "passager_nom": "Emmanuel Nkaya",     "passager_tel": "067666888", "date_reservation": "2026-07-15", "statut": "en_attente"},
+    {"id": 19, "trajet_id": 1,  "passager_nom": "Bernice Batantou",   "passager_tel": "069888000", "date_reservation": "2026-07-20", "statut": "en_attente"},
+    {"id": 20, "trajet_id": 7,  "passager_nom": "Lucrèce Bikindou",   "passager_tel": "065111333", "date_reservation": "2026-07-25", "statut": "en_attente"}
+  ]
+}

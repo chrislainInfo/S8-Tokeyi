@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+node_modules/
+*.pdf
+.DS_Store
+.env
+/_solution_CP
+/CLAUDE.md

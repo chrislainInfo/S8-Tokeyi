@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Tests — functions.js — Covoiturage</title>
+  <style>
+    body{font-family:system-ui,sans-serif;max-width:800px;margin:2rem auto;padding:0 1rem}
+    h1{border-bottom:2px solid #333;padding-bottom:.5rem}
+    .test{padding:.4rem;border-left:4px solid #ccc;margin:.3rem 0;font-family:monospace;font-size:14px}
+    .pass{border-color:#2e7d32;background:#e8f5e9;color:#1b5e20}
+    .fail{border-color:#c62828;background:#ffebee;color:#b71c1c}
+    #summary{padding:1rem;font-size:1.2rem;font-weight:bold;margin-bottom:1rem;border-radius:4px}
+    #summary.all-pass{background:#e8f5e9;color:#1b5e20;border:2px solid #2e7d32}
+    #summary.some-fail{background:#ffebee;color:#b71c1c;border:2px solid #c62828}
+  </style>
+</head>
+<body>
+  <h1>Tests — functions.js — Covoiturage Inter-Quartiers</h1>
+  <div id="summary"></div>
+  <div id="results"></div>
+
+  <script src="functions.js"></script>
+  <script>
+    const results = document.getElementById("results");
+    let passed = 0, failed = 0;
+
+    function assert(name, expected, actual) {
+      const eq = JSON.stringify(expected) === JSON.stringify(actual);
+      const div = document.createElement("div");
+      div.className = "test " + (eq ? "pass" : "fail");
+      div.textContent = (eq ? "✓ " : "✗ ") + name + (eq ? "" : ` (attendu: ${JSON.stringify(expected)}, obtenu: ${JSON.stringify(actual)})`);
+      results.appendChild(div);
+      if (eq) passed++; else failed++;
+    }
+
+    // Dev FS1
+    assert("compterTrajetsAujourdhui — 2 trajets aujourd'hui",
+      2, compterTrajetsAujourdhui([{date:"2026-07-27"},{date:"2026-07-28"},{date:"2026-07-27"}], "2026-07-27"));
+    assert("compterTrajetsAujourdhui — aucun", 0, compterTrajetsAujourdhui([], "2026-07-27"));
+    assert("formaterQuartierPrincipal — cas normal",
+      "Poto-Poto (8 trajets)", formaterQuartierPrincipal({"Bacongo": 5, "Poto-Poto": 8, "Moungali": 3}));
+    assert("formaterQuartierPrincipal — vide", "Aucun trajet", formaterQuartierPrincipal({}));
+
+    // Dev FS2
+    const tr = [
+      {id:1, quartier_depart:"Bacongo", quartier_arrivee:"Poto-Poto", commentaire:""},
+      {id:2, quartier_depart:"Moungali", quartier_arrivee:"Bacongo", commentaire:"régulier"},
+      {id:3, quartier_depart:"Bacongo", quartier_arrivee:"Talangaï", commentaire:""},
+    ];
+    assert("filtrerParQuartierDepart — Bacongo", 2, filtrerParQuartierDepart(tr,"Bacongo").length);
+    assert("filtrerParQuartierDepart — vide", 3, filtrerParQuartierDepart(tr,"").length);
+    assert("rechercherParMotCle — 'bacongo' insensible casse", 3, rechercherParMotCle(tr,"BACONGO").length);
+    assert("rechercherParMotCle — 'régulier'", 1, rechercherParMotCle(tr,"régulier").length);
+
+    // Dev FS3
+    assert("formaterPrix — 500", "500 FCFA", formaterPrix(500));
+    assert("formaterPrix — 1500", "1 500 FCFA", formaterPrix(1500));
+    assert("formaterPrix — 12000", "12 000 FCFA", formaterPrix(12000));
+    assert("formaterHeure — 07:30", "07h30", formaterHeure("07:30"));
+
+    // Dev FS4
+    const okForm = {quartier_depart:"Bacongo",quartier_arrivee:"Poto-Poto",heure:"07:30",places_dispo:2,prix_place:500};
+    assert("validerFormulaireProposer — OK", true, validerFormulaireProposer(okForm).valide);
+    const badForm = {quartier_depart:"Bacongo",quartier_arrivee:"Bacongo",heure:"7:30",places_dispo:10,prix_place:0};
+    assert("validerFormulaireProposer — KO même quartier", false, validerFormulaireProposer(badForm).valide);
+    assert("formaterMessageConfirmation",
+      "Bonjour Marie, votre réservation pour Bacongo → Poto-Poto à 07:30 a été enregistrée.",
+      formaterMessageConfirmation("Marie","Bacongo","Poto-Poto","07:30"));
+
+    // Dev FS5
+    const res = [{statut:"effectue"},{statut:"annule"},{statut:"en_attente"}];
+    assert("filtrerReservationsParStatut — effectue", 1, filtrerReservationsParStatut(res,"effectue").length);
+    assert("filtrerReservationsParStatut — vide", 3, filtrerReservationsParStatut(res,"").length);
+    const resPrix = [
+      {statut:"effectue", trajet:{prix_place:500}},
+      {statut:"annule", trajet:{prix_place:1000}},
+      {statut:"en_attente", trajet:{prix_place:700}},
+    ];
+    assert("calculerTotalDepenseParPassager — 500+700", 1200, calculerTotalDepenseParPassager(resPrix));
+
+    // Dev FS6
+    assert("calculerPourcentageOccupation — 2/4", 50, calculerPourcentageOccupation(2,4));
+    assert("calculerPourcentageOccupation — 0 total", 0, calculerPourcentageOccupation(0,0));
+    assert("getBadgeDisponibilite — 0", {libelle:"Complet",classe:"badge-complet"}, getBadgeDisponibilite(0));
+    assert("getBadgeDisponibilite — 1", {libelle:"1 place",classe:"badge-limite"}, getBadgeDisponibilite(1));
+    assert("getBadgeDisponibilite — 3", {libelle:"3 places",classe:"badge-dispo"}, getBadgeDisponibilite(3));
+
+    // Dev FS7
+    const okInscription = {nom:"Marie", telephone:"066123456", mot_de_passe:"secret"};
+    assert("validerFormulaireInscription — OK", true, validerFormulaireInscription(okInscription).valide);
+    const badInscription = {nom:"", telephone:"123", mot_de_passe:"ab"};
+    assert("validerFormulaireInscription — KO", false, validerFormulaireInscription(badInscription).valide);
+    const okLogin = {telephone:"066123456", mot_de_passe:"secret"};
+    assert("validerFormulaireLogin — OK", true, validerFormulaireLogin(okLogin).valide);
+    const badLogin = {telephone:"", mot_de_passe:""};
+    assert("validerFormulaireLogin — KO", false, validerFormulaireLogin(badLogin).valide);
+
+    const summary = document.getElementById("summary");
+    summary.textContent = `${passed} tests réussis / ${failed} échoués (${passed + failed} au total)`;
+    summary.className = failed === 0 ? "all-pass" : "some-fail";
+  </script>
+</body>
+</html>

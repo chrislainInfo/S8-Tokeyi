@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BraCovoit — Accueil</title>
+  <link rel="stylesheet" href="accueil.css">
+</head>
+<body id="page-accueil">
+
+  <!-- =====================================================================
+       NAVIGATION — TODO (Dev FS1)
+       Construire un menu de navigation vers les 9 pages du site (Accueil,
+       Recherche, Proposer un trajet, Mes trajets, Tableau de bord,
+       Inscription, Connexion).
+       Doit inclure un menu burger fonctionnel en dessous de 768px.
+       ===================================================================== -->
+
+  <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
+  <div id="nav-session"></div>
+
+  <main>
+    <!-- =====================================================================
+         HERO — TODO (Dev FS1)
+         Section d'introduction : titre accrocheur, sous-titre expliquant le
+         principe (mise en relation conducteurs/passagers à Brazzaville),
+         bouton d'appel à l'action vers la page Recherche.
+         ===================================================================== -->
+
+    <!-- =====================================================================
+         CARTES INDICATEURS — TODO (Dev FS1)
+         Construire 4 cartes affichant les indicateurs clés du service.
+         Layout : Flexbox ou Grid, responsive (1 colonne mobile, 2 colonnes
+         tablette, 4 colonnes desktop).
+
+         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise pour
+         injecter les valeurs calculées par le backend ***
+         ===================================================================== -->
+    <section>
+      <div class="carte-indicateur">
+        <p class="label">Trajets aujourd'hui</p>
+        <p id="nb-trajets-aujourdhui" class="valeur"></p>
+      </div>
+      <div class="carte-indicateur">
+        <p class="label">Quartier le plus actif</p>
+        <p id="quartier-principal" class="valeur"></p>
+      </div>
+      <div class="carte-indicateur">
+        <p class="label">Conducteurs actifs</p>
+        <p id="nb-conducteurs" class="valeur"></p>
+      </div>
+      <div class="carte-indicateur">
+        <p class="label">Note moyenne</p>
+        <p id="note-moyenne" class="valeur"></p>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         COMMENT ÇA MARCHE — TODO (Dev FS1)
+         3 à 4 étapes illustrant le parcours utilisateur : rechercher un
+         trajet → réserver une place → rejoindre le conducteur. Layout en
+         ligne sur desktop, empilé sur mobile.
+         ===================================================================== -->
+
+    <!-- =====================================================================
+         POURQUOI BRACOVOIT — TODO (Dev FS1)
+         3 arguments clés (économique, écologique, communautaire par
+         exemple). Layout en grille de cartes.
+         ===================================================================== -->
+  </main>
+
+  <!-- FOOTER — TODO (Dev FS1) : liens utiles, mentions -->
+
+  <div id="erreur-globale" hidden></div>
+
+  <!-- NE PAS MODIFIER — scripts de connexion au backend -->
+  <script src="../functions.js"></script>
+  <script src="../main.js"></script>
+</body>
+</html>

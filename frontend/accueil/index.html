@@ -81,7 +81,23 @@
       </section>
 
       <div class="container">
-        <div id="erreur-globale" role="alert" hidden></div>
+        <section
+          class="home-error"
+          role="alert"
+          aria-labelledby="home-error-title"
+          aria-describedby="home-error-help erreur-globale"
+        >
+          <span class="home-error__icon" aria-hidden="true">
+            <i class="ph ph-warning-circle icon-lg"></i>
+          </span>
+          <div class="home-error__copy">
+            <h2 id="home-error-title">Impossible de charger l’activité</h2>
+            <p id="home-error-help">
+              Les indicateurs sont temporairement indisponibles. Réessayez dans quelques instants.
+            </p>
+            <p id="erreur-globale" hidden></p>
+          </div>
+        </section>
       </div>
 
       <section class="container section service-pulse" aria-labelledby="pulse-heading">

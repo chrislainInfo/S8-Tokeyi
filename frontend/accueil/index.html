@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta
     name="description"
     content="Tokeyi facilite le covoiturage quotidien entre les quartiers de Brazzaville."
@@ -23,35 +23,58 @@
           </span>
         </a>
 
-        <nav class="desktop-nav" aria-label="Navigation principale">
-          <a href="index.html" aria-current="page">Accueil</a>
-          <a href="../recherche/recherche.html">Rechercher</a>
-          <a href="../proposer/proposer.html">Proposer</a>
-          <a href="../mes-trajets/mes-trajets.html">Mes trajets</a>
-          <a href="../dashboard/dashboard.html">Tableau de bord</a>
-        </nav>
+          <nav class="desktop-nav" aria-label="Navigation principale">
+            <a href="index.html" aria-current="page">Accueil</a>
+            <a href="../recherche/recherche.html">Rechercher</a>
+            <a href="../mes-trajets/mes-trajets.html">Mes trajets</a>
+            <a href="../dashboard/dashboard.html">Tableau de bord</a>
+          </nav>
 
-        <div class="header-actions">
-          <details class="site-menu">
-            <summary class="header-icon" aria-label="Ouvrir le menu principal">
-              <i class="ph ph-list icon-lg" aria-hidden="true"></i>
-            </summary>
-            <nav class="site-menu__panel" aria-label="Navigation mobile">
-              <a href="index.html" aria-current="page">Accueil</a>
-              <a href="../recherche/recherche.html">Rechercher un trajet</a>
-              <a href="../trajet/trajet.html?id=1">Détail d’un trajet</a>
-              <a href="../proposer/proposer.html">Proposer un trajet</a>
-              <a href="../mes-trajets/mes-trajets.html">Mes trajets</a>
-              <a href="../dashboard/dashboard.html">Tableau de bord</a>
-              <a href="../confirmation/confirmation.html">Confirmation</a>
-              <a href="../inscription/inscription.html">Inscription</a>
-              <a href="../login/login.html">Connexion</a>
-            </nav>
-          </details>
+          <div class="header-actions">
+            <div class="mode-switch" role="group" aria-label="Changer de mode">
+              <a class="is-active" href="index.html" aria-current="true">
+                <i class="ph ph-armchair icon" aria-hidden="true"></i>
+                <span class="mode-switch__label">Passager</span>
+              </a>
+              <a href="../proposer/proposer.html">
+                <i class="ph ph-steering-wheel icon" aria-hidden="true"></i>
+                <span class="mode-switch__label">Conducteur</span>
+              </a>
+            </div>
 
-          <!-- NE PAS MODIFIER l'id : main.js y affiche l'état de connexion. -->
-          <div id="nav-session" aria-live="polite"></div>
-        </div>
+            <details class="notification-menu">
+              <summary class="header-icon" aria-label="Ouvrir les notifications">
+                <i class="ph ph-bell icon" aria-hidden="true"></i>
+              </summary>
+              <div class="notification-dropdown">
+                <div class="notification-dropdown__header">
+                  <strong>Notifications</strong>
+                  <span>Aperçu</span>
+                </div>
+                <a class="notification-preview" href="../mes-trajets/mes-trajets.html">
+                  <span class="notification-preview__icon" aria-hidden="true">
+                    <i class="ph ph-check-circle icon"></i>
+                  </span>
+                  <span>
+                    <strong>Votre demande a été acceptée</strong>
+                    <small>Exemple statique</small>
+                  </span>
+                </a>
+                <a class="notification-preview" href="../dashboard/dashboard.html">
+                  <span class="notification-preview__icon" aria-hidden="true">
+                    <i class="ph ph-chart-line-up icon"></i>
+                  </span>
+                  <span>
+                    <strong>Consultez l’activité Tokeyi</strong>
+                    <small>Exemple statique</small>
+                  </span>
+                </a>
+              </div>
+            </details>
+
+            <!-- NE PAS MODIFIER l'id : main.js y affiche l'état de connexion. -->
+            <div id="nav-session" aria-live="polite"></div>
+          </div>
       </div>
     </header>
 
@@ -118,7 +141,9 @@
             </span>
             <div>
               <p class="label">Trajets aujourd’hui</p>
-              <p id="nb-trajets-aujourdhui" class="valeur" aria-live="polite">Chargement…</p>
+              <p id="nb-trajets-aujourdhui" class="valeur" aria-live="polite">
+                <span class="loading-status">Chargement…</span>
+              </p>
             </div>
           </article>
           <article class="carte-indicateur">
@@ -127,7 +152,9 @@
             </span>
             <div>
               <p class="label">Quartier le plus actif</p>
-              <p id="quartier-principal" class="valeur" aria-live="polite">Chargement…</p>
+              <p id="quartier-principal" class="valeur" aria-live="polite">
+                <span class="loading-status">Chargement…</span>
+              </p>
             </div>
           </article>
           <article class="carte-indicateur">
@@ -136,7 +163,9 @@
             </span>
             <div>
               <p class="label">Conducteurs actifs</p>
-              <p id="nb-conducteurs" class="valeur" aria-live="polite">Chargement…</p>
+              <p id="nb-conducteurs" class="valeur" aria-live="polite">
+                <span class="loading-status">Chargement…</span>
+              </p>
             </div>
           </article>
           <article class="carte-indicateur">
@@ -145,7 +174,9 @@
             </span>
             <div>
               <p class="label">Note moyenne</p>
-              <p id="note-moyenne" class="valeur" aria-live="polite">Chargement…</p>
+              <p id="note-moyenne" class="valeur" aria-live="polite">
+                <span class="loading-status">Chargement…</span>
+              </p>
             </div>
           </article>
         </div>
@@ -252,6 +283,35 @@
         <span>Le paiement s’effectue directement entre passager et conducteur.</span>
       </div>
     </footer>
+
+    <nav class="bottom-nav" aria-label="Navigation mobile principale">
+      <ul class="bottom-nav__list">
+        <li>
+          <a href="index.html" aria-current="page">
+            <i class="ph ph-house icon" aria-hidden="true"></i>
+            <span>Accueil</span>
+          </a>
+        </li>
+        <li>
+          <a href="../recherche/recherche.html">
+            <i class="ph ph-magnifying-glass icon" aria-hidden="true"></i>
+            <span>Rechercher</span>
+          </a>
+        </li>
+        <li>
+          <a href="../mes-trajets/mes-trajets.html">
+            <i class="ph ph-ticket icon" aria-hidden="true"></i>
+            <span>Mes trajets</span>
+          </a>
+        </li>
+        <li>
+          <a href="../login/login.html">
+            <i class="ph ph-user-circle icon" aria-hidden="true"></i>
+            <span>Compte</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
 
   <!-- NE PAS MODIFIER : scripts de connexion au backend. -->

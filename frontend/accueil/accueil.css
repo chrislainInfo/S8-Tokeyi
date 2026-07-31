@@ -84,6 +84,14 @@
   white-space: nowrap;
 }
 
+#page-accueil .session-only {
+  display: none;
+}
+
+#page-accueil:has(#nav-session #btn-deconnexion) .session-only {
+  display: inline-flex;
+}
+
 /* État d'erreur de l'activité */
 .home-error {
   display: grid;
@@ -225,7 +233,7 @@
 }
 
 .process-list {
-  border-top: 1px solid var(--color-line);
+  border-top: 0;
 }
 
 .process-list li {
@@ -257,6 +265,15 @@
   margin-top: var(--space-1);
   color: var(--color-muted);
   text-wrap: pretty;
+}
+
+.process-list li:last-child {
+  border-bottom: 0;
+}
+
+#page-accueil .explainer,
+#page-accueil .reasons {
+  border-top: 0;
 }
 
 /* Bénéfices */

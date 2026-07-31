@@ -1,0 +1,349 @@
+/* Hero */
+.home-hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-content: center;
+  gap: var(--space-10);
+  min-height: 34rem;
+  margin-block: var(--space-6) 0;
+  padding: clamp(3rem, 6vw, 5rem);
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background-color: var(--color-ink);
+  background-image:
+    linear-gradient(
+      90deg,
+      rgb(4 6 5 / 96%) 0%,
+      rgb(4 6 5 / 88%) 40%,
+      rgb(4 6 5 / 32%) 70%,
+      rgb(4 6 5 / 10%) 100%
+    ),
+    url("../assets/images/hero-carpool-brazzaville.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: var(--color-canvas);
+}
+
+.home-hero__copy {
+  display: grid;
+  gap: var(--space-4);
+  width: min(58%, 42rem);
+}
+
+.home-hero__label {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: var(--space-2);
+  color: var(--color-accent);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.home-hero__copy h1 {
+  max-width: 14ch;
+  color: var(--color-canvas);
+  font-size: clamp(2.75rem, 5.5vw, 4.75rem);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.home-hero__copy > p:not(.home-hero__label) {
+  max-width: 34rem;
+  color: #d3dbd6;
+  font-size: var(--text-lg);
+  text-wrap: pretty;
+}
+
+.home-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.home-hero__secondary {
+  border-color: rgb(255 255 255 / 68%);
+  background: rgb(4 6 5 / 44%);
+  color: var(--color-canvas);
+}
+
+.home-hero__secondary:hover,
+.home-hero__secondary:focus-visible {
+  border-color: var(--color-canvas);
+  background: var(--color-canvas);
+  color: var(--color-ink);
+}
+
+/* Indicateurs */
+.service-pulse {
+  padding-top: var(--space-12);
+}
+
+.metric-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-block: 1px solid var(--color-line);
+}
+
+.carte-indicateur {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-4);
+  min-width: 0;
+  padding: var(--space-6);
+}
+
+.carte-indicateur + .carte-indicateur {
+  border-left: 1px solid var(--color-line);
+}
+
+.carte-indicateur__icon {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  color: var(--color-accent-deep);
+}
+
+.carte-indicateur .label {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+}
+
+.carte-indicateur .valeur {
+  overflow-wrap: anywhere;
+  color: var(--color-ink);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Parcours */
+.explainer {
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.72fr) minmax(0, 1.28fr);
+  gap: var(--space-12);
+  align-items: start;
+}
+
+.explainer__intro {
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-6));
+  display: grid;
+  gap: var(--space-3);
+}
+
+.explainer__intro h2 {
+  max-width: 16ch;
+  font-size: var(--text-3xl);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.explainer__intro p {
+  max-width: 40rem;
+  color: var(--color-muted);
+  text-wrap: pretty;
+}
+
+.explainer__intro .text-link {
+  justify-self: start;
+}
+
+.process-list {
+  border-top: 1px solid var(--color-line);
+}
+
+.process-list li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-5);
+  padding-block: var(--space-6);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.process-list__index {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-ink);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.process-list strong {
+  font-size: var(--text-lg);
+}
+
+.process-list p {
+  max-width: 60ch;
+  margin-top: var(--space-1);
+  color: var(--color-muted);
+  text-wrap: pretty;
+}
+
+/* Bénéfices */
+.reason-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-block: 1px solid var(--color-line);
+}
+
+.reason-list article {
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+  padding: var(--space-6);
+}
+
+.reason-list article + article {
+  border-left: 1px solid var(--color-line);
+}
+
+.reason-list .icon-lg {
+  color: var(--color-accent-deep);
+}
+
+.reason-list h3 {
+  font-size: var(--text-lg);
+}
+
+.reason-list p {
+  max-width: 42ch;
+  color: var(--color-muted);
+  text-wrap: pretty;
+}
+
+@media (max-width: 70.5rem) {
+  #page-accueil .desktop-nav {
+    gap: var(--space-4);
+  }
+
+  .carte-indicateur {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 56rem) {
+  .metric-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .carte-indicateur {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .carte-indicateur + .carte-indicateur {
+    border-left: 0;
+  }
+
+  .carte-indicateur:nth-child(even) {
+    border-left: 1px solid var(--color-line);
+  }
+
+  .carte-indicateur:nth-child(n + 3) {
+    border-top: 1px solid var(--color-line);
+  }
+
+  #page-accueil #nav-session {
+    font-size: 0;
+  }
+
+  #page-accueil #nav-session a,
+  #page-accueil #btn-deconnexion {
+    font-size: var(--text-xs);
+  }
+
+  #page-accueil #nav-session a:last-child {
+    display: none;
+  }
+}
+
+@media (max-width: 46.5rem) {
+  .home-hero {
+    min-height: auto;
+    margin-top: var(--space-4);
+    padding: var(--space-10) var(--space-6);
+    background-image:
+      linear-gradient(
+        90deg,
+        rgb(4 6 5 / 96%) 0%,
+        rgb(4 6 5 / 88%) 64%,
+        rgb(4 6 5 / 48%) 100%
+      ),
+      url("../assets/images/hero-carpool-brazzaville.webp");
+    background-position: 62% center;
+  }
+
+  .home-hero__copy {
+    width: 100%;
+  }
+
+  .home-hero__copy h1 {
+    max-width: 13ch;
+    font-size: clamp(2.35rem, 11vw, 3.4rem);
+  }
+
+  .home-hero__copy > p:not(.home-hero__label) {
+    font-size: var(--text-base);
+  }
+
+  .home-hero__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .home-hero__actions .button {
+    width: 100%;
+  }
+
+  .metric-strip,
+  .explainer,
+  .reason-list {
+    grid-template-columns: 1fr;
+  }
+
+  .carte-indicateur {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .carte-indicateur:nth-child(even) {
+    border-left: 0;
+  }
+
+  .carte-indicateur + .carte-indicateur {
+    border-top: 1px solid var(--color-line);
+  }
+
+  .explainer__intro {
+    position: static;
+  }
+
+  .reason-list article + article {
+    border-top: 1px solid var(--color-line);
+    border-left: 0;
+  }
+}
+
+@media (max-width: 23rem) {
+  .home-hero {
+    padding-inline: var(--space-5);
+  }
+
+  .carte-indicateur {
+    grid-template-columns: 1fr;
+  }
+}

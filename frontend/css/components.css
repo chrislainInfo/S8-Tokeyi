@@ -890,6 +890,12 @@
   border-radius: var(--radius-md);
 }
 
+.skeleton--metric {
+  display: block;
+  width: min(100%, 7rem);
+  height: 1.25rem;
+}
+
 .loading-status {
   display: inline-flex;
   align-items: center;

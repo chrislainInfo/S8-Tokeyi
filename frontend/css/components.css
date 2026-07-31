@@ -890,6 +890,23 @@
   border-radius: var(--radius-md);
 }
 
+.skeleton-stack {
+  display: grid;
+  gap: 0.35rem;
+  width: min(100%, 7rem);
+}
+
+.skeleton--metric {
+  display: block;
+  width: 100%;
+  height: 0.45rem;
+  border-radius: var(--radius-pill);
+}
+
+.skeleton--metric-short {
+  width: 62%;
+}
+
 @keyframes skeleton-pulse {
   from {
     opacity: 0.55;

@@ -26,7 +26,9 @@ function compterTrajetsAujourdhui(trajets, dateAujourdhui) {
      * @return {number} - nombre de trajets à cette date
      * Exemple : compterTrajetsAujourdhui([{date:"2026-07-27"},{date:"2026-07-28"}], "2026-07-27") → 1
      */
-    // TODO
+    if (!Array.isArray(trajets)) return 0;
+
+    return trajets.filter(trajet => trajet && trajet.date === dateAujourdhui).length;
 }
 
 function formaterQuartierPrincipal(compteParQuartier) {
@@ -36,7 +38,19 @@ function formaterQuartierPrincipal(compteParQuartier) {
      * @return {string} - ex: "Poto-Poto (8 trajets)"
      * Si l'objet est vide, retourne "Aucun trajet".
      */
-    // TODO
+    if (!compteParQuartier || typeof compteParQuartier !== "object") {
+        return "Aucun trajet";
+    }
+
+    const quartiers = Object.entries(compteParQuartier);
+    if (quartiers.length === 0) return "Aucun trajet";
+
+    const [quartier, nombreTrajets] = quartiers.reduce((principal, courant) => {
+        return courant[1] > principal[1] ? courant : principal;
+    });
+    const libelleTrajet = nombreTrajets === 1 ? "trajet" : "trajets";
+
+    return `${quartier} (${nombreTrajets} ${libelleTrajet})`;
 }
 
 // ============================================================================

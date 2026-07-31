@@ -890,6 +890,22 @@
   border-radius: var(--radius-md);
 }
 
+.loading-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-muted);
+}
+
+.loading-status::after {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--color-accent-strong);
+  content: "";
+  animation: loading-status-ping 1.2s ease-in-out infinite;
+}
+
 @keyframes skeleton-pulse {
   from {
     opacity: 0.55;
@@ -897,6 +913,19 @@
 
   to {
     opacity: 1;
+  }
+}
+
+@keyframes loading-status-ping {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.72);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 

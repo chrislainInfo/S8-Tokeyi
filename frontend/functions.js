@@ -159,7 +159,12 @@ function calculerTotalDepenseParPassager(reservations) {
      *   3 réservations : 500 (effectue), 700 (en_attente), 400 (annule)
      *   → 1200
      */
-    // TODO
+    return (reservations || []).reduce((total, reservation) => {
+        if (reservation.statut !== "annule") {
+            return total + (reservation.trajet ? reservation.trajet.prix_place : 0);
+        }
+        return total;
+    }, 0);
 }
 
 // ============================================================================

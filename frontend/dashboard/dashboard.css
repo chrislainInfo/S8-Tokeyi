@@ -143,6 +143,7 @@
   text-align: center;
 }
 
+.dashboard-state--empty,
 .dashboard-state--error {
   background: transparent;
 }
@@ -241,10 +242,6 @@
   > .dashboard-state--error {
   display: grid;
   min-height: 16rem;
-}
-
-#page-dashboard:has(#erreur-globale:not([hidden])) .featured-trip {
-  background: var(--color-canvas);
 }
 
 .dashboard-metrics {
@@ -488,7 +485,7 @@
 
 .featured-trip > .dashboard-state {
   margin: var(--space-6);
-  background: var(--color-dark-elevated);
+  background: transparent;
 }
 
 .featured-trip > .dashboard-state > strong {
@@ -509,6 +506,18 @@
 
 .dashboard-table-section > .dashboard-state {
   min-height: 18rem;
+}
+
+#page-dashboard:not(:has(#erreur-globale:not([hidden])))
+  .dashboard-table-section:has(#d-trajets-par-quartier:empty)
+  > .table-scroll {
+  display: none;
+}
+
+#page-dashboard:not(:has(#erreur-globale:not([hidden])))
+  .dashboard-table-section:has(#d-trajets-par-quartier:empty)
+  > .dashboard-state--empty {
+  display: grid;
 }
 
 .table-scroll {

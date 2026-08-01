@@ -1,80 +1,356 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tokeyi — Détail du trajet</title>
-  <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="trajet.css">
-</head>
-<body id="page-trajet">
+  <head>
+    <meta charset="UTF-8">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+    <meta
+      name="description"
+      content="Consultez le détail d’un trajet Tokeyi et envoyez votre demande de réservation."
+    >
+    <title>Détail du trajet | Tokeyi</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="trajet.css">
+  </head>
+  <body id="page-trajet">
+    <a class="skip-link" href="#main-content">Aller au contenu</a>
 
-  <!-- NAVIGATION — TODO (Dev FS3) -->
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="container header-inner">
+          <a
+            class="brand"
+            href="../accueil/index.html"
+            aria-label="Tokeyi, accueil"
+          >
+            <span class="brand-logo" aria-hidden="true">
+              <img src="../assets/brand/logo-tokeyi-light-v2.png" alt="">
+            </span>
+          </a>
 
-  <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
-  <div id="nav-session"></div>
+          <nav class="desktop-nav" aria-label="Navigation principale">
+            <a href="../accueil/index.html">Accueil</a>
+            <a href="../recherche/recherche.html" aria-current="page"
+              >Rechercher</a
+            >
+            <a href="../mes-trajets/mes-trajets.html">Mes trajets</a>
+            <a href="../dashboard/dashboard.html">Activité</a>
+          </nav>
 
-  <main>
-    <!-- =====================================================================
-         ENTÊTE TRAJET — TODO (Dev FS3)
-         Mettre en forme le titre du trajet, l'heure, la date, le prix, le
-         commentaire éventuel et le badge de disponibilité. Le badge reçoit
-         dynamiquement une classe parmi badge-dispo / badge-limite /
-         badge-complet — prévoyez les 3 styles.
+          <div class="header-actions">
+            <!-- NE PAS MODIFIER l'id : main.js y affiche l’état de connexion. -->
+            <div id="nav-session" aria-live="polite"></div>
+          </div>
+        </div>
+      </header>
 
-         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
-         ===================================================================== -->
-    <section class="entete-trajet">
-      <h1 id="trajet-titre"></h1>
-      <p>Heure : <span id="trajet-heure"></span></p>
-      <p>Date : <span id="trajet-date"></span></p>
-      <p>Prix : <span id="trajet-prix"></span></p>
-      <p>Commentaire : <span id="trajet-commentaire"></span></p>
-      <span id="badge-places" class="badge"></span>
-    </section>
+      <main id="main-content" class="trip-page">
+        <div class="container">
+          <a class="trip-back" href="../recherche/recherche.html">
+            <i class="ph ph-arrow-left icon" aria-hidden="true"></i>
+            Retour aux résultats
+          </a>
 
-    <!-- =====================================================================
-         FICHE CONDUCTEUR — TODO (Dev FS3)
-         Mettre en forme l'encart conducteur : nom, véhicule, note,
-         expérience. Un visuel type "carte profil" est attendu.
+          <section
+            class="trip-error"
+            role="alert"
+            aria-labelledby="trip-error-title"
+          >
+            <div class="trip-error__visual" aria-hidden="true">
+              <span><i class="ph ph-car-profile icon-lg"></i></span>
+              <span><i class="ph ph-cloud-slash icon-lg"></i></span>
+              <span><i class="ph ph-warning-circle icon-lg"></i></span>
+            </div>
+            <h1 id="trip-error-title">Trajet indisponible</h1>
+            <p class="trip-error__help">
+              Impossible d’afficher les informations de ce trajet pour le moment.
+            </p>
+            <p id="erreur-globale" hidden></p>
+            <a
+              class="button button--secondary"
+              href="../recherche/recherche.html"
+            >
+              <i class="ph ph-arrow-left icon" aria-hidden="true"></i>
+              Revenir à la recherche
+            </a>
+          </section>
 
-         *** NE PAS MODIFIER les id ci-dessous ***
-         ===================================================================== -->
-    <section class="fiche-conducteur">
-      <h2>Conducteur</h2>
-      <p>Nom : <span id="conducteur-nom"></span></p>
-      <p>Véhicule : <span id="conducteur-vehicule"></span></p>
-      <p>Note : <span id="conducteur-note"></span></p>
-      <p>Expérience : <span id="conducteur-trajets"></span></p>
-    </section>
+          <div class="trip-layout">
+            <article class="trip-content" aria-labelledby="trajet-titre">
+              <header class="trip-heading">
+              <span id="badge-places" class="badge">
+                <span
+                  class="skeleton skeleton--line skeleton--line-short"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Chargement des disponibilités…</span>
+              </span>
+              <h1 id="trajet-titre">
+                  <span
+                    class="skeleton skeleton--title"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="sr-only">Chargement du trajet…</span>
+                </h1>
+              </header>
 
-    <!-- =====================================================================
-         FORMULAIRE DE RÉSERVATION — TODO (Dev FS3)
-         Mettre en forme le formulaire : nom, téléphone, bouton (désactivé
-         si trajet complet — main.js gère l'attribut disabled). Si
-         l'utilisateur est connecté, les champs nom/téléphone sont
-         pré-remplis automatiquement par main.js (mais restent modifiables).
+              <section class="trip-section" aria-labelledby="schedule-title">
+                <h2 id="schedule-title">Votre trajet en un coup d’œil</h2>
+                <div class="trip-schedule">
+                  <div class="trip-fact">
+                    <span class="trip-fact__icon" aria-hidden="true">
+                      <i class="ph ph-clock icon-lg"></i>
+                    </span>
+                    <span>
+                      <small>Heure de départ</small>
+                      <strong id="trajet-heure">
+                        <span
+                          class="skeleton skeleton--line skeleton--line-short"
+                          aria-hidden="true"
+                        ></span>
+                        <span class="sr-only">Chargement…</span>
+                      </strong>
+                    </span>
+                  </div>
+                  <div class="trip-fact">
+                    <span class="trip-fact__icon" aria-hidden="true">
+                      <i class="ph ph-calendar-blank icon-lg"></i>
+                    </span>
+                    <span>
+                      <small>Date</small>
+                      <strong id="trajet-date">
+                        <span
+                          class="skeleton skeleton--line"
+                          aria-hidden="true"
+                        ></span>
+                        <span class="sr-only">Chargement…</span>
+                      </strong>
+                    </span>
+                  </div>
+                </div>
+              </section>
 
-         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
-         ===================================================================== -->
-    <form id="form-reservation">
-      <label for="r-nom">Votre nom</label>
-      <input type="text" id="r-nom">
+              <section class="trip-section" aria-labelledby="comment-title">
+                <div class="trip-section__heading">
+                  <span aria-hidden="true"
+                    ><i class="ph ph-chat-text icon-lg"></i
+                  ></span>
+                  <div>
+                    <h2 id="comment-title">Commentaire du conducteur</h2>
+                    <p id="trajet-commentaire">
+                      <span
+                        class="skeleton skeleton--line"
+                        aria-hidden="true"
+                      ></span>
+                      <span
+                        class="skeleton skeleton--line skeleton--line-short"
+                        aria-hidden="true"
+                      ></span>
+                      <span class="sr-only">Chargement…</span>
+                    </p>
+                  </div>
+                </div>
+              </section>
 
-      <label for="r-tel">Votre téléphone</label>
-      <input type="tel" id="r-tel">
+              <section
+                class="trip-section driver-profile"
+                aria-labelledby="driver-title"
+              >
+                <div class="trip-section__heading">
+                  <span class="avatar avatar--lg" aria-hidden="true">
+                    <i class="ph ph-user icon-lg"></i>
+                  </span>
+                  <div>
+                    <p class="driver-profile__label">Votre conducteur</p>
+                    <h2 id="driver-title">
+                      <span id="conducteur-nom">Chargement…</span>
+                    </h2>
+                  </div>
+                </div>
 
-      <button type="submit" id="btn-reserver">Réserver une place</button>
-    </form>
+                <dl class="driver-facts">
+                  <div>
+                    <dt>
+                      <i class="ph ph-car icon" aria-hidden="true"></i> Véhicule
+                    </dt>
+                    <dd id="conducteur-vehicule">Chargement…</dd>
+                  </div>
+                  <div>
+                    <dt>
+                      <i class="ph ph-star icon" aria-hidden="true"></i> Note
+                    </dt>
+                    <dd id="conducteur-note">Chargement…</dd>
+                  </div>
+                  <div>
+                    <dt>
+                      <i class="ph ph-road-horizon icon" aria-hidden="true"></i>
+                      Expérience
+                    </dt>
+                    <dd id="conducteur-trajets">Chargement…</dd>
+                  </div>
+                </dl>
+              </section>
+            </article>
 
-    <!-- Zone d'erreurs de validation — TODO (Dev FS3) : mettre en forme la
-         liste <ul><li> injectée par main.js en cas de formulaire invalide.
-         NE PAS MODIFIER l'id. -->
-    <div id="erreurs-form" hidden></div>
-  </main>
+            <aside class="booking-column" aria-labelledby="booking-title">
+              <div class="booking-card">
+                <div class="booking-price">
+                  <span>Prix par place</span>
+                  <strong id="trajet-prix">
+                    <span
+                      class="skeleton skeleton--line"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="sr-only">Chargement du prix…</span>
+                  </strong>
+                </div>
 
-  <div id="erreur-globale" hidden></div>
+                <div class="booking-intro">
+                  <h2 id="booking-title">Réserver ce trajet</h2>
+                  <p>
+                    Renseignez vos coordonnées pour envoyer votre demande au
+                    conducteur.
+                  </p>
+                </div>
 
+                <!-- NE PAS MODIFIER les IDs : main.js gère la réservation. -->
+                <form id="form-reservation" class="booking-form">
+                  <div class="field">
+                    <label for="r-nom">Votre nom</label>
+                    <div class="input-shell">
+                      <i class="ph ph-user icon" aria-hidden="true"></i>
+                      <input
+                        type="text"
+                        id="r-nom"
+                        name="nom"
+                        autocomplete="name"
+                        placeholder="Ex. Marie Loubota"
+                      >
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label for="r-tel">Votre téléphone</label>
+                    <div class="input-shell">
+                      <i class="ph ph-phone icon" aria-hidden="true"></i>
+                      <input
+                        type="tel"
+                        id="r-tel"
+                        name="telephone"
+                        autocomplete="tel"
+                        inputmode="tel"
+                        placeholder="Ex. 06 711 12 22"
+                      >
+                    </div>
+                  </div>
+
+                  <button
+                    class="button button--primary button--block"
+                    type="submit"
+                    id="btn-reserver"
+                  >
+                    <i class="ph ph-ticket icon" aria-hidden="true"></i>
+                    Réserver une place
+                  </button>
+                </form>
+
+                <div
+                  id="erreurs-form"
+                  class="booking-errors"
+                  role="alert"
+                  hidden
+                ></div>
+
+                <p class="booking-note">
+                  <i class="ph ph-shield-check icon" aria-hidden="true"></i>
+                  Le paiement s’effectue directement entre passager et
+                  conducteur.
+                </p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-grid">
+          <div class="footer-brand">
+            <a
+              class="footer-brand__logo"
+              href="../accueil/index.html"
+              aria-label="Tokeyi, accueil"
+            >
+              <img src="../assets/brand/logo-tokeyi-dark-v2.png" alt="Tokeyi">
+            </a>
+            <p>Vos trajets du quotidien, partagés simplement à Brazzaville.</p>
+            <span class="footer-location">
+              <i class="ph ph-map-pin icon" aria-hidden="true"></i>
+              Brazzaville
+            </span>
+          </div>
+
+          <nav
+            class="footer-column"
+            aria-label="Navigation principale du pied de page"
+          >
+            <strong>Navigation</strong>
+            <a href="../accueil/index.html">Accueil</a>
+            <a href="../recherche/recherche.html">Trouver un trajet</a>
+            <a href="../mes-trajets/mes-trajets.html">Mes trajets</a>
+          </nav>
+          <nav class="footer-column" aria-label="Navigation conducteur">
+            <strong>Conducteur</strong>
+            <a href="../proposer/proposer.html">Proposer un trajet</a>
+            <a href="../dashboard/dashboard.html">Activité</a>
+          </nav>
+          <nav class="footer-column" aria-label="Navigation du compte">
+            <strong>Compte</strong>
+            <a href="../inscription/inscription.html">Créer un compte</a>
+            <a href="../login/login.html">Se connecter</a>
+          </nav>
+        </div>
+        <div class="container footer-bottom">
+          <span>© 2026 Tokeyi</span>
+          <span
+            >Le paiement s’effectue directement entre passager et
+            conducteur.</span
+          >
+        </div>
+      </footer>
+
+      <nav class="bottom-nav" aria-label="Navigation mobile principale">
+        <ul class="bottom-nav__list">
+          <li>
+            <a href="../accueil/index.html">
+              <i class="ph ph-house icon" aria-hidden="true"></i>
+              <span>Accueil</span>
+            </a>
+          </li>
+          <li>
+            <a href="../recherche/recherche.html" aria-current="page">
+              <i class="ph ph-magnifying-glass icon" aria-hidden="true"></i>
+              <span>Rechercher</span>
+            </a>
+          </li>
+          <li>
+            <a href="../mes-trajets/mes-trajets.html">
+              <i class="ph ph-ticket icon" aria-hidden="true"></i>
+              <span>Mes trajets</span>
+            </a>
+          </li>
+          <li class="bottom-nav__item--session">
+            <a href="../login/login.html">
+              <i class="ph ph-user-circle icon" aria-hidden="true"></i>
+              <span>Compte</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+  <!-- NE PAS MODIFIER : scripts de connexion au backend. -->
   <script src="../functions.js"></script>
   <script src="../main.js"></script>
 </body>

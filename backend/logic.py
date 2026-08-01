@@ -220,16 +220,16 @@ def compter_reservations_par_trajet(trajet_id, reservations):
         (les 2 réservations du trajet 1 qui ne sont pas "annule";
         la réservation du trajet 2 ne compte pas, ce n'est pas le bon trajet)
     """
-    # Data 2
-    res_annule = 0
+    # On initialise un compteur à zéro pour les réservations actives
+    nombre_reservations = 0
+
+    # On ne compte que les réservations liées à ce trajet et dont le statut
+    # est actif : "effectue" ou "en_attente"
     for reservation in reservations:
-        if reservation["trajet_id"] == trajet_id and reservation["statut"] != "annulee":
-            #on incremente la variable res_annule a chaque reservation annule
-            res_annule += 1
-    else:
-        # rien ne se passe
-        pass
-    return res_annule
+        if reservation["trajet_id"] == trajet_id and reservation["statut"] in ["effectue", "en_attente"]:
+            nombre_reservations += 1
+
+    return nombre_reservations
             
 
 
@@ -330,14 +330,11 @@ def filtrer_reservations_par_statut(reservations, statut):
         filtrer_reservations_par_statut(reservations, "effectue")
         -> [{"id": 1, "statut": "effectue"}, {"id": 3, "statut": "effectue"}]
     """
-    # Data 2
-    # On cree une liste qui stocke l'ensemble des statuts d'un historique de l'un des statuts a la fois
+    # On crée une liste pour stocker les réservations ayant le bon statut
     statut_list = []
     for res in reservations:
         if res["statut"] == statut:
-            statut_list.append(statut)
-        else:
-            pass
+            statut_list.append(res)
     return statut_list
     
 
@@ -399,20 +396,17 @@ def calculer_taux_annulation(reservations):
         calculer_taux_annulation(reservations) -> 33.3
         (1 annulée sur 3 réservations, soit 33.33...%, arrondi à 33.3)
     """
-    # Data 2
     if not reservations:
         return 0.0
-    
+
     nb_annule = 0
     nb_total = len(reservations)
-    taux_annulation = 0
+
     for res in reservations:
         if res["statut"] == "annule":
             nb_annule += 1
-            taux_annulation = (nb_annule/nb_total)*100
-        else:
-            pass
-    return taux_annulation
+
+    return round((nb_annule / nb_total) * 100, 1)
 
 
 
@@ -681,12 +675,11 @@ def verifier_telephone_disponible(comptes, telephone):
         verifier_telephone_disponible(comptes, "066123456") -> False
         verifier_telephone_disponible(comptes, "055999999") -> True
     """
-    # 2
     for compte in comptes:
         if compte["telephone"] == telephone:
             return False
 
-        return True
+    return True
 
 
 def trouver_compte_par_telephone(comptes, telephone):
@@ -709,12 +702,9 @@ def trouver_compte_par_telephone(comptes, telephone):
         -> {"id": 1, "telephone": "066123456", "nom": "Franck"}
         trouver_compte_par_telephone(comptes, "055999999") -> None
     """
-    # 2
-
     for compte in comptes:
-        #Puisque compte exioste deja a l'interieur de la liste comptes
         if compte["telephone"] == telephone:
             return compte
 
-        return None
+    return None
     

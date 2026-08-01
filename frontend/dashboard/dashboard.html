@@ -8,9 +8,9 @@
     >
     <meta
       name="description"
-      content="Consultez les principaux indicateurs du service de covoiturage Tokeyi à Brazzaville."
+      content="Découvrez l’activité du réseau de covoiturage Tokeyi entre les quartiers de Brazzaville."
     >
-  <title>Tableau de bord | Tokeyi</title>
+  <title>Activité | Tokeyi</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://api.fontshare.com">
   <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
@@ -42,7 +42,7 @@
             <a href="../accueil/index.html">Accueil</a>
             <a href="../recherche/recherche.html">Rechercher</a>
             <a href="../mes-trajets/mes-trajets.html">Mes trajets</a>
-            <a href="dashboard.html" aria-current="page">Tableau de bord</a>
+            <a href="dashboard.html" aria-current="page">Activité</a>
           </nav>
 
           <div class="header-actions">
@@ -56,14 +56,15 @@
         <div class="container">
           <header class="page-header dashboard-header">
             <div class="page-heading">
-              <h1>Tableau de bord</h1>
+              <h1>L’activité Tokeyi</h1>
               <p>
-                Les principaux indicateurs de l’activité Tokeyi à Brazzaville.
+                Découvrez comment les trajets partagés relient les quartiers de
+                Brazzaville et font vivre le réseau au quotidien.
               </p>
             </div>
             <span class="dashboard-date">
               <i class="ph ph-chart-line-up icon" aria-hidden="true"></i>
-              Vue du service
+              Données du réseau
             </span>
           </header>
 
@@ -75,10 +76,19 @@
             hidden
           ></p>
 
-          <section
-            class="dashboard-metrics"
-            aria-label="Indicateurs principaux"
-          >
+          <section class="activity-overview" aria-labelledby="overview-title">
+            <div class="activity-section-heading">
+              <h2 id="overview-title">Le réseau en un coup d’œil</h2>
+              <p>
+                Des repères simples pour comprendre l’activité de Tokeyi en ce
+                moment.
+              </p>
+            </div>
+            <div
+              class="dashboard-metrics"
+              role="group"
+              aria-label="Indicateurs principaux"
+            >
             <div class="dashboard-metric dashboard-metric--lead">
               <span class="dashboard-metric__icon" aria-hidden="true">
                 <i class="ph ph-car-profile icon-lg"></i>
@@ -182,6 +192,7 @@
                 Réessayer
               </a>
             </div>
+            </div>
           </section>
 
           <div class="dashboard-layout">
@@ -191,8 +202,8 @@
             >
               <div class="section-header">
                 <div>
-                  <h2 id="top-drivers-title">Conducteurs les mieux notés</h2>
-                  <p>Classement selon la note moyenne.</p>
+                  <h2 id="top-drivers-title">Les conducteurs plébiscités</h2>
+                  <p>Celles et ceux que les passagers apprécient le plus.</p>
                 </div>
               </div>
               <ol
@@ -263,20 +274,30 @@
               aria-labelledby="featured-trip-title"
             >
               <div class="featured-trip__content">
-                <span class="badge badge--accent">Trajet vedette</span>
-                <h2 id="featured-trip-title">Le trajet le plus réservé</h2>
-                <p>Le parcours qui concentre le plus de réservations.</p>
-                <p
-                  id="d-trajet-top"
-                  class="featured-trip__value"
-                  aria-live="polite"
-                ></p>
-                <a
-                  class="button button--secondary"
-                  href="../recherche/recherche.html"
-                >
-                  Rechercher un trajet
-                </a>
+                <figure class="featured-trip__media">
+                  <img
+                    src="../assets/images/route-bacongo-poto-poto.webp"
+                    alt="Avenue animée sur la liaison entre Bacongo et Poto-Poto à Brazzaville"
+                    width="1200"
+                    height="800"
+                  >
+                </figure>
+                <div class="featured-trip__body">
+                  <span class="badge badge--accent">Trajet populaire</span>
+                  <h2 id="featured-trip-title">Le parcours qui rassemble</h2>
+                  <p>La liaison la plus réservée sur le réseau Tokeyi.</p>
+                  <p
+                    id="d-trajet-top"
+                    class="featured-trip__value"
+                    aria-live="polite"
+                  ></p>
+                  <a
+                    class="button button--secondary"
+                    href="../recherche/recherche.html"
+                  >
+                    Rechercher un trajet
+                  </a>
+                </div>
               </div>
               <div
                 class="featured-trip__loading dashboard-loading"
@@ -332,10 +353,16 @@
           >
             <div class="section-header">
               <div>
-                <h2 id="districts-title">Activité par quartier de départ</h2>
-                <p>Nombre de trajets et prix moyen observé.</p>
+                <h2 id="districts-title">
+                  Les quartiers qui font bouger Brazzaville
+                </h2>
+                <p>
+                  Les trajets proposés au départ de chaque quartier et leur
+                  prix moyen.
+                </p>
               </div>
             </div>
+
             <section
               class="table-scroll"
               tabindex="0"
@@ -411,6 +438,26 @@
               </a>
             </div>
           </section>
+
+          <section class="activity-cta" aria-labelledby="activity-cta-title">
+            <div>
+              <h2 id="activity-cta-title">À votre tour de rejoindre le mouvement</h2>
+              <p>
+                Trouvez une place disponible ou proposez votre prochain trajet
+                entre les quartiers de Brazzaville.
+              </p>
+            </div>
+            <div class="activity-cta__actions">
+              <a class="button button--primary" href="../recherche/recherche.html">
+                <i class="ph ph-magnifying-glass icon" aria-hidden="true"></i>
+                Rechercher un trajet
+              </a>
+              <a class="button activity-cta__secondary" href="../proposer/proposer.html">
+                <i class="ph ph-steering-wheel icon" aria-hidden="true"></i>
+                Proposer un trajet
+              </a>
+            </div>
+          </section>
         </div>
       </main>
 
@@ -443,7 +490,7 @@
           <nav class="footer-column" aria-label="Navigation conducteur">
             <strong>Conducteur</strong>
             <a href="../proposer/proposer.html">Proposer un trajet</a>
-            <a class="session-only" href="dashboard.html">Tableau de bord</a>
+            <a href="dashboard.html">Activité</a>
           </nav>
           <nav class="footer-column" aria-label="Navigation du compte">
             <strong>Compte</strong>
@@ -483,7 +530,7 @@
           <li>
             <a href="dashboard.html" aria-current="page">
               <i class="ph ph-chart-bar icon" aria-hidden="true"></i>
-              <span>Tableau</span>
+              <span>Activité</span>
             </a>
           </li>
         </ul>

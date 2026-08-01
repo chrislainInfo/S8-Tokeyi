@@ -154,8 +154,7 @@ def trier_par_heure(trajets):
         fonctionne directement ("07:00" < "07:30" < "08:00" est vrai en
         comparaison de chaînes), pas besoin de les convertir en nombres.
     """
-    # TODO : à compléter
-    pass
+    return sorted(trajets, key=lambda t: t["heure"])
 
 
 def trier_par_prix_croissant(trajets):

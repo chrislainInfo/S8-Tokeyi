@@ -589,8 +589,22 @@ def calculer_indicateurs_dashboard(trajets, reservations, conducteurs):
             "note_moyenne_conducteurs": 4.7
         }
     """
-    # TODO : à compléter
-    pass
+    # On calcule chaque indicateur séparément, en respectant les règles métier
+    total_trajets_disponibles = sum(1 for trajet in trajets if trajet["places_dispo"] >= 1)
+    total_conducteurs_actifs = len(conducteurs)
+    total_reservations_actives = sum(1 for reservation in reservations if reservation["statut"] in ["effectue", "en_attente"])
+    
+    if total_conducteurs_actifs > 0:
+        note_moyenne_conducteurs = round(sum(conducteur["note"] for conducteur in conducteurs) / total_conducteurs_actifs, 1)
+    else:
+        note_moyenne_conducteurs = 0.0
+
+    return {
+        "total_trajets_disponibles": total_trajets_disponibles,
+        "total_conducteurs_actifs": total_conducteurs_actifs,
+        "total_reservations_actives": total_reservations_actives,
+        "note_moyenne_conducteurs": note_moyenne_conducteurs
+    }
 
 
 # ========================================================================

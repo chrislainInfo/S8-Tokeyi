@@ -121,6 +121,51 @@ function validerFormulaireProposer(formulaire) {
      * - prix_place > 0
      */
     // TODO
+    const erreurs = [];
+
+    // 1. Validation du quartier de départ
+    if (!formulaire.quartier_depart || formulaire.quartier_depart.trim() === "") {
+        erreurs.push("Le quartier de départ est obligatoire.");
+    }
+
+    // 2. Validation du quartier d'arrivée
+    if (!formulaire.quartier_arrivee || formulaire.quartier_arrivee.trim() === "") {
+        erreurs.push("Le quartier d'arrivée est obligatoire.");
+    }
+
+    // 3. Vérification que les quartiers de départ et d'arrivée sont différents
+    if (
+        formulaire.quartier_depart && 
+        formulaire.quartier_arrivee && 
+        formulaire.quartier_depart.trim() !== "" &&
+        formulaire.quartier_depart === formulaire.quartier_arrivee
+    ) {
+        erreurs.push("Le quartier de départ et le quartier d'arrivée doivent être différents.");
+    }
+
+    // 4. Validation de l'heure (Format HH:MM obligatoire)
+    const regexHeure = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+    if (!formulaire.heure || !regexHeure.test(formulaire.heure.trim())) {
+        erreurs.push("L'heure de départ doit être renseignée au format valide HH:MM (ex: 07:30).");
+    }
+
+    // 5. Validation des places disponibles (nombre entier entre 1 et 8)
+    const places = Number(formulaire.places_dispo);
+    if (isNaN(places) || places < 1 || places > 8 || !Number.isInteger(places)) {
+        erreurs.push("Le nombre de places disponibles doit être un nombre entier compris entre 1 et 8.");
+    }
+
+    // 6. Validation du prix par place (nombre supérieur à 0)
+    const prix = Number(formulaire.prix_place);
+    if (isNaN(prix) || prix <= 0) {
+        erreurs.push("Le prix par place doit être un nombre supérieur à 0 FCFA.");
+    }
+
+    // Résultat final de la validation
+    return {
+        valide: erreurs.length === 0,
+        erreurs: erreurs
+    };
 }
 
 function formaterMessageConfirmation(nom, quartierDepart, quartierArrivee, heure) {
@@ -132,6 +177,7 @@ function formaterMessageConfirmation(nom, quartierDepart, quartierArrivee, heure
      *   → "Bonjour Marie, votre réservation pour Bacongo → Poto-Poto à 07:30 a été enregistrée."
      */
     // TODO
+    return `Bonjour ${nom}, votre réservation pour ${quartierDepart} → ${quartierArrivee} à ${heure} a été enregistrée.`;
 }
 
 // ============================================================================
@@ -174,7 +220,15 @@ function calculerPourcentageOccupation(placesOccupees, placesTotales) {
      * Exemple : 2 places sur 4 → 50
      * Si placesTotales est 0, retourne 0.
      */
-    // TODO
+    const total = Number(placesTotales);
+    const occupees = Number(placesOccupees);
+
+    if (!Number.isFinite(total) || total <= 0 || !Number.isFinite(occupees)) {
+        return 0;
+    }
+
+    const pourcentage = Math.round((occupees / total) * 100);
+    return Math.min(100, Math.max(0, pourcentage));
 }
 
 function getBadgeDisponibilite(placesRestantes) {
@@ -188,7 +242,18 @@ function getBadgeDisponibilite(placesRestantes) {
      * - 1 place  → {libelle: "1 place", classe: "badge-limite"}
      * - 2+ places → {libelle: "N places", classe: "badge-dispo"}  (N = placesRestantes)
      */
-    // TODO
+    const places = Number(placesRestantes);
+    const total = Number.isFinite(places) ? Math.max(0, Math.trunc(places)) : 0;
+
+    if (total === 0) {
+        return {libelle: "Complet", classe: "badge-complet"};
+    }
+
+    if (total === 1) {
+        return {libelle: "1 place", classe: "badge-limite"};
+    }
+
+    return {libelle: `${total} places`, classe: "badge-dispo"};
 }
 
 // ============================================================================
@@ -206,7 +271,31 @@ function validerFormulaireInscription(formulaire) {
      * - telephone obligatoire, au moins 9 chiffres
      * - mot_de_passe obligatoire, au moins 4 caractères
      */
-    // TODO
+    const erreurs = [];
+
+    // Validation du nom
+    if (!formulaire.nom || formulaire.nom.trim() === "") {
+        erreurs.push("Le nom est obligatoire.");
+    }
+
+    // Validation du téléphone
+    if (!formulaire.telephone || formulaire.telephone.trim() === "") {
+        erreurs.push("Le numéro de téléphone est obligatoire.");
+    } else if (!/^\d{9,}$/.test(formulaire.telephone.trim())) {
+        erreurs.push("Le numéro de téléphone doit contenir au moins 9 chiffres.");
+    }
+
+    // Validation du mot de passe
+    if (!formulaire.mot_de_passe || formulaire.mot_de_passe.trim() === "") {
+        erreurs.push("Le mot de passe est obligatoire.");
+    } else if (formulaire.mot_de_passe.trim().length < 4) {
+        erreurs.push("Le mot de passe doit contenir au moins 4 caractères.");
+    }
+
+    return {
+        valide: erreurs.length === 0,
+        erreurs: erreurs
+    };
 }
 
 function validerFormulaireLogin(formulaire) {
@@ -219,7 +308,23 @@ function validerFormulaireLogin(formulaire) {
      * - telephone obligatoire
      * - mot_de_passe obligatoire
      */
-    // TODO
+    const erreurs = [];
+    console.log("Formulaire reçu :", formulaire); // <-- Ajoutez ceci pour déboguer
+
+    // Validation du téléphone
+    if (!formulaire.telephone || formulaire.telephone.trim() === "") {
+        erreurs.push("Le numéro de téléphone est obligatoire.");
+    }
+
+    // Validation du mot de passe
+    if (!formulaire.mot_de_passe || formulaire.mot_de_passe.trim() === "") {
+        erreurs.push("Le mot de passe est obligatoire.");
+    }
+
+    return {
+        valide: erreurs.length === 0,
+        erreurs: erreurs
+    };
 }
 
 // ============================================================================

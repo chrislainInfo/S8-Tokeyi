@@ -162,7 +162,19 @@
   display: list-item;
 }
 
-/* État indisponible des indicateurs */
+/* État d'erreur de l'activité */
+.home-error {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+  padding: var(--space-5);
+  border: 1px solid var(--color-danger);
+  border-radius: var(--radius-md);
+  background: var(--color-danger-soft);
+}
+
 .home-error:has(#erreur-globale[hidden]),
 .home-error:has(#erreur-globale:empty) {
   display: none;

@@ -7,43 +7,67 @@
   <link rel="stylesheet" href="../css/main.css">
   <link rel="stylesheet" href="login.css">
 </head>
-<body id="page-login">
-
-  <!-- NAVIGATION — TODO (Dev FS7) -->
-
+<body id="page-login" class="standalone-page">
+  <!-- NAVIGATION -->
   <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
   <div id="nav-session"></div>
+  <header class="standalone-header">
+    <a class="brand" href="../accueil/index.html" aria-label="Tokeyi — Accueil">
+      <span class="brand-logo" aria-hidden="true">
+        <img src="../assets/brand/logo-tokeyi-light-v2.png" alt="Logo Tokeyi">
+      </span>
+    </a>
+    <a class="text-link" href="../accueil/index.html">Retour à l’accueil</a>
+  </header>
 
-  <main>
-    <!-- =====================================================================
-         FORMULAIRE — TODO (Dev FS7)
-         Mettre en forme le formulaire de connexion : téléphone, mot de
-         passe. Prévoir un layout clair en colonne, avec des labels
-         visibles pour chaque champ.
+  <main class="standalone-main" id="main-content">
+    <section class="auth-page" aria-labelledby="login-title">
+      <div class="auth-page__intro">
+        <span class="brand-icon" aria-hidden="true">
+          <img class="brand-icon__image" src="../assets/brand/logo-tokeyi-dark-v2.png" alt="Icône Tokeyi">
+        </span>
+        <div>
+          <span class="eyebrow">Espace Tokeyi</span>
+          <h1 id="login-title">Heureux de vous revoir</h1>
+          <p>Connectez-vous avec le numéro associé à vos réservations.</p>
+        </div>
+        <ul class="auth-benefits">
+          <li><i class="ph ph-check-circle icon" aria-hidden="true"></i> Retrouvez automatiquement vos trajets</li>
+          <li><i class="ph ph-check-circle icon" aria-hidden="true"></i> Préremplissez vos informations de réservation</li>
+        </ul>
+      </div>
 
-         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
-         ===================================================================== -->
-    <form id="form-login">
-      <label for="l-telephone">Téléphone</label>
-      <input type="tel" id="l-telephone" placeholder="066123456">
-
-      <label for="l-mot-de-passe">Mot de passe</label>
-      <input type="password" id="l-mot-de-passe">
-
-      <button type="submit">Se connecter</button>
-    </form>
-
-    <!-- Zone d'erreurs de validation — TODO (Dev FS7) : mettre en forme la
-         liste <ul><li> injectée par main.js en cas de formulaire invalide.
-         NE PAS MODIFIER l'id. -->
-    <div id="erreurs-form" hidden></div>
-
-    <!-- LIEN VERS INSCRIPTION — TODO (Dev FS7) : lien "Pas encore de compte ?
-         S'inscrire" pointant vers ../inscription/inscription.html -->
+      <form id="form-login" class="auth-page__form">
+        <div class="stack stack--lg">
+          <div>
+            <h2>Connexion</h2>
+            <p class="muted">Saisissez vos informations pour continuer.</p>
+          </div>
+          <div class="field">
+            <label for="l-telephone">Numéro de téléphone</label>
+            <span class="input-shell">
+              <i class="ph ph-phone icon" aria-hidden="true"></i>
+              <input id="l-telephone" name="telephone" type="tel" placeholder="066123456" autocomplete="tel" required>
+            </span>
+          </div>
+          <div class="field">
+            <label for="l-mot-de-passe">Mot de passe</label>
+            <input id="l-mot-de-passe" name="mot-de-passe" type="password" autocomplete="current-password" required>
+          </div>
+          <div id="erreurs-form" class="form-feedback" aria-live="polite" hidden>
+            <i class="ph ph-info icon" aria-hidden="true"></i>
+            <span>En cas d’erreur, le message apparaît ici.</span>
+          </div>
+          <button class="button button--primary button--block" type="submit">Se connecter</button>
+          <p class="auth-switch">
+            Pas encore de compte ? <a class="text-link" href="../inscription/inscription.html">Créer un compte</a>
+          </p>
+        </div>
+      </form>
+    </section>
   </main>
 
   <div id="erreur-globale" hidden></div>
-
   <script src="../functions.js"></script>
   <script src="../main.js"></script>
 </body>

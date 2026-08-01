@@ -388,8 +388,15 @@ def compter_trajets_par_quartier_depart(trajets):
         compter_trajets_par_quartier_depart(trajets)
         -> {"Bacongo": 2, "Moungali": 1}
     """
-    # TODO : à compléter
-    pass
+    compteur = {}
+    for trajet in trajets:
+        quartier = trajet["quartier_depart"]
+        if quartier in compteur:
+            compteur[quartier] += 1
+        else:
+            compteur[quartier] = 1
+    return compteur
+    
 
 
 def top_conducteurs_par_note(conducteurs, n=3):

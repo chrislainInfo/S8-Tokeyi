@@ -162,14 +162,6 @@
   display: list-item;
 }
 
-#page-accueil .session-only {
-  display: none;
-}
-
-#page-accueil:has(#nav-session #btn-deconnexion) .session-only {
-  display: inline-flex;
-}
-
 /* État d'erreur de l'activité */
 .home-error {
   display: grid;

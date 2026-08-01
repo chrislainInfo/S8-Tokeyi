@@ -10,49 +10,104 @@
 <body id="page-proposer">
 
   <!-- NAVIGATION — TODO (Dev FS4) -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../accueil/index.html" class="nav-brand">
+        <span class="brand-name">Tokeyi</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../recherche/recherche.html" class="nav-link">Rechercher</a>
+        <a href="proposer.html" class="nav-link active">Proposer un trajet</a>
+        <a href="../mes-trajets/mes-trajets.html" class="nav-link">Mes trajets</a>
+        <a href="../dashboard/dashboard.html" class="nav-link">Tableau de bord</a>
+      </nav>
+      <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
+      <div id="nav-session"></div>
+    </div>
+  </header>
 
-  <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
-  <div id="nav-session"></div>
+  <main class="main-container">
+    <div class="proposer-wrapper">
+      
+      <!-- ENTÊTE DE LA PAGE -->
+      <section class="proposer-header">
+        <h1>Proposer un trajet</h1>
+        <p class="subtitle">Partagez vos déplacements au quotidien et réduisez vos frais de transport.</p>
+      </section>
 
-  <main>
-    <!-- =====================================================================
-         FORMULAIRE — TODO (Dev FS4)
-         Mettre en forme le formulaire de proposition de trajet : les deux
-         sélecteurs de quartier (départ/arrivée) sont remplis dynamiquement
-         par main.js via l'API /api/quartiers, vous stylez leur apparence.
-         Prévoir un layout clair en colonne, avec des labels visibles pour
-         chaque champ.
+      <!-- Zone d'erreurs de validation — NE PAS MODIFIER l'id. -->
+      <div id="erreurs-form" class="error-banner" hidden></div>
 
-         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
-         ===================================================================== -->
-    <form id="form-proposer">
-      <label for="p-depart">Quartier de départ</label>
-      <select id="p-depart"></select>
+      <div class="proposer-content">
+        <!-- FORMULAIRE DE PROPOSITION -->
+        <section class="form-card">
+          <!-- =====================================================================
+               FORMULAIRE — TODO (Dev FS4)
+               *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
+               ===================================================================== -->
+          <form id="form-proposer" class="form-proposer">
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="p-depart">Quartier de départ</label>
+                <select id="p-depart" required>
+                  <option value="" disabled selected>Sélectionnez un quartier</option>
+                </select>
+              </div>
 
-      <label for="p-arrivee">Quartier d'arrivée</label>
-      <select id="p-arrivee"></select>
+              <div class="form-group">
+                <label for="p-arrivee">Quartier d'arrivée</label>
+                <select id="p-arrivee" required>
+                  <option value="" disabled selected>Sélectionnez un quartier</option>
+                </select>
+              </div>
+            </div>
 
-      <label for="p-heure">Heure (HH:MM)</label>
-      <input type="text" id="p-heure" placeholder="07:30">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="p-heure">Heure de départ (HH:MM)</label>
+                <input type="text" id="p-heure" placeholder="07:30" required pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]">
+              </div>
 
-      <label for="p-places">Places disponibles</label>
-      <input type="number" id="p-places" min="1" max="8">
+              <div class="form-group">
+                <label for="p-places">Places disponibles</label>
+                <input type="number" id="p-places" min="1" max="8" placeholder="3" required>
+              </div>
+            </div>
 
-      <label for="p-prix">Prix par place (FCFA)</label>
-      <input type="number" id="p-prix" min="1">
+            <div class="form-group">
+              <label for="p-prix">Prix par place (FCFA)</label>
+              <input type="number" id="p-prix" min="1" placeholder="500" required>
+            </div>
 
-      <button type="submit">Publier mon trajet</button>
-    </form>
+            <button type="submit" class="btn-submit">Publier mon trajet</button>
+          </form>
+        </section>
 
-    <!-- Zone d'erreurs de validation — TODO (Dev FS4) : mettre en forme la
-         liste <ul><li> injectée par main.js en cas de formulaire invalide.
-         NE PAS MODIFIER l'id. -->
-    <div id="erreurs-form" hidden></div>
+        <!-- BLOC D'AIDE ET CONSEILS -->
+        <aside class="help-card">
+          <h2>Conseils aux conducteurs</h2>
+          <ul class="help-list">
+            <li>
+              <strong>Prix équitable :</strong> Fixez un prix raisonnable pour couvrir vos frais sans chercher à faire du profit.
+            </li>
+            <li>
+              <strong>Ponctualité :</strong> Soyez présent au point de rendez-vous quelques minutes avant l'heure prévue.
+            </li>
+            <li>
+              <strong>Sécurité avant tout :</strong> Assurez-vous que votre véhicule est en bon état et respectez le code de la route.
+            </li>
+            <li>
+              <strong>Communication :</strong> Prévenez vos passagers en cas d'imprévu ou de léger retard.
+            </li>
+          </ul>
+        </aside>
+      </div>
 
-    <!-- BLOC D'AIDE — TODO (Dev FS4) : encart explicatif optionnel
-         (ex. rappel que le prix est libre, conseils de sécurité) -->
+    </div>
   </main>
 
+  <!-- NE PAS MODIFIER l'id -->
   <div id="erreur-globale" hidden></div>
 
   <script src="../functions.js"></script>

@@ -453,8 +453,28 @@ def calculer_prix_moyen_par_quartier(trajets):
         -> {"Bacongo": 500}
         (moyenne de 500, 400 et 600 = 500)
     """
-    # TODO : à compléter
-    pass
+    # On crée un dictionnaire pour stocker les sommes et les comptes
+    sommes = {}
+    comptes = {}
+
+    # On parcourt chaque trajet pour accumuler les prix par quartier
+    for trajet in trajets:
+        quartier = trajet["quartier_depart"]
+        prix = trajet["prix_place"]
+
+        if quartier in sommes:
+            sommes[quartier] += prix
+            comptes[quartier] += 1
+        else:
+            sommes[quartier] = prix
+            comptes[quartier] = 1
+
+    # On calcule la moyenne pour chaque quartier et on arrondit
+    moyennes = {}
+    for quartier in sommes:
+        moyennes[quartier] = round(sommes[quartier] / comptes[quartier])
+
+    return moyennes
 
 
 def identifier_trajet_le_plus_reserve(trajets, reservations):

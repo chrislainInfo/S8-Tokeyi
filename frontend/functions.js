@@ -65,7 +65,8 @@ function filtrerParQuartierDepart(trajets, quartier) {
      * @return {Array} - trajets filtrés
      * Si quartier est vide ou null, retourne tous les trajets.
      */
-    // TODO
+    if (!quartier) return trajets;
+    return trajets.filter(trajet => trajet && trajet.quartier_depart === quartier);
 }
 
 function rechercherParMotCle(trajets, motCle) {

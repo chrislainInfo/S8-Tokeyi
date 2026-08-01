@@ -58,9 +58,23 @@ def filtrer_trajets_disponibles(trajets):
                    {"id": 3, "places_dispo": 3}]
         sortie -> [{"id": 1, "places_dispo": 2}, {"id": 3, "places_dispo": 3}]
     """
-    # On construit une nouvelle liste, vide au départ.
-    # TODO : à compléter
-    pass
+    # On crée une nouvelle liste vide pour stocker les trajets filtrés
+    trajets_disponibles = []
+
+    # On parcourt chaque trajet dans la liste reçue en paramètre
+    for trajet in trajets:
+        # On vérifie si le nombre de places disponibles est >= 1
+        if trajet["places_dispo"] >= 1:
+            # Si oui, on ajoute ce trajet à la nouvelle liste
+            trajets_disponibles.append(trajet)
+        else:
+            # Sinon, on ne fait rien (le trajet est complet et sera ignoré)
+            pass
+    # On retourne la liste filtrée, qui contient uniquement les trajets
+    # avec au moins une place disponible
+    return trajets_disponibles
+        
+    
 
 
 def filtrer_par_quartier_depart(trajets, quartier):

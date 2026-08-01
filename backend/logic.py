@@ -172,8 +172,7 @@ def trier_par_prix_croissant(trajets):
         entrée -> [{"prix_place": 700}, {"prix_place": 400}, {"prix_place": 500}]
         sortie -> [{"prix_place": 400}, {"prix_place": 500}, {"prix_place": 700}]
     """
-    # TODO : à compléter
-    pass
+    return sorted(trajets, key=lambda t: t["prix_place"])
 
 
 # ========================================================================

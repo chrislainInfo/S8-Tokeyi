@@ -1,0 +1,185 @@
+.proposer-wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding-bottom: var(--space-xl, 3rem);
+}
+
+.section-header {
+  margin-bottom: var(--space-lg, 2rem);
+  text-align: left;
+}
+
+.section-header h1 {
+  font-size: var(--text-2xl, 2rem);
+  color: var(--color-text, #1e293b);
+  margin-bottom: var(--space-xs, 0.5rem);
+}
+
+.section-header p {
+  color: var(--color-text-muted, #64748b);
+  font-size: var(--text-base, 1rem);
+}
+
+.proposer-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg, 2rem);
+}
+
+@media (min-width: 768px) {
+  .proposer-layout {
+    grid-template-columns: 1.8fr 1fr;
+    align-items: start;
+  }
+}
+
+/* --- Bannière d'erreurs (#erreurs-form) --- */
+.error-banner {
+  background-color: var(--color-danger-bg, #fef2f2);
+  border: 1px solid var(--color-danger-border, #fecaca);
+  border-left: 4px solid var(--color-danger, #ef4444);
+  border-radius: var(--radius-md, 8px);
+  padding: var(--space-md, 1rem) var(--space-lg, 1.5rem);
+  margin-bottom: var(--space-lg, 1.5rem);
+  color: var(--color-danger-text, #991b1b);
+}
+
+.error-banner ul {
+  margin: 0;
+  padding-left: var(--space-md, 1.25rem);
+}
+
+.error-banner li {
+  margin-bottom: 0.25rem;
+  font-size: var(--text-sm, 0.875rem);
+}
+
+.error-banner li:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Formulaire de proposition --- */
+.form-proposer {
+  background-color: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--space-lg, 1.75rem);
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.05));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md, 1.25rem);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs, 0.375rem);
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--color-text, #334155);
+}
+
+.form-group select,
+.form-group input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: var(--text-base, 1rem);
+  color: var(--color-text, #0f172a);
+  background-color: var(--color-bg-input, #f8fafc);
+  border: 1px solid var(--color-border, #cbd5e1);
+  border-radius: var(--radius-md, 8px);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+  outline: none;
+  border-color: var(--color-primary, #10b981);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+}
+
+/* Organisation sur deux colonnes pour Heure et Places */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md, 1.25rem);
+}
+
+@media (min-width: 520px) {
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  font-size: var(--text-base, 1rem);
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--color-primary, #10b981);
+  border: none;
+  border-radius: var(--radius-md, 8px);
+  cursor: pointer;
+  margin-top: var(--space-xs, 0.5rem);
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-submit:hover {
+  background-color: var(--color-primary-hover, #059669);
+}
+
+.btn-submit:active {
+  transform: translateY(1px);
+}
+
+/* --- Carte d'aide / Encart Conseils --- */
+.help-card {
+  background-color: var(--color-bg-alt, #f8fafc);
+  border: 1px solid var(--color-border-subtle, #e2e8f0);
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--space-lg, 1.5rem);
+}
+
+.help-card h2 {
+  font-size: var(--text-lg, 1.125rem);
+  color: var(--color-text, #1e293b);
+  margin-bottom: var(--space-sm, 1rem);
+  padding-bottom: var(--space-xs, 0.5rem);
+  border-bottom: 2px solid var(--color-primary-light, #d1fae5);
+}
+
+.help-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md, 1rem);
+}
+
+.help-list li {
+  font-size: var(--text-sm, 0.875rem);
+  line-height: 1.5;
+  color: var(--color-text-muted, #475569);
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+.help-list li::before {
+  content: "•";
+  color: var(--color-primary, #10b981);
+  font-weight: bold;
+  font-size: 1.25rem;
+  position: absolute;
+  left: 0;
+  top: -0.1rem;
+}
+
+.help-list strong {
+  color: var(--color-text, #1e293b);
+}

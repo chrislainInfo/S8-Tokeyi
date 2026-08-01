@@ -121,6 +121,51 @@ function validerFormulaireProposer(formulaire) {
      * - prix_place > 0
      */
     // TODO
+    const erreurs = [];
+
+    // 1. Validation du quartier de départ
+    if (!formulaire.quartier_depart || formulaire.quartier_depart.trim() === "") {
+        erreurs.push("Le quartier de départ est obligatoire.");
+    }
+
+    // 2. Validation du quartier d'arrivée
+    if (!formulaire.quartier_arrivee || formulaire.quartier_arrivee.trim() === "") {
+        erreurs.push("Le quartier d'arrivée est obligatoire.");
+    }
+
+    // 3. Vérification que les quartiers de départ et d'arrivée sont différents
+    if (
+        formulaire.quartier_depart && 
+        formulaire.quartier_arrivee && 
+        formulaire.quartier_depart.trim() !== "" &&
+        formulaire.quartier_depart === formulaire.quartier_arrivee
+    ) {
+        erreurs.push("Le quartier de départ et le quartier d'arrivée doivent être différents.");
+    }
+
+    // 4. Validation de l'heure (Format HH:MM obligatoire)
+    const regexHeure = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+    if (!formulaire.heure || !regexHeure.test(formulaire.heure.trim())) {
+        erreurs.push("L'heure de départ doit être renseignée au format valide HH:MM (ex: 07:30).");
+    }
+
+    // 5. Validation des places disponibles (nombre entier entre 1 et 8)
+    const places = Number(formulaire.places_dispo);
+    if (isNaN(places) || places < 1 || places > 8 || !Number.isInteger(places)) {
+        erreurs.push("Le nombre de places disponibles doit être un nombre entier compris entre 1 et 8.");
+    }
+
+    // 6. Validation du prix par place (nombre supérieur à 0)
+    const prix = Number(formulaire.prix_place);
+    if (isNaN(prix) || prix <= 0) {
+        erreurs.push("Le prix par place doit être un nombre supérieur à 0 FCFA.");
+    }
+
+    // Résultat final de la validation
+    return {
+        valide: erreurs.length === 0,
+        erreurs: erreurs
+    };
 }
 
 function formaterMessageConfirmation(nom, quartierDepart, quartierArrivee, heure) {
@@ -132,6 +177,7 @@ function formaterMessageConfirmation(nom, quartierDepart, quartierArrivee, heure
      *   → "Bonjour Marie, votre réservation pour Bacongo → Poto-Poto à 07:30 a été enregistrée."
      */
     // TODO
+    return `Bonjour ${nom}, votre réservation pour ${quartierDepart} → ${quartierArrivee} à ${heure} a été enregistrée.`;
 }
 
 // ============================================================================

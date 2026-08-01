@@ -67,26 +67,13 @@
             </span>
           </header>
 
-          <section
-            class="dashboard-error"
-            role="alert"
-            aria-labelledby="dashboard-error-title"
-            aria-describedby="dashboard-error-help erreur-globale"
-          >
-            <span class="dashboard-error__icon" aria-hidden="true">
-              <i class="ph ph-warning-circle icon-lg"></i>
-            </span>
-            <div class="dashboard-error__copy">
-              <h2 id="dashboard-error-title">
-                Impossible de charger le tableau de bord
-              </h2>
-              <p id="dashboard-error-help">
-                Les indicateurs sont temporairement indisponibles. Réessayez
-                dans quelques instants.
-              </p>
-              <p id="erreur-globale" hidden></p>
-            </div>
-          </section>
+          <!-- NE PAS MODIFIER l'id : main.js y affiche les erreurs techniques. -->
+          <p
+            id="erreur-globale"
+            class="sr-only"
+            aria-live="assertive"
+            hidden
+          ></p>
 
           <section
             class="dashboard-metrics"
@@ -177,6 +164,24 @@
               </p>
               <small>toutes réservations</small>
             </div>
+            <div class="dashboard-state dashboard-state--error">
+              <div class="dashboard-state__visual" aria-hidden="true">
+                <span><i class="ph ph-chart-line-down icon-lg"></i></span>
+                <span><i class="ph ph-cloud-slash icon-lg"></i></span>
+                <span><i class="ph ph-warning-circle icon-lg"></i></span>
+              </div>
+              <strong>Indicateurs indisponibles</strong>
+              <p>
+                Impossible de récupérer les chiffres du service pour le moment.
+              </p>
+              <a
+                class="button button--secondary dashboard-state__action"
+                href="dashboard.html"
+              >
+                <i class="ph ph-arrow-clockwise icon" aria-hidden="true"></i>
+                Réessayer
+              </a>
+            </div>
           </section>
 
           <div class="dashboard-layout">
@@ -216,39 +221,108 @@
                   <span class="skeleton skeleton--line"></span>
                 </li>
               </ol>
+              <div class="dashboard-state dashboard-state--empty">
+                <div class="dashboard-state__visual" aria-hidden="true">
+                  <span><i class="ph ph-steering-wheel icon-lg"></i></span>
+                  <span><i class="ph ph-user icon-lg"></i></span>
+                  <span><i class="ph ph-ranking icon-lg"></i></span>
+                </div>
+                <strong>Aucun conducteur classé</strong>
+                <p>
+                  Le classement apparaîtra dès que des conducteurs auront été
+                  évalués.
+                </p>
+                <a
+                  class="button button--secondary dashboard-state__action"
+                  href="../proposer/proposer.html"
+                >
+                  <i class="ph ph-plus icon" aria-hidden="true"></i>
+                  Proposer un trajet
+                </a>
+              </div>
+              <div class="dashboard-state dashboard-state--error">
+                <div class="dashboard-state__visual" aria-hidden="true">
+                  <span><i class="ph ph-steering-wheel icon-lg"></i></span>
+                  <span><i class="ph ph-cloud-slash icon-lg"></i></span>
+                  <span><i class="ph ph-warning-circle icon-lg"></i></span>
+                </div>
+                <strong>Classement indisponible</strong>
+                <p>Impossible de charger les conducteurs les mieux notés.</p>
+                <a
+                  class="button button--secondary dashboard-state__action"
+                  href="dashboard.html"
+                >
+                  <i class="ph ph-arrow-clockwise icon" aria-hidden="true"></i>
+                  Réessayer
+                </a>
+              </div>
             </section>
 
             <section
               class="dashboard-panel featured-trip"
               aria-labelledby="featured-trip-title"
             >
-              <div>
+              <div class="featured-trip__content">
                 <span class="badge badge--accent">Trajet vedette</span>
                 <h2 id="featured-trip-title">Le trajet le plus réservé</h2>
                 <p>Le parcours qui concentre le plus de réservations.</p>
-              </div>
-              <p
-                id="d-trajet-top"
-                class="featured-trip__value"
-                aria-live="polite"
-              >
-                <span
-                  class="skeleton-stack dashboard-loading"
-                  aria-hidden="true"
+                <p
+                  id="d-trajet-top"
+                  class="featured-trip__value"
+                  aria-live="polite"
+                ></p>
+                <a
+                  class="button button--secondary"
+                  href="../recherche/recherche.html"
                 >
+                  Rechercher un trajet
+                </a>
+              </div>
+              <div
+                class="featured-trip__loading dashboard-loading"
+                aria-hidden="true"
+              >
+                <span class="skeleton-stack">
                   <span class="skeleton skeleton--line"></span>
                   <span
                     class="skeleton skeleton--line skeleton--line-short"
                   ></span>
                 </span>
-                <span class="sr-only">Chargement…</span>
-              </p>
-              <a
-                class="button button--secondary"
-                href="../recherche/recherche.html"
-              >
-                Rechercher un trajet
-              </a>
+              </div>
+              <div class="dashboard-state dashboard-state--empty">
+                <div class="dashboard-state__visual" aria-hidden="true">
+                  <span><i class="ph ph-map-pin icon-lg"></i></span>
+                  <span><i class="ph ph-car-profile icon-lg"></i></span>
+                  <span><i class="ph ph-star icon-lg"></i></span>
+                </div>
+                <strong>Aucun trajet vedette</strong>
+                <p>
+                  Un trajet sera mis en avant dès qu’il recevra des réservations.
+                </p>
+                <a
+                  class="button button--secondary dashboard-state__action"
+                  href="../proposer/proposer.html"
+                >
+                  <i class="ph ph-plus icon" aria-hidden="true"></i>
+                  Proposer un trajet
+                </a>
+              </div>
+              <div class="dashboard-state dashboard-state--error">
+                <div class="dashboard-state__visual" aria-hidden="true">
+                  <span><i class="ph ph-map-pin icon-lg"></i></span>
+                  <span><i class="ph ph-cloud-slash icon-lg"></i></span>
+                  <span><i class="ph ph-warning-circle icon-lg"></i></span>
+                </div>
+                <strong>Trajet vedette indisponible</strong>
+                <p>Impossible de récupérer le trajet le plus réservé.</p>
+                <a
+                  class="button button--secondary dashboard-state__action"
+                  href="dashboard.html"
+                >
+                  <i class="ph ph-arrow-clockwise icon" aria-hidden="true"></i>
+                  Réessayer
+                </a>
+              </div>
             </section>
           </div>
 
@@ -301,6 +375,41 @@
                 </tbody>
               </table>
             </section>
+            <div class="dashboard-state dashboard-state--empty">
+              <div class="dashboard-state__visual" aria-hidden="true">
+                <span><i class="ph ph-map-pin icon-lg"></i></span>
+                <span><i class="ph ph-map-trifold icon-lg"></i></span>
+                <span><i class="ph ph-car-profile icon-lg"></i></span>
+              </div>
+              <strong>Aucune activité par quartier</strong>
+              <p>
+                Les quartiers apparaîtront ici dès que des trajets seront
+                proposés.
+              </p>
+              <a
+                class="button button--secondary dashboard-state__action"
+                href="../proposer/proposer.html"
+              >
+                <i class="ph ph-plus icon" aria-hidden="true"></i>
+                Proposer un trajet
+              </a>
+            </div>
+            <div class="dashboard-state dashboard-state--error">
+              <div class="dashboard-state__visual" aria-hidden="true">
+                <span><i class="ph ph-map-pin icon-lg"></i></span>
+                <span><i class="ph ph-cloud-slash icon-lg"></i></span>
+                <span><i class="ph ph-warning-circle icon-lg"></i></span>
+              </div>
+              <strong>Activité indisponible</strong>
+              <p>Impossible de charger la répartition des trajets par quartier.</p>
+              <a
+                class="button button--secondary dashboard-state__action"
+                href="dashboard.html"
+              >
+                <i class="ph ph-arrow-clockwise icon" aria-hidden="true"></i>
+                Réessayer
+              </a>
+            </div>
           </section>
         </div>
       </main>

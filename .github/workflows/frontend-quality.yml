@@ -31,3 +31,19 @@ jobs:
           --volume "$GITHUB_WORKSPACE/frontend:/data:ro"
           ghcr.io/validator/validator:latest
           vnu --errors-only --skip-non-html /data
+
+  lighthouse-audit:
+    name: Audit Lighthouse
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Recuperation du depot
+        uses: actions/checkout@v4
+
+      - name: Audit des pages frontend
+        uses: treosh/lighthouse-ci-action@3e7e23fb74242897f95c0ba9cabad3d0227b9b18 # v12
+        with:
+          configPath: ./.lighthouserc.json
+          uploadArtifacts: true
+          artifactName: rapports-lighthouse

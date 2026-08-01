@@ -341,21 +341,21 @@
   min-height: 13rem;
 }
 
-#page-dashboard:has(#d-trajets:not(:has(.dashboard-loading)))
+#page-dashboard:not(:has(#d-trajets > .dashboard-loading))
   .featured-trip__loading {
   display: none;
 }
 
-#page-dashboard:not(:has(#erreur-globale:not([hidden]))):has(
-    #d-trajets:not(:has(.dashboard-loading))
+#page-dashboard:not(:has(#erreur-globale:not([hidden]))):not(
+    :has(#d-trajets > .dashboard-loading)
   )
   .featured-trip:has(#d-trajet-top:not(:empty))
   .featured-trip__content {
   display: grid;
 }
 
-#page-dashboard:not(:has(#erreur-globale:not([hidden]))):has(
-    #d-trajets:not(:has(.dashboard-loading))
+#page-dashboard:not(:has(#erreur-globale:not([hidden]))):not(
+    :has(#d-trajets > .dashboard-loading)
   )
   .featured-trip:has(#d-trajet-top:empty)
   > .dashboard-state--empty {
@@ -439,21 +439,6 @@
   background: var(--color-surface);
 }
 
-.compact-footer {
-  margin-top: var(--space-12);
-  padding-block: var(--space-5);
-}
-
-.compact-footer .footer-bottom {
-  margin-top: 0;
-  padding-top: 0;
-  border-top: 0;
-}
-
-.compact-footer .text-link {
-  color: var(--color-canvas);
-}
-
 @media (max-width: 70.5rem) {
   #page-dashboard .desktop-nav {
     gap: var(--space-4);
@@ -516,10 +501,6 @@
 
   .dashboard-panel {
     padding: var(--space-5);
-  }
-
-  .compact-footer {
-    display: none;
   }
 }
 

@@ -243,7 +243,23 @@ function validerFormulaireLogin(formulaire) {
      * - telephone obligatoire
      * - mot_de_passe obligatoire
      */
-    // TODO
+    const erreurs = [];
+    console.log("Formulaire reçu :", formulaire); // <-- Ajoutez ceci pour déboguer
+
+    // Validation du téléphone
+    if (!formulaire.telephone || formulaire.telephone.trim() === "") {
+        erreurs.push("Le numéro de téléphone est obligatoire.");
+    }
+
+    // Validation du mot de passe
+    if (!formulaire.mot_de_passe || formulaire.mot_de_passe.trim() === "") {
+        erreurs.push("Le mot de passe est obligatoire.");
+    }
+
+    return {
+        valide: erreurs.length === 0,
+        erreurs: erreurs
+    };
 }
 
 // ============================================================================

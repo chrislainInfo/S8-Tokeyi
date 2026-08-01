@@ -1,75 +1,343 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tokeyi — Tableau de bord</title>
-  <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="dashboard.css">
-</head>
-<body id="page-dashboard">
+  <head>
+    <meta charset="UTF-8">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+    <meta
+      name="description"
+      content="Consultez les principaux indicateurs du service de covoiturage Tokeyi à Brazzaville."
+    >
+    <title>Tableau de bord | Tokeyi</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="dashboard.css">
+  </head>
+  <body id="page-dashboard">
+    <a class="skip-link" href="#main-content">Aller au contenu</a>
 
-  <!-- NAVIGATION — TODO (Dev FS6) -->
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="container header-inner">
+          <a
+            class="brand"
+            href="../accueil/index.html"
+            aria-label="Tokeyi, accueil"
+          >
+            <span class="brand-logo" aria-hidden="true">
+              <img src="../assets/brand/logo-tokeyi-light-v2.png" alt="">
+            </span>
+          </a>
 
-  <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
-  <div id="nav-session"></div>
+          <nav class="desktop-nav" aria-label="Navigation principale">
+            <a href="../accueil/index.html">Accueil</a>
+            <a href="../recherche/recherche.html">Rechercher</a>
+            <a href="../mes-trajets/mes-trajets.html">Mes trajets</a>
+            <a href="dashboard.html" aria-current="page">Tableau de bord</a>
+          </nav>
 
-  <main>
-    <!-- =====================================================================
-         CARTES INDICATEURS — TODO (Dev FS6)
-         5 cartes chiffres clés. Layout : Grid responsive (1 colonne mobile,
-         2-3 tablette, 5 desktop).
+          <div class="header-actions">
+            <!-- NE PAS MODIFIER l'id : main.js y affiche l'état de connexion. -->
+            <div id="nav-session" aria-live="polite"></div>
+          </div>
+        </div>
+      </header>
 
-         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
-         ===================================================================== -->
-    <section class="grille-indicateurs">
-      <div class="carte-indicateur"><p class="label">Trajets disponibles</p><p id="d-trajets" class="valeur"></p></div>
-      <div class="carte-indicateur"><p class="label">Conducteurs actifs</p><p id="d-conducteurs" class="valeur"></p></div>
-      <div class="carte-indicateur"><p class="label">Réservations actives</p><p id="d-reservations" class="valeur"></p></div>
-      <div class="carte-indicateur"><p class="label">Note moyenne</p><p id="d-note" class="valeur"></p></div>
-      <div class="carte-indicateur"><p class="label">Taux d'annulation</p><p id="d-taux-annulation" class="valeur"></p></div>
-    </section>
+      <main class="page-main" id="main-content">
+        <div class="container">
+          <header class="page-header dashboard-header">
+            <div class="page-heading">
+              <h1>Tableau de bord</h1>
+              <p>
+                Les principaux indicateurs de l’activité Tokeyi à Brazzaville.
+              </p>
+            </div>
+            <span class="dashboard-date">
+              <i class="ph ph-chart-line-up icon" aria-hidden="true"></i>
+              Vue du service
+            </span>
+          </header>
 
-    <!-- =====================================================================
-         TOP CONDUCTEURS — TODO (Dev FS6)
-         main.js remplit cette liste ordonnée avec des <li> contenant un
-         rang, un nom, une note et un nombre de trajets. Stylez comme un
-         podium ou un classement numéroté.
+          <section
+            class="dashboard-error"
+            role="alert"
+            aria-labelledby="dashboard-error-title"
+            aria-describedby="dashboard-error-help erreur-globale"
+          >
+            <span class="dashboard-error__icon" aria-hidden="true">
+              <i class="ph ph-warning-circle icon-lg"></i>
+            </span>
+            <div class="dashboard-error__copy">
+              <h2 id="dashboard-error-title">
+                Impossible de charger le tableau de bord
+              </h2>
+              <p id="dashboard-error-help">
+                Les indicateurs sont temporairement indisponibles. Réessayez
+                dans quelques instants.
+              </p>
+              <p id="erreur-globale" hidden></p>
+            </div>
+          </section>
 
-         *** NE PAS MODIFIER l'id ***
-         ===================================================================== -->
-    <section>
-      <h2>Top 3 conducteurs</h2>
-      <ol id="d-top-conducteurs"></ol>
-    </section>
+          <section
+            class="dashboard-metrics"
+            aria-label="Indicateurs principaux"
+          >
+            <div class="dashboard-metric dashboard-metric--lead">
+              <span class="dashboard-metric__icon" aria-hidden="true">
+                <i class="ph ph-car-profile icon-lg"></i>
+              </span>
+              <div>
+                <p class="label">Trajets disponibles</p>
+                <p id="d-trajets" class="valeur" aria-live="polite">
+                  <span
+                    class="skeleton-stack dashboard-loading"
+                    aria-hidden="true"
+                  >
+                    <span class="skeleton skeleton--metric"></span>
+                    <span
+                      class="skeleton skeleton--metric skeleton--metric-short"
+                    ></span>
+                  </span>
+                  <span class="sr-only">Chargement…</span>
+                </p>
+                <small>avec au moins une place</small>
+              </div>
+            </div>
+            <div class="dashboard-metric">
+              <p class="label">Conducteurs actifs</p>
+              <p id="d-conducteurs" class="valeur" aria-live="polite">
+                <span
+                  class="skeleton-stack dashboard-loading"
+                  aria-hidden="true"
+                >
+                  <span class="skeleton skeleton--metric"></span>
+                  <span
+                    class="skeleton skeleton--metric skeleton--metric-short"
+                  ></span>
+                </span>
+                <span class="sr-only">Chargement…</span>
+              </p>
+              <small>sur le réseau Tokeyi</small>
+            </div>
+            <div class="dashboard-metric">
+              <p class="label">Réservations actives</p>
+              <p id="d-reservations" class="valeur" aria-live="polite">
+                <span
+                  class="skeleton-stack dashboard-loading"
+                  aria-hidden="true"
+                >
+                  <span class="skeleton skeleton--metric"></span>
+                  <span
+                    class="skeleton skeleton--metric skeleton--metric-short"
+                  ></span>
+                </span>
+                <span class="sr-only">Chargement…</span>
+              </p>
+              <small>effectuées ou en attente</small>
+            </div>
+            <div class="dashboard-metric">
+              <p class="label">Note moyenne</p>
+              <p id="d-note" class="valeur" aria-live="polite">
+                <span
+                  class="skeleton-stack dashboard-loading"
+                  aria-hidden="true"
+                >
+                  <span class="skeleton skeleton--metric"></span>
+                  <span
+                    class="skeleton skeleton--metric skeleton--metric-short"
+                  ></span>
+                </span>
+                <span class="sr-only">Chargement…</span>
+              </p>
+              <small>ensemble des conducteurs</small>
+            </div>
+            <div class="dashboard-metric">
+              <p class="label">Taux d’annulation</p>
+              <p id="d-taux-annulation" class="valeur" aria-live="polite">
+                <span
+                  class="skeleton-stack dashboard-loading"
+                  aria-hidden="true"
+                >
+                  <span class="skeleton skeleton--metric"></span>
+                  <span
+                    class="skeleton skeleton--metric skeleton--metric-short"
+                  ></span>
+                </span>
+                <span class="sr-only">Chargement…</span>
+              </p>
+              <small>toutes réservations</small>
+            </div>
+          </section>
 
-    <!-- TRAJET VEDETTE — TODO (Dev FS6) : mettre en avant visuellement
-         ce trajet (encart distinctif).
-         *** NE PAS MODIFIER l'id *** -->
-    <section>
-      <h2>Trajet vedette</h2>
-      <p id="d-trajet-top"></p>
-    </section>
+          <div class="dashboard-layout">
+            <section
+              class="dashboard-panel"
+              aria-labelledby="top-drivers-title"
+            >
+              <div class="section-header">
+                <div>
+                  <h2 id="top-drivers-title">Conducteurs les mieux notés</h2>
+                  <p>Classement selon la note moyenne.</p>
+                </div>
+              </div>
+              <ol
+                id="d-top-conducteurs"
+                class="ranking-list"
+                aria-live="polite"
+              >
+                <li
+                  class="ranking-list__loading dashboard-loading"
+                  aria-hidden="true"
+                >
+                  <span class="skeleton skeleton--line"></span>
+                </li>
+                <li
+                  class="ranking-list__loading dashboard-loading"
+                  aria-hidden="true"
+                >
+                  <span
+                    class="skeleton skeleton--line skeleton--line-short"
+                  ></span>
+                </li>
+                <li
+                  class="ranking-list__loading dashboard-loading"
+                  aria-hidden="true"
+                >
+                  <span class="skeleton skeleton--line"></span>
+                </li>
+              </ol>
+            </section>
 
-    <!-- =====================================================================
-         TABLEAU PAR QUARTIER — TODO (Dev FS6)
-         Mettre en forme le tableau (bordures, alternance de lignes,
-         responsive : passage en cartes empilées sous 600px si besoin).
+            <section
+              class="dashboard-panel featured-trip"
+              aria-labelledby="featured-trip-title"
+            >
+              <div>
+                <span class="badge badge--accent">Trajet vedette</span>
+                <h2 id="featured-trip-title">Le trajet le plus réservé</h2>
+                <p>Le parcours qui concentre le plus de réservations.</p>
+              </div>
+              <p
+                id="d-trajet-top"
+                class="featured-trip__value"
+                aria-live="polite"
+              >
+                <span
+                  class="skeleton-stack dashboard-loading"
+                  aria-hidden="true"
+                >
+                  <span class="skeleton skeleton--line"></span>
+                  <span
+                    class="skeleton skeleton--line skeleton--line-short"
+                  ></span>
+                </span>
+                <span class="sr-only">Chargement…</span>
+              </p>
+              <a
+                class="button button--secondary"
+                href="../recherche/recherche.html"
+              >
+                Rechercher un trajet
+              </a>
+            </section>
+          </div>
 
-         *** NE PAS MODIFIER l'id ***
-         ===================================================================== -->
-    <section>
-      <h2>Répartition par quartier de départ</h2>
-      <table>
-        <thead><tr><th>Quartier</th><th>Nombre de trajets</th><th>Prix moyen</th></tr></thead>
-        <tbody id="d-trajets-par-quartier"></tbody>
-      </table>
-    </section>
-  </main>
+          <section
+            class="dashboard-table-section"
+            aria-labelledby="districts-title"
+          >
+            <div class="section-header">
+              <div>
+                <h2 id="districts-title">Activité par quartier de départ</h2>
+                <p>Nombre de trajets et prix moyen observé.</p>
+              </div>
+            </div>
+            <section
+              class="table-scroll"
+              tabindex="0"
+              aria-label="Activité par quartier, tableau défilable"
+            >
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Quartier</th>
+                    <th scope="col">Nombre de trajets</th>
+                    <th scope="col">Prix moyen</th>
+                  </tr>
+                </thead>
+                <tbody id="d-trajets-par-quartier">
+                  <tr class="dashboard-loading" aria-hidden="true">
+                    <td><span class="skeleton skeleton--line"></span></td>
+                    <td>
+                      <span
+                        class="skeleton skeleton--line skeleton--line-short"
+                      ></span>
+                    </td>
+                    <td><span class="skeleton skeleton--line"></span></td>
+                  </tr>
+                  <tr class="dashboard-loading" aria-hidden="true">
+                    <td>
+                      <span
+                        class="skeleton skeleton--line skeleton--line-short"
+                      ></span>
+                    </td>
+                    <td><span class="skeleton skeleton--line"></span></td>
+                    <td>
+                      <span
+                        class="skeleton skeleton--line skeleton--line-short"
+                      ></span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          </section>
+        </div>
+      </main>
 
-  <div id="erreur-globale" hidden></div>
+      <footer class="site-footer compact-footer">
+        <div class="container footer-bottom">
+          <span>© 2026 Tokeyi</span>
+          <a class="text-link" href="../accueil/index.html"
+            >Retour à l’accueil</a
+          >
+        </div>
+      </footer>
 
-  <script src="../functions.js"></script>
-  <script src="../main.js"></script>
-</body>
+      <nav class="bottom-nav" aria-label="Navigation mobile principale">
+        <ul class="bottom-nav__list">
+          <li>
+            <a href="../accueil/index.html">
+              <i class="ph ph-house icon" aria-hidden="true"></i>
+              <span>Accueil</span>
+            </a>
+          </li>
+          <li>
+            <a href="../recherche/recherche.html">
+              <i class="ph ph-magnifying-glass icon" aria-hidden="true"></i>
+              <span>Rechercher</span>
+            </a>
+          </li>
+          <li>
+            <a href="../mes-trajets/mes-trajets.html">
+              <i class="ph ph-ticket icon" aria-hidden="true"></i>
+              <span>Mes trajets</span>
+            </a>
+          </li>
+          <li>
+            <a href="dashboard.html" aria-current="page">
+              <i class="ph ph-chart-bar icon" aria-hidden="true"></i>
+              <span>Tableau</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- NE PAS MODIFIER : scripts de connexion au backend. -->
+    <script src="../functions.js"></script>
+    <script src="../main.js"></script>
+  </body>
 </html>

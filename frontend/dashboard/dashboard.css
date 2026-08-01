@@ -96,6 +96,10 @@
   text-align: center;
 }
 
+.dashboard-state--error {
+  background: transparent;
+}
+
 .dashboard-state__visual {
   display: flex;
   justify-content: center;
@@ -130,6 +134,10 @@
 .dashboard-state--error .dashboard-state__visual span:nth-child(3) {
   background: var(--color-danger);
   color: var(--color-canvas);
+}
+
+.dashboard-state--error .dashboard-state__visual span {
+  border-color: var(--color-canvas);
 }
 
 .dashboard-state > strong {
@@ -374,6 +382,10 @@
 
 .featured-trip .button {
   justify-self: start;
+}
+
+.featured-trip .dashboard-state__action {
+  justify-self: center;
 }
 
 .dashboard-table-section {

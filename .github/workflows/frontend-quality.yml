@@ -23,7 +23,7 @@ jobs:
 
     steps:
       - name: Recuperation du depot
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Validation des fichiers HTML
         run: >-
@@ -39,7 +39,7 @@ jobs:
 
     steps:
       - name: Recuperation du depot
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Audit des pages frontend
         uses: treosh/lighthouse-ci-action@3e7e23fb74242897f95c0ba9cabad3d0227b9b18 # v12

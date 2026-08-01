@@ -251,8 +251,36 @@ def verifier_place_disponible(trajet_id, trajets, reservations):
         (3 places au total, 2 déjà prises par des réservations actives,
         il en reste 1)
     """
-    # TODO : à compléter
-    pass
+    # On part de l'hypothèse qu'aucun trajet n'a encore été trouvé
+    trajet_trouve = None
+
+    # On cherche le trajet correspondant à l'identifiant demandé
+    for trajet in trajets:
+        if trajet["id"] == trajet_id:
+            # Quand on le trouve, on le garde et on stoppe la boucle
+            trajet_trouve = trajet
+            break
+
+    # Si le trajet n'existe pas, on retourne un message d'erreur
+    if trajet_trouve is None:
+        return {"place_dispo": False, "places_restantes": 0, "message": "Trajet introuvable"}
+
+    # On compte les réservations actives pour ce trajet
+    # Une réservation est considérée comme active si elle n'est pas annulée
+    actives = 0
+    for reservation in reservations:
+        if reservation["trajet_id"] == trajet_id and reservation["statut"] != "annule":
+            actives += 1
+
+    # On calcule combien de places restent réellement disponibles
+    places_restantes = trajet_trouve["places_dispo"] - actives
+
+    # Si au moins une place reste, la réservation peut être acceptée
+    if places_restantes >= 1:
+        return {"place_dispo": True, "places_restantes": places_restantes, "message": ""}
+    else:
+        # Sinon, le trajet est déjà complet et on bloque la réservation
+        return {"place_dispo": False, "places_restantes": 0, "message": "Trajet complet"}
 
 
 def filtrer_reservations_par_statut(reservations, statut):

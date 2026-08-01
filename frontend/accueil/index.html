@@ -62,26 +62,6 @@
         </div>
       </section>
 
-      <div class="container">
-        <section
-          class="home-error"
-          role="alert"
-          aria-labelledby="home-error-title"
-          aria-describedby="home-error-help erreur-globale"
-        >
-          <span class="home-error__icon" aria-hidden="true">
-            <i class="ph ph-warning-circle icon-lg"></i>
-          </span>
-          <div class="home-error__copy">
-            <h2 id="home-error-title">Impossible de charger l’activité</h2>
-            <p id="home-error-help">
-              Les indicateurs sont temporairement indisponibles. Réessayez dans quelques instants.
-            </p>
-            <p id="erreur-globale" hidden></p>
-          </div>
-        </section>
-      </div>
-
       <section class="container section service-pulse" aria-labelledby="pulse-heading">
         <div class="section-header">
           <div>
@@ -92,6 +72,28 @@
             Découvrir toute l’activité
           </a>
         </div>
+
+        <section
+          class="empty-state empty-state--error home-error"
+          role="alert"
+          aria-labelledby="home-error-title"
+          aria-describedby="home-error-help erreur-globale"
+        >
+          <div class="empty-state__icon-stack" aria-hidden="true">
+            <span><i class="ph ph-chart-line-down icon-lg"></i></span>
+            <span><i class="ph ph-cloud-slash icon-lg"></i></span>
+            <span><i class="ph ph-warning-circle icon-lg"></i></span>
+          </div>
+          <h3 id="home-error-title">Activité indisponible</h3>
+          <p id="home-error-help">
+            Les indicateurs ne peuvent pas être affichés pour le moment.
+          </p>
+          <p id="erreur-globale" class="sr-only" hidden></p>
+          <a class="button button--secondary" href="index.html">
+            <i class="ph ph-arrow-clockwise icon" aria-hidden="true"></i>
+            Réessayer
+          </a>
+        </section>
 
         <div class="metric-strip" role="group" aria-label="Indicateurs du service">
           <article class="carte-indicateur">

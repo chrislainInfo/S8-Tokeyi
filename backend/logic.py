@@ -514,8 +514,39 @@ def identifier_trajet_le_plus_reserve(trajets, reservations):
         identifier_trajet_le_plus_reserve(trajets, reservations)
         -> {"trajet_id": 1, "trajet_libelle": "Bacongo → Poto-Poto", "nombre_reservations": 2}
     """
-    # TODO : à compléter
-    pass
+    # On compte combien de réservations actives chaque trajet a reçues
+    compteur = {}
+    for reservation in reservations:
+        if reservation["statut"] in ["effectue", "en_attente"]:
+            trajet_id = reservation["trajet_id"]
+            if trajet_id in compteur:
+                compteur[trajet_id] += 1
+            else:
+                compteur[trajet_id] = 1
+
+    # Si aucune réservation active n'existe, on retourne None
+    if not compteur:
+        return None
+
+    # On cherche le trajet qui a le plus de réservations
+    meilleur_id = None
+    meilleur_nb = -1
+    for trajet_id, nb in compteur.items():
+        if nb > meilleur_nb or (nb == meilleur_nb and (meilleur_id is None or trajet_id < meilleur_id)):
+            meilleur_id = trajet_id
+            meilleur_nb = nb
+
+    # On récupère les informations du trajet correspondant et on retourne
+    # un résultat prêt à afficher dans le tableau de bord
+    for trajet in trajets:
+        if trajet["id"] == meilleur_id:
+            return {
+                "trajet_id": meilleur_id,
+                "trajet_libelle": f"{trajet['quartier_depart']} → {trajet['quartier_arrivee']}",
+                "nombre_reservations": meilleur_nb
+            }
+
+    return None
 
 
 def calculer_indicateurs_dashboard(trajets, reservations, conducteurs):

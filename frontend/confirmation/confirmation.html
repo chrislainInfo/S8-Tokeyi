@@ -14,58 +14,161 @@
   <link rel="stylesheet" href="../css/main.css">
   <link rel="stylesheet" href="confirmation.css">
 </head>
-<body id="page-confirmation" class="standalone-page">
+<body id="page-confirmation">
   <a class="skip-link" href="#main-content">Aller au contenu</a>
 
-  <header class="standalone-header">
-    <a class="brand" href="../accueil/index.html" aria-label="Tokeyi, accueil">
-      <span class="brand-logo" aria-hidden="true">
-        <img
-          src="../assets/brand/logo-tokeyi-light-v2.png"
-          alt=""
-          width="2172"
-          height="724"
-        >
-      </span>
-    </a>
-    <!-- NE PAS MODIFIER l'id : main.js y affiche l'état de connexion. -->
-    <div id="nav-session" aria-live="polite"></div>
-  </header>
+  <div class="site-shell">
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../accueil/index.html" aria-label="Tokeyi, accueil">
+          <span class="brand-logo" aria-hidden="true">
+            <img
+              src="../assets/brand/logo-tokeyi-light-v2.png"
+              alt=""
+              width="2172"
+              height="724"
+            >
+          </span>
+        </a>
 
-  <main class="standalone-main" id="main-content">
-    <section class="confirmation-panel" aria-labelledby="confirmation-title">
-      <div class="confirmation-panel__visual" aria-hidden="true">
-        <i class="ph ph-check icon-xl"></i>
-      </div>
-      <span class="badge badge--success">Demande enregistrée</span>
-      <h1 id="confirmation-title">Votre demande est bien prise en compte</h1>
-      <!-- NE PAS MODIFIER l'id : main.js injecte le message de confirmation. -->
-      <p id="confirmation-message" class="confirmation-message" aria-live="polite">
-        Votre demande a été enregistrée. Vous pouvez maintenant consulter vos trajets.
-      </p>
+        <nav class="desktop-nav" aria-label="Navigation principale">
+          <a href="../accueil/index.html">Accueil</a>
+          <a href="../recherche/recherche.html">Rechercher</a>
+          <a href="../mes-trajets/mes-trajets.html">Mes trajets</a>
+          <a href="../dashboard/dashboard.html">Activité</a>
+        </nav>
 
-      <section class="prochaines-etapes" aria-labelledby="next-steps-title">
-        <h2 id="next-steps-title">Que souhaitez-vous faire maintenant&nbsp;?</h2>
-        <div class="next-actions">
-          <a
-            id="lien-mes-trajets"
-            class="button button--primary"
-            href="../mes-trajets/mes-trajets.html"
-          >
-            <i class="ph ph-ticket icon" aria-hidden="true"></i>
-            Voir mes trajets
-          </a>
-          <a class="button button--secondary" href="../recherche/recherche.html">
-            <i class="ph ph-magnifying-glass icon" aria-hidden="true"></i>
-            Rechercher d’autres trajets
-          </a>
-          <a class="button button--ghost" href="../accueil/index.html">
-            Retour à l’accueil
-          </a>
+        <div class="header-actions">
+          <!-- NE PAS MODIFIER l'id : main.js y affiche l'état de connexion. -->
+          <div id="nav-session" aria-live="polite"></div>
         </div>
-      </section>
-    </section>
-  </main>
+      </div>
+    </header>
+
+    <main class="page-main confirmation-main" id="main-content">
+      <div class="container confirmation-main__inner">
+        <section class="confirmation-panel" aria-labelledby="confirmation-title">
+          <div class="confirmation-panel__visual" aria-hidden="true">
+            <i class="ph ph-check icon-xl"></i>
+          </div>
+          <span class="badge badge--success">Demande enregistrée</span>
+          <h1 id="confirmation-title">Votre demande est bien prise en compte</h1>
+          <!-- NE PAS MODIFIER l'id : main.js injecte le message de confirmation. -->
+          <p
+            id="confirmation-message"
+            class="confirmation-message"
+            aria-live="polite"
+          >
+            Votre demande a été enregistrée. Vous pouvez maintenant consulter
+            vos trajets.
+          </p>
+
+          <section class="prochaines-etapes" aria-labelledby="next-steps-title">
+            <h2 id="next-steps-title">
+              Que souhaitez-vous faire maintenant&nbsp;?
+            </h2>
+            <div class="next-actions">
+              <a
+                id="lien-mes-trajets"
+                class="button button--primary"
+                href="../mes-trajets/mes-trajets.html"
+              >
+                <i class="ph ph-ticket icon" aria-hidden="true"></i>
+                Voir mes trajets
+              </a>
+              <a
+                class="button button--secondary"
+                href="../recherche/recherche.html"
+              >
+                <i
+                  class="ph ph-magnifying-glass icon"
+                  aria-hidden="true"
+                ></i>
+                Rechercher d’autres trajets
+              </a>
+              <a class="button button--ghost" href="../accueil/index.html">
+                Retour à l’accueil
+              </a>
+            </div>
+          </section>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a
+            class="footer-brand__logo"
+            href="../accueil/index.html"
+            aria-label="Tokeyi, accueil"
+          >
+            <img src="../assets/brand/logo-tokeyi-dark-v2.png" alt="Tokeyi">
+          </a>
+          <p>Vos trajets du quotidien, partagés simplement à Brazzaville.</p>
+          <span class="footer-location">
+            <i class="ph ph-map-pin icon" aria-hidden="true"></i>
+            Brazzaville
+          </span>
+        </div>
+
+        <nav
+          class="footer-column"
+          aria-label="Navigation principale du pied de page"
+        >
+          <strong>Navigation</strong>
+          <a href="../accueil/index.html">Accueil</a>
+          <a href="../recherche/recherche.html">Trouver un trajet</a>
+          <a href="../mes-trajets/mes-trajets.html">Mes trajets</a>
+        </nav>
+        <nav class="footer-column" aria-label="Navigation conducteur">
+          <strong>Conducteur</strong>
+          <a href="../proposer/proposer.html">Proposer un trajet</a>
+          <a href="../dashboard/dashboard.html">Activité</a>
+        </nav>
+        <nav class="footer-column" aria-label="Navigation du compte">
+          <strong>Compte</strong>
+          <a href="../inscription/inscription.html">Créer un compte</a>
+          <a href="../login/login.html">Se connecter</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Tokeyi</span>
+        <span>
+          Le paiement s’effectue directement entre passager et conducteur.
+        </span>
+      </div>
+    </footer>
+
+    <nav class="bottom-nav" aria-label="Navigation mobile principale">
+      <ul class="bottom-nav__list">
+        <li>
+          <a href="../accueil/index.html">
+            <i class="ph ph-house icon" aria-hidden="true"></i>
+            <span>Accueil</span>
+          </a>
+        </li>
+        <li>
+          <a href="../recherche/recherche.html">
+            <i class="ph ph-magnifying-glass icon" aria-hidden="true"></i>
+            <span>Rechercher</span>
+          </a>
+        </li>
+        <li>
+          <a href="../mes-trajets/mes-trajets.html">
+            <i class="ph ph-ticket icon" aria-hidden="true"></i>
+            <span>Mes trajets</span>
+          </a>
+        </li>
+        <li>
+          <a href="../dashboard/dashboard.html">
+            <i class="ph ph-chart-bar icon" aria-hidden="true"></i>
+            <span>Activité</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 
   <!-- NE PAS MODIFIER : scripts de connexion au backend. -->
   <script src="../functions.js"></script>

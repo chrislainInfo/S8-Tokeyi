@@ -177,7 +177,7 @@ function formaterMessageConfirmation(nom, quartierDepart, quartierArrivee, heure
      *   → "Bonjour Marie, votre réservation pour Bacongo → Poto-Poto à 07:30 a été enregistrée."
      */
     // TODO
-    return `Bonjour ${nom}, votre réservation pour ${quartierDepart} → ${quartierArrivee} à${heure} a été enregistrée.`;
+    return `Bonjour ${nom}, votre réservation pour ${quartierDepart} → ${quartierArrivee} à ${heure} a été enregistrée.`;
 }
 
 // ============================================================================

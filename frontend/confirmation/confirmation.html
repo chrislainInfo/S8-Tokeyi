@@ -2,42 +2,64 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tokeyi — Confirmation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta
+    name="description"
+    content="Confirmation d’une demande effectuée sur le service de covoiturage Tokeyi."
+  >
+  <title>Confirmation | Tokeyi</title>
   <link rel="stylesheet" href="../css/main.css">
   <link rel="stylesheet" href="confirmation.css">
 </head>
-<body id="page-confirmation">
+<body id="page-confirmation" class="standalone-page">
+  <a class="skip-link" href="#main-content">Aller au contenu</a>
 
-  <!-- NAVIGATION — TODO (Dev FS6) -->
+  <header class="standalone-header">
+    <a class="brand" href="../accueil/index.html" aria-label="Tokeyi, accueil">
+      <span class="brand-logo" aria-hidden="true">
+        <img src="../assets/brand/logo-tokeyi-light-v2.png" alt="">
+      </span>
+    </a>
+    <!-- NE PAS MODIFIER l'id : main.js y affiche l'état de connexion. -->
+    <div id="nav-session" aria-live="polite"></div>
+  </header>
 
-  <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
-  <div id="nav-session"></div>
+  <main class="standalone-main" id="main-content">
+    <section class="confirmation-panel" aria-labelledby="confirmation-title">
+      <div class="confirmation-panel__visual" aria-hidden="true">
+        <i class="ph ph-check icon-xl"></i>
+      </div>
+      <span class="badge badge--success">Demande enregistrée</span>
+      <h1 id="confirmation-title">Votre demande est bien prise en compte</h1>
+      <!-- NE PAS MODIFIER l'id : main.js injecte le message de confirmation. -->
+      <p id="confirmation-message" class="confirmation-message" aria-live="polite">
+        Votre demande a été enregistrée. Vous pouvez maintenant consulter vos trajets.
+      </p>
 
-  <main>
-    <!-- =====================================================================
-         MESSAGE DE CONFIRMATION — TODO (Dev FS6)
-         Cadre visuel de succès (icône, couleur positive). Le message exact
-         est injecté par main.js à partir du paramètre d'URL.
-
-         *** NE PAS MODIFIER l'id — main.js injecte le message ***
-         ===================================================================== -->
-    <section class="bloc-confirmation">
-      <h1>Merci !</h1>
-      <p id="confirmation-message"></p>
-    </section>
-
-    <!-- PROCHAINES ÉTAPES — TODO (Dev FS6) : mettre en forme ces 3 liens
-         (boutons ou cartes de navigation).
-         NE PAS MODIFIER les href/id des liens. -->
-    <section class="prochaines-etapes">
-      <h2>Prochaines étapes</h2>
-      <a href="../accueil/index.html">Retour à l'accueil</a>
-      <a id="lien-mes-trajets" href="../mes-trajets/mes-trajets.html">Voir mes trajets</a>
-      <a href="../recherche/recherche.html">Rechercher d'autres trajets</a>
+      <section class="prochaines-etapes" aria-labelledby="next-steps-title">
+        <h2 id="next-steps-title">Que souhaitez-vous faire maintenant&nbsp;?</h2>
+        <div class="next-actions">
+          <a
+            id="lien-mes-trajets"
+            class="button button--primary"
+            href="../mes-trajets/mes-trajets.html"
+          >
+            <i class="ph ph-ticket icon" aria-hidden="true"></i>
+            Voir mes trajets
+          </a>
+          <a class="button button--secondary" href="../recherche/recherche.html">
+            <i class="ph ph-magnifying-glass icon" aria-hidden="true"></i>
+            Rechercher d’autres trajets
+          </a>
+          <a class="button button--ghost" href="../accueil/index.html">
+            Retour à l’accueil
+          </a>
+        </div>
+      </section>
     </section>
   </main>
 
+  <!-- NE PAS MODIFIER : scripts de connexion au backend. -->
   <script src="../functions.js"></script>
   <script src="../main.js"></script>
 </body>

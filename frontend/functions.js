@@ -145,7 +145,8 @@ function filtrerReservationsParStatut(reservations, statut) {
      * @param {string} statut - "effectue", "en_attente", "annule" ou "" pour toutes
      * @return {Array} - réservations correspondantes
      */
-    // TODO
+    if (!statut) return reservations || [];
+    return (reservations || []).filter(reservation => reservation.statut === statut);
 }
 
 function calculerTotalDepenseParPassager(reservations) {

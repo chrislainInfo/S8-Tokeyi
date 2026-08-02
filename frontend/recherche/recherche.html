@@ -9,10 +9,11 @@
   <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
   <link rel="manifest" href="../site.webmanifest">
   <meta name="theme-color" content="#55d396">
-  <link rel="stylesheet" href="../css/main.css?v=7">
+  <link rel="stylesheet" href="../css/main.css?v=8">
   <link rel="stylesheet" href="recherche.css?v=4">
 </head>
 <body id="page-recherche">
+  <div class="site-shell">
 
   <!-- NAVIGATION — TODO (Dev FS2) -->
    <header class="site-header">
@@ -25,7 +26,7 @@
 
         <nav class="desktop-nav" aria-label="Navigation principale">
           <a href="../accueil/index.html" >Accueil</a>
-          <a href="#" aria-current="page">Rechercher</a>
+          <a href="recherche.html" aria-current="page">Rechercher</a>
           <a href="../mes-trajets/mes-trajets.html">Mes trajets</a>
           <a href="../dashboard/dashboard.html">Activité</a>
         </nav>
@@ -159,6 +160,35 @@
     </div>
   </footer>
 
+  <nav class="bottom-nav" aria-label="Navigation mobile principale">
+    <ul class="bottom-nav__list">
+      <li>
+        <a href="../accueil/index.html">
+          <i class="ph ph-house icon" aria-hidden="true"></i>
+          <span>Accueil</span>
+        </a>
+      </li>
+      <li>
+        <a href="recherche.html" aria-current="page">
+          <i class="ph ph-magnifying-glass icon" aria-hidden="true"></i>
+          <span>Rechercher</span>
+        </a>
+      </li>
+      <li>
+        <a href="../mes-trajets/mes-trajets.html">
+          <i class="ph ph-ticket icon" aria-hidden="true"></i>
+          <span>Mes trajets</span>
+        </a>
+      </li>
+      <li>
+        <a href="../dashboard/dashboard.html">
+          <i class="ph ph-chart-bar icon" aria-hidden="true"></i>
+          <span>Activité</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  </div>
 
   <!-- NE PAS MODIFIER -->
   <script src="../functions.js"></script>

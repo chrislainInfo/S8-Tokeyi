@@ -112,7 +112,6 @@
     width: 100%;
     min-height: var(--bottom-nav-height);
     padding: 0.35rem 0.75rem max(0.35rem, env(safe-area-inset-bottom));
-    border-top: 1px solid var(--color-line);
     background: rgb(255 255 255 / 96%);
     box-shadow: 0 -8px 24px rgb(4 6 5 / 8%);
     backdrop-filter: blur(18px);

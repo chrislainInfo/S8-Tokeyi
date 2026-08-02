@@ -52,10 +52,6 @@
     height: 2.25rem;
   }
 
-  .brand-logo img {
-    width: 16rem;
-  }
-
   .desktop-nav {
     display: none;
   }
@@ -427,10 +423,6 @@
 @media (max-width: 23rem) {
   .brand {
     width: 7.25rem;
-  }
-
-  .brand-logo img {
-    width: 14rem;
   }
 
   .trip-card {

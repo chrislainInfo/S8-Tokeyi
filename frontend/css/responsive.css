@@ -52,10 +52,6 @@
     height: 2.25rem;
   }
 
-  .brand-logo img {
-    width: 16rem;
-  }
-
   .desktop-nav {
     display: none;
   }
@@ -63,6 +59,19 @@
   .header-actions {
     grid-column: 3;
     gap: var(--space-2);
+  }
+
+  #nav-session:has(#btn-deconnexion) {
+    width: auto;
+    min-height: 0;
+    padding: 0;
+    overflow: visible;
+    color: transparent;
+    font-size: 0;
+  }
+
+  #nav-session > #btn-deconnexion {
+    font-size: var(--text-sm);
   }
 
   .mode-switch__label {
@@ -96,7 +105,6 @@
     width: 100%;
     min-height: var(--bottom-nav-height);
     padding: 0.35rem 0.75rem max(0.35rem, env(safe-area-inset-bottom));
-    border-top: 1px solid var(--color-line);
     background: rgb(255 255 255 / 96%);
     box-shadow: 0 -8px 24px rgb(4 6 5 / 8%);
     backdrop-filter: blur(18px);
@@ -157,11 +165,14 @@
   }
 
   .search-bar {
-    display: none;
+    grid-template-columns: minmax(0, 1fr) auto;
+    min-height: 0;
   }
 
-  .search-compact {
-    display: flex;
+  .search-bar .search-segment:first-of-type {
+    grid-column: 1 / -1;
+    border-right: 0;
+    border-bottom: 1px solid var(--color-line);
   }
 
   .split,
@@ -410,10 +421,6 @@
     width: 7.25rem;
   }
 
-  .brand-logo img {
-    width: 14rem;
-  }
-
   .trip-card {
     grid-template-columns: 1fr;
   }
@@ -503,6 +510,20 @@
 }
 
 @media (max-width: 23rem) {
+  #nav-session {
+    gap: var(--space-1);
+  }
+
+  #nav-session > a {
+    min-height: 2.5rem;
+    padding-inline: var(--space-2);
+    font-size: var(--text-xs);
+  }
+
+  #nav-session > a + a {
+    padding-inline: var(--space-3);
+  }
+
   .metric-strip,
   .dashboard-metrics,
   .confirmation-summary {

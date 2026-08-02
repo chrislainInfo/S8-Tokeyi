@@ -3,9 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Tokeyi — Proposer un trajet</title>
-  <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="proposer.css">
+  <title>Proposer un trajet | Tokeyi</title>
+  <link rel="icon" href="../assets/brand/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+  <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
+  <meta name="theme-color" content="#55d396">
+  <link rel="stylesheet" href="../css/main.css?v=11">
+  <link rel="stylesheet" href="proposer.css?v=3">
 </head>
 <body id="page-proposer">
   <a class="skip-link" href="#main-content">Aller au contenu</a>
@@ -15,7 +20,7 @@
       <div class="container header-inner">
         <a class="brand" href="../accueil/index.html" aria-label="Tokeyi, accueil">
           <span class="brand-logo" aria-hidden="true">
-            <img src="../assets/brand/logo-tokeyi-light-v2.png" alt="Tokeyi">
+            <img src="../assets/brand/tokeyi-logo-on-light.png" alt="Tokeyi">
           </span>
         </a>
 
@@ -23,7 +28,7 @@
           <a href="../accueil/index.html">Accueil</a>
           <a href="../recherche/recherche.html">Rechercher</a>
           <a href="../mes-trajets/mes-trajets.html">Mes trajets</a>
-          <a class="session-only" href="../dashboard/dashboard.html">Tableau de bord</a>
+          <a href="../dashboard/dashboard.html">Activité</a>
         </nav>
 
         <div class="header-actions">
@@ -46,6 +51,7 @@
              mise en forme de la liste <ul><li> injectée par main.js.
              NE PAS MODIFIER l'id. -->
         <div id="erreurs-form" class="error-banner" hidden></div>
+        <div id="erreur-globale" class="state-panel state-panel--error state-panel--compact" role="alert" aria-live="assertive" hidden></div>
 
         <div class="proposer-layout">
           <!-- =====================================================================
@@ -57,22 +63,22 @@
             <div class="form-group">
               <label for="p-depart">Quartier de départ</label>
               <select id="p-depart" required>
-                <option value="" disabled selected>Sélectionnez un quartier</option>
+                <option value="" disabled selected>Chargement des quartiers…</option>
               </select>
             </div>
 
             <div class="form-group">
               <label for="p-arrivee">Quartier d'arrivée</label>
               <select id="p-arrivee" required>
-                <option value="" disabled selected>Sélectionnez un quartier</option>
+                <option value="" disabled selected>Chargement des quartiers…</option>
                 <!-- Rempli dynamiquement par main.js via /api/quartiers -->
               </select>
             </div>
 
             <div class="form-row">
               <div class="form-group">
-                <label for="p-heure">Heure (HH:MM)</label>
-                <input type="text" id="p-heure" placeholder="07:30" required pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]">
+                <label for="p-heure">Heure de départ</label>
+                <input type="time" id="p-heure" required>
               </div>
 
               <div class="form-group">
@@ -114,7 +120,7 @@
       <div class="container footer-grid">
         <div class="footer-brand">
           <a class="footer-brand__logo" href="../accueil/index.html" aria-label="Tokeyi, accueil">
-            <img src="../assets/brand/logo-tokeyi-dark-v2.png" alt="Tokeyi">
+            <img src="../assets/brand/tokeyi-logo-on-dark.png" alt="Tokeyi">
           </a>
           <p>Vos trajets du quotidien, partagés simplement à Brazzaville.</p>
         </div>
@@ -128,7 +134,7 @@
         <nav class="footer-column" aria-label="Navigation conducteur">
           <strong>Conducteur</strong>
           <a href="proposer.html" aria-current="page">Proposer un trajet</a>
-          <a class="session-only" href="../dashboard/dashboard.html">Tableau de bord</a>
+          <a href="../dashboard/dashboard.html">Activité</a>
         </nav>
         <nav class="footer-column" aria-label="Navigation du compte">
           <strong>Compte</strong>
@@ -163,18 +169,15 @@
             <span>Mes trajets</span>
           </a>
         </li>
-        <li class="bottom-nav__item--session">
-          <a href="../login/login.html">
-            <i class="ph ph-user-circle icon" aria-hidden="true"></i>
-            <span>Compte</span>
+        <li>
+          <a href="../dashboard/dashboard.html">
+            <i class="ph ph-chart-bar icon" aria-hidden="true"></i>
+            <span>Activité</span>
           </a>
         </li>
       </ul>
     </nav>
   </div>
-
-  <!-- NE PAS MODIFIER : Élément pour erreurs globales + scripts JS backend -->
-  <div id="erreur-globale" hidden></div>
 
   <script src="../functions.js"></script>
   <script src="../main.js"></script>

@@ -3,26 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tokeyi — Recherche</title>
-  <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="recherche.css">
+  <title>Recherche | Tokeyi</title>
+  <link rel="icon" href="../assets/brand/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+  <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
+  <meta name="theme-color" content="#55d396">
+  <link rel="stylesheet" href="../css/main.css?v=11">
+  <link rel="stylesheet" href="recherche.css?v=6">
 </head>
 <body id="page-recherche">
+  <div class="site-shell">
 
   <!-- NAVIGATION — TODO (Dev FS2) -->
    <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Tokeyi, accueil">
+      <a class="brand" href="../accueil/index.html" aria-label="Tokeyi, accueil">
         <span class="brand-logo" aria-hidden="true">
-          <img src="../assets/brand/logo-tokeyi-light-v2.png" alt="">
+          <img src="../assets/brand/tokeyi-logo-on-light.png" alt="">
         </span>
       </a>
 
         <nav class="desktop-nav" aria-label="Navigation principale">
           <a href="../accueil/index.html" >Accueil</a>
-          <a href="#" aria-current="page">Rechercher</a>
+          <a href="recherche.html" aria-current="page">Rechercher</a>
           <a href="../mes-trajets/mes-trajets.html">Mes trajets</a>
-          <a class="session-only" href="../dashboard/dashboard.html">Tableau de bord</a>
+          <a href="../dashboard/dashboard.html">Activité</a>
         </nav>
 
         <div class="header-actions">
@@ -96,43 +102,33 @@
           <button class="btn-filtre" >Prix croissant</button>
         </div>
       </div>
+      <div id="erreur-globale" class="state-panel state-panel--error" role="alert" aria-live="assertive" hidden></div>
       <div class="grid-trajets" id="liste-trajets">
-        <!-- <article class="carte-trajet">
-          <h3 class="titre">Quartier A → Quartier B</h3>
-          <p class="heure">15h30</p>
-          <p class="conducteur">Conducteur : Jean Dupont</p>
-          <p class="prix">2000 FCFA</p>
-          <span class="badge badge-dispo">Places disponibles</span>
-          <a href="#" class="btn-voir">Voir le trajet</a>
+        <article class="search-result-skeleton" aria-hidden="true">
+          <span class="skeleton skeleton--visual"></span>
+          <span class="skeleton skeleton--line"></span>
+          <span class="skeleton skeleton--line skeleton--line-short"></span>
         </article>
-        <article class="carte-trajet">
-          <h3 class="titre">Quartier A → Quartier B</h3>
-          <p class="heure">15h30</p>
-          <p class="conducteur">Conducteur : Jean Dupont</p>
-          <p class="prix">2000 FCFA</p>
-          <span class="badge badge-limite">Places limitées</span>
-          <a href="#" class="btn-voir">Voir le trajet</a>
+        <article class="search-result-skeleton" aria-hidden="true">
+          <span class="skeleton skeleton--visual"></span>
+          <span class="skeleton skeleton--line"></span>
+          <span class="skeleton skeleton--line skeleton--line-short"></span>
         </article>
-        <article class="carte-trajet">
-          <h3 class="titre">Quartier A → Quartier B</h3>
-          <p class="heure">15h30</p>
-          <p class="conducteur">Conducteur : Jean Dupont</p>
-          <p class="prix">2000 FCFA</p>
-          <span class="badge badge-dispo">Places disponibles</span>
-          <a href="#" class="btn-voir">Voir le trajet</a>
-        </article> -->
-        <!-- <p class="aucun-resultat">Aucun trajet trouvé.</p> -->
+        <article class="search-result-skeleton" aria-hidden="true">
+          <span class="skeleton skeleton--visual"></span>
+          <span class="skeleton skeleton--line"></span>
+          <span class="skeleton skeleton--line skeleton--line-short"></span>
+        </article>
+        <span class="sr-only">Chargement des trajets disponibles…</span>
       </div>
     </section>
   </main>
-
-   <div id="erreur-globale" hidden></div>
 
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-brand">
         <a class="footer-brand__logo" href="../accueil/index.html" aria-label="Tokeyi, accueil">
-          <img src="../assets/brand/logo-tokeyi-dark-v2.png" alt="Tokeyi">
+          <img src="../assets/brand/tokeyi-logo-on-dark.png" alt="Tokeyi">
         </a>
         <p>Vos trajets du quotidien, partagés simplement à Brazzaville.</p>
         <span class="footer-location">
@@ -150,7 +146,7 @@
       <nav class="footer-column" aria-label="Navigation conducteur">
         <strong>Conducteur</strong>
         <a href="../proposer/proposer.html">Proposer un trajet</a>
-        <a class="session-only" href="../dashboard/dashboard.html">Tableau de bord</a>
+        <a href="../dashboard/dashboard.html">Activité</a>
       </nav>
       <nav class="footer-column" aria-label="Navigation du compte">
         <strong>Compte</strong>
@@ -164,6 +160,35 @@
     </div>
   </footer>
 
+  <nav class="bottom-nav" aria-label="Navigation mobile principale">
+    <ul class="bottom-nav__list">
+      <li>
+        <a href="../accueil/index.html">
+          <i class="ph ph-house icon" aria-hidden="true"></i>
+          <span>Accueil</span>
+        </a>
+      </li>
+      <li>
+        <a href="recherche.html" aria-current="page">
+          <i class="ph ph-magnifying-glass icon" aria-hidden="true"></i>
+          <span>Rechercher</span>
+        </a>
+      </li>
+      <li>
+        <a href="../mes-trajets/mes-trajets.html">
+          <i class="ph ph-ticket icon" aria-hidden="true"></i>
+          <span>Mes trajets</span>
+        </a>
+      </li>
+      <li>
+        <a href="../dashboard/dashboard.html">
+          <i class="ph ph-chart-bar icon" aria-hidden="true"></i>
+          <span>Activité</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  </div>
 
   <!-- NE PAS MODIFIER -->
   <script src="../functions.js"></script>

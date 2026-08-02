@@ -11,10 +11,15 @@
       content="Découvrez l’activité du réseau de covoiturage Tokeyi entre les quartiers de Brazzaville."
     >
   <title>Activité | Tokeyi</title>
+  <link rel="icon" href="../assets/brand/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+  <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
+  <meta name="theme-color" content="#55d396">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://api.fontshare.com">
   <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/main.css?v=11">
     <link rel="stylesheet" href="dashboard.css">
   </head>
   <body id="page-dashboard">
@@ -30,7 +35,7 @@
           >
             <span class="brand-logo" aria-hidden="true">
             <img
-              src="../assets/brand/logo-tokeyi-light-v2.png"
+              src="../assets/brand/tokeyi-logo-on-light.png"
               alt=""
               width="2172"
               height="724"
@@ -174,8 +179,8 @@
               </p>
               <small>toutes réservations</small>
             </div>
-            <div class="dashboard-state dashboard-state--error">
-              <div class="dashboard-state__visual" aria-hidden="true">
+            <div class="dashboard-state dashboard-state--error empty-state empty-state--error">
+              <div class="empty-state__icon-stack" aria-hidden="true">
                 <span><i class="ph ph-chart-line-down icon-lg"></i></span>
                 <span><i class="ph ph-cloud-slash icon-lg"></i></span>
                 <span><i class="ph ph-warning-circle icon-lg"></i></span>
@@ -185,7 +190,7 @@
                 Impossible de récupérer les chiffres du service pour le moment.
               </p>
               <a
-                class="button button--secondary dashboard-state__action"
+                class="button button--secondary dashboard-state__action empty-state__action"
                 href="dashboard.html"
               >
                 <i class="ph ph-arrow-clockwise icon" aria-hidden="true"></i>
@@ -232,8 +237,8 @@
                   <span class="skeleton skeleton--line"></span>
                 </li>
               </ol>
-              <div class="dashboard-state dashboard-state--empty">
-                <div class="dashboard-state__visual" aria-hidden="true">
+              <div class="dashboard-state dashboard-state--empty empty-state">
+                <div class="empty-state__icon-stack" aria-hidden="true">
                   <span><i class="ph ph-steering-wheel icon-lg"></i></span>
                   <span><i class="ph ph-user icon-lg"></i></span>
                   <span><i class="ph ph-ranking icon-lg"></i></span>
@@ -244,15 +249,15 @@
                   évalués.
                 </p>
                 <a
-                  class="button button--secondary dashboard-state__action"
+                  class="button button--secondary dashboard-state__action empty-state__action"
                   href="../proposer/proposer.html"
                 >
                   <i class="ph ph-plus icon" aria-hidden="true"></i>
                   Proposer un trajet
                 </a>
               </div>
-              <div class="dashboard-state dashboard-state--error">
-                <div class="dashboard-state__visual" aria-hidden="true">
+              <div class="dashboard-state dashboard-state--error empty-state empty-state--error">
+                <div class="empty-state__icon-stack" aria-hidden="true">
                   <span><i class="ph ph-steering-wheel icon-lg"></i></span>
                   <span><i class="ph ph-cloud-slash icon-lg"></i></span>
                   <span><i class="ph ph-warning-circle icon-lg"></i></span>
@@ -260,7 +265,7 @@
                 <strong>Classement indisponible</strong>
                 <p>Impossible de charger les conducteurs les mieux notés.</p>
                 <a
-                  class="button button--secondary dashboard-state__action"
+                  class="button button--secondary dashboard-state__action empty-state__action"
                   href="dashboard.html"
                 >
                   <i class="ph ph-arrow-clockwise icon" aria-hidden="true"></i>
@@ -310,8 +315,8 @@
                   ></span>
                 </span>
               </div>
-              <div class="dashboard-state dashboard-state--empty">
-                <div class="dashboard-state__visual" aria-hidden="true">
+              <div class="dashboard-state dashboard-state--empty empty-state">
+                <div class="empty-state__icon-stack" aria-hidden="true">
                   <span><i class="ph ph-map-pin icon-lg"></i></span>
                   <span><i class="ph ph-car-profile icon-lg"></i></span>
                   <span><i class="ph ph-star icon-lg"></i></span>
@@ -321,15 +326,15 @@
                   Un trajet sera mis en avant dès qu’il recevra des réservations.
                 </p>
                 <a
-                  class="button button--secondary dashboard-state__action"
+                  class="button button--secondary dashboard-state__action empty-state__action"
                   href="../proposer/proposer.html"
                 >
                   <i class="ph ph-plus icon" aria-hidden="true"></i>
                   Proposer un trajet
                 </a>
               </div>
-              <div class="dashboard-state dashboard-state--error">
-                <div class="dashboard-state__visual" aria-hidden="true">
+              <div class="dashboard-state dashboard-state--error empty-state empty-state--error">
+                <div class="empty-state__icon-stack" aria-hidden="true">
                   <span><i class="ph ph-map-pin icon-lg"></i></span>
                   <span><i class="ph ph-cloud-slash icon-lg"></i></span>
                   <span><i class="ph ph-warning-circle icon-lg"></i></span>
@@ -337,7 +342,7 @@
                 <strong>Trajet vedette indisponible</strong>
                 <p>Impossible de récupérer le trajet le plus réservé.</p>
                 <a
-                  class="button button--secondary dashboard-state__action"
+                  class="button button--secondary dashboard-state__action empty-state__action"
                   href="dashboard.html"
                 >
                   <i class="ph ph-arrow-clockwise icon" aria-hidden="true"></i>
@@ -402,8 +407,8 @@
                 </tbody>
               </table>
             </section>
-            <div class="dashboard-state dashboard-state--empty">
-              <div class="dashboard-state__visual" aria-hidden="true">
+            <div class="dashboard-state dashboard-state--empty empty-state">
+              <div class="empty-state__icon-stack" aria-hidden="true">
                 <span><i class="ph ph-map-pin icon-lg"></i></span>
                 <span><i class="ph ph-map-trifold icon-lg"></i></span>
                 <span><i class="ph ph-car-profile icon-lg"></i></span>
@@ -414,15 +419,15 @@
                 proposés.
               </p>
               <a
-                class="button button--secondary dashboard-state__action"
+                class="button button--secondary dashboard-state__action empty-state__action"
                 href="../proposer/proposer.html"
               >
                 <i class="ph ph-plus icon" aria-hidden="true"></i>
                 Proposer un trajet
               </a>
             </div>
-            <div class="dashboard-state dashboard-state--error">
-              <div class="dashboard-state__visual" aria-hidden="true">
+            <div class="dashboard-state dashboard-state--error empty-state empty-state--error">
+              <div class="empty-state__icon-stack" aria-hidden="true">
                 <span><i class="ph ph-map-pin icon-lg"></i></span>
                 <span><i class="ph ph-cloud-slash icon-lg"></i></span>
                 <span><i class="ph ph-warning-circle icon-lg"></i></span>
@@ -430,7 +435,7 @@
               <strong>Activité indisponible</strong>
               <p>Impossible de charger la répartition des trajets par quartier.</p>
               <a
-                class="button button--secondary dashboard-state__action"
+                class="button button--secondary dashboard-state__action empty-state__action"
                 href="dashboard.html"
               >
                 <i class="ph ph-arrow-clockwise icon" aria-hidden="true"></i>
@@ -469,7 +474,7 @@
               href="../accueil/index.html"
               aria-label="Tokeyi, accueil"
             >
-              <img src="../assets/brand/logo-tokeyi-dark-v2.png" alt="Tokeyi">
+              <img src="../assets/brand/tokeyi-logo-on-dark.png" alt="Tokeyi">
             </a>
             <p>Vos trajets du quotidien, partagés simplement à Brazzaville.</p>
             <span class="footer-location">

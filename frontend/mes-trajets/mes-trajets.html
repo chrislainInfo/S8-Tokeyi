@@ -3,9 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tokeyi — Mes trajets</title>
-  <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="mes-trajets.css">
+  <title>Mes trajets | Tokeyi</title>
+  <link rel="icon" href="../assets/brand/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+  <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
+  <meta name="theme-color" content="#55d396">
+  <link rel="stylesheet" href="../css/main.css?v=11">
+  <link rel="stylesheet" href="mes-trajets.css?v=3">
 </head>
 <body id="page-mes-trajets">
   <a class="skip-link" href="#main-content">Aller au contenu</a>
@@ -16,7 +21,7 @@
       <div class="container header-inner">
         <a class="brand" href="../accueil/index.html" aria-label="Tokeyi, accueil">
           <span class="brand-logo" aria-hidden="true">
-            <img src="../assets/brand/logo-tokeyi-light-v2.png" alt="">
+            <img src="../assets/brand/tokeyi-logo-on-light.png" alt="">
           </span>
         </a>
 
@@ -24,7 +29,7 @@
           <a href="../accueil/index.html">Accueil</a>
           <a href="../recherche/recherche.html">Rechercher</a>
           <a href="mes-trajets.html" aria-current="page">Mes trajets</a>
-          <a class="session-only" href="../dashboard/dashboard.html">Tableau de bord</a>
+          <a href="../dashboard/dashboard.html">Activité</a>
         </nav>
 
         <div class="header-actions">
@@ -34,24 +39,62 @@
       </div>
     </header>
 
-    <main id="main-content">
-      <!-- Barre de recherche par numéro -->
-      <section class="barre-recherche-tel">
-        <input type="text" id="mt-tel" placeholder="Votre numéro de téléphone">
-        <button id="btn-charger-mestrajets">Voir mes trajets</button>
-        <select id="mt-filtre-statut">
-          <option value="">Tous les statuts</option>
-          <option value="effectue">Effectués</option>
-          <option value="en_attente">En attente</option>
-          <option value="annule">Annulés</option>
-        </select>
-      </section>
+    <main id="main-content" class="page-main">
+      <div class="container mes-trajets-page">
+        <header class="page-header">
+          <div class="page-heading">
+            <span class="eyebrow">Votre espace passager</span>
+            <h1>Mes trajets</h1>
+            <p>Retrouvez vos réservations et suivez leur statut avec votre numéro de téléphone.</p>
+          </div>
+          <a class="button button--secondary" href="../proposer/proposer.html">
+            <i class="ph ph-steering-wheel icon" aria-hidden="true"></i>
+            Proposer un trajet
+          </a>
+        </header>
 
-      <!-- Total dépensé -->
-      <p class="total-depense">Total dépensé : <strong id="mt-total"></strong></p>
+        <!-- NE PAS MODIFIER les id : main.js utilise ces trois contrôles. -->
+        <section class="search-bar mes-trajets-search" aria-label="Rechercher mes trajets">
+          <label class="search-segment" for="mt-tel">
+            <span class="search-segment__label">Numéro de téléphone</span>
+            <input class="search-segment__input" type="tel" id="mt-tel" inputmode="tel" autocomplete="tel" placeholder="Ex. 06 711 12 22">
+          </label>
+          <label class="search-segment" for="mt-filtre-statut">
+            <span class="search-segment__label">Statut</span>
+            <select class="search-segment__input" id="mt-filtre-statut">
+              <option value="">Tous les statuts</option>
+              <option value="effectue">Effectués</option>
+              <option value="en_attente">En attente</option>
+              <option value="annule">Annulés</option>
+            </select>
+          </label>
+          <button class="search-submit" id="btn-charger-mestrajets" type="button" aria-label="Afficher mes trajets">
+            <i class="ph ph-magnifying-glass icon" aria-hidden="true"></i>
+          </button>
+        </section>
 
-      <!-- Liste des réservations -->
-      <section id="mt-liste"></section>
+        <section class="mes-trajets-results" aria-labelledby="mes-trajets-results-title">
+          <div class="mes-trajets-summary">
+            <div>
+              <h2 id="mes-trajets-results-title">Vos réservations</h2>
+              <p>Les trajets associés au numéro renseigné apparaissent ici.</p>
+            </div>
+            <div class="mes-trajets-total">
+              <span>Total dépensé</span>
+              <strong id="mt-total">—</strong>
+            </div>
+          </div>
+
+          <div id="erreur-globale" class="state-panel state-panel--error" role="alert" aria-live="assertive" hidden></div>
+
+          <!-- NE PAS MODIFIER l'id : main.js injecte les réservations ici. -->
+          <div id="mt-liste" aria-live="polite">
+            <div class="state-panel mes-trajets-prompt">
+              Saisissez votre numéro pour afficher vos trajets.
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
 
     <!-- Footer fourni par le lead Full Stack -->
@@ -59,7 +102,7 @@
       <div class="container footer-grid">
         <div class="footer-brand">
           <a class="footer-brand__logo" href="../accueil/index.html" aria-label="Tokeyi, accueil">
-            <img src="../assets/brand/logo-tokeyi-dark-v2.png" alt="Tokeyi">
+            <img src="../assets/brand/tokeyi-logo-on-dark.png" alt="Tokeyi">
           </a>
           <p>Vos trajets du quotidien, partagés simplement à Brazzaville.</p>
           <span class="footer-location">
@@ -76,7 +119,7 @@
         <nav class="footer-column" aria-label="Navigation conducteur">
           <strong>Conducteur</strong>
           <a href="../proposer/proposer.html">Proposer un trajet</a>
-          <a class="session-only" href="../dashboard/dashboard.html">Tableau de bord</a>
+          <a href="../dashboard/dashboard.html">Activité</a>
         </nav>
         <nav class="footer-column" aria-label="Navigation du compte">
           <strong>Compte</strong>
@@ -110,17 +153,15 @@
             <span>Mes trajets</span>
           </a>
         </li>
-        <li class="bottom-nav__item--session">
-          <a href="../login/login.html">
-            <i class="ph ph-user-circle icon" aria-hidden="true"></i>
-            <span>Compte</span>
+        <li>
+          <a href="../dashboard/dashboard.html">
+            <i class="ph ph-chart-bar icon" aria-hidden="true"></i>
+            <span>Activité</span>
           </a>
         </li>
       </ul>
     </nav>
   </div>
-
-  <div id="erreur-globale" hidden></div>
 
   <script src="../functions.js"></script>
   <script src="../main.js"></script>

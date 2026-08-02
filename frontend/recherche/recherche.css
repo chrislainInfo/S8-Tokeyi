@@ -2,6 +2,11 @@
     margin-block: var(--space-12);
 }
 
+.barre-filtres {
+    width: min(calc(100% - 2rem), 46.875rem);
+    margin-inline: auto;
+}
+
 .search-heading {
   display: flex;
   align-items: end;
@@ -37,23 +42,6 @@
   color: var(--color-accent-deep);
   font-size: var(--text-sm);
   font-weight: 600;
-}
-
-.search-bar {
-    display: grid;
-    grid-template-columns: 1fr 1fr auto;
-    align-items: center;
-    min-height: 5rem;
-    border: 1px solid var(--color-line);
-    border-radius: var(--radius-lg);
-    background: var(--color-canvas);
-    box-shadow: var(--shadow-float);
-    width: min(100% - 3rem, 750px);
-    margin-inline: auto;
-}
-
-.search-submit {
-    justify-self: center;
 }
 
 .entete {
@@ -102,9 +90,28 @@
     row-gap: var(--space-8);
 }
 
+.search-result-skeleton {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+  padding: var(--space-4);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+}
+
+.search-result-skeleton .skeleton--visual {
+  height: 8rem;
+}
+
+#page-recherche:has(#erreur-globale:not([hidden])) #liste-trajets {
+  display: none;
+}
+
 .carte-trajet {
     padding: 0;
     position: relative;
+    grid-template-rows: 9.5rem repeat(4, auto) 1fr auto;
+    overflow: hidden;
 }
 
 .carte-trajet::before {
@@ -115,6 +122,7 @@
     background-size: cover;
     border-top-left-radius: var(--radius-lg);
     border-top-right-radius: var(--radius-lg);
+    transition: transform var(--transition);
 }
 
 .carte-trajet:nth-child(3n+1)::before {
@@ -129,43 +137,8 @@
     background-image: url("../assets/images/route-talangai-plateau.webp");
 }
 
-.carte-trajet {
-  transition:
-    border-color var(--transition),
-    box-shadow var(--transition),
-    transform var(--transition);
-}
-
-.carte-trajet:hover {
-  border-color: var(--color-accent);
-  box-shadow: var(--shadow-float);
-  transform: translateY(-2px);
-}
-
-.carte-trajet:hover .carte-trajet::before {
+.carte-trajet:hover::before {
     transform: scale(1.05);
-}
-
-.carte-trajet h3 {
-  margin: 0;
-  color: var(--color-ink);
-  font-size: var(--text-lg);
-  font-weight: 600;
-}
-
-.carte-trajet p{
-  margin: 0;
-  color: var(--color-muted);
-}
-
-.carte-trajet .heure,
-.carte-trajet .prix {
-  color: var(--color-ink);
-  font-weight: 600;
-}
-
-.carte-trajet .prix {
-  font-size: var(--text-lg);
 }
 
 .carte-trajet h3 ,.carte-trajet p, .carte-trajet .heure,
@@ -175,7 +148,7 @@
 
 .btn-voir {
     padding: var(--space-3) var(--space-5);
-    border: 1px solid var(--color-accent-strong);
+    border: 0;
     border-radius: var(--radius-sm);
     background: var(--color-accent);
     color: var(--color-ink);
@@ -188,7 +161,6 @@
 }
 
 .btn-voir:hover {
-  border-color: var(--color-accent-deep);
   background: var(--color-accent-deep);
   color: var(--color-canvas);
   transform: translateY(-1px);
@@ -198,10 +170,6 @@
     position: absolute;
     top: var(--space-3);
     left: var(--space-3);
-}
-
-.titre, .heure, .conducteur, .prix {
-    padding: 0 var(--space-4);
 }
 
 .heure::before {

@@ -11,7 +11,12 @@
       content="Consultez le détail d’un trajet Tokeyi et envoyez votre demande de réservation."
     >
     <title>Détail du trajet | Tokeyi</title>
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="icon" href="../assets/brand/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+    <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <meta name="theme-color" content="#55d396">
+  <link rel="stylesheet" href="../css/main.css?v=11">
     <link rel="stylesheet" href="trajet.css">
   </head>
   <body id="page-trajet">
@@ -26,7 +31,7 @@
             aria-label="Tokeyi, accueil"
           >
             <span class="brand-logo" aria-hidden="true">
-              <img src="../assets/brand/logo-tokeyi-light-v2.png" alt="">
+              <img src="../assets/brand/tokeyi-logo-on-light.png" alt="">
             </span>
           </a>
 
@@ -54,11 +59,11 @@
           </a>
 
           <section
-            class="trip-error"
+            class="trip-error empty-state empty-state--error"
             role="alert"
             aria-labelledby="trip-error-title"
           >
-            <div class="trip-error__visual" aria-hidden="true">
+            <div class="empty-state__icon-stack" aria-hidden="true">
               <span><i class="ph ph-car-profile icon-lg"></i></span>
               <span><i class="ph ph-cloud-slash icon-lg"></i></span>
               <span><i class="ph ph-warning-circle icon-lg"></i></span>
@@ -67,9 +72,9 @@
             <p class="trip-error__help">
               Impossible d’afficher les informations de ce trajet pour le moment.
             </p>
-            <p id="erreur-globale" hidden></p>
+            <p id="erreur-globale" class="sr-only" hidden></p>
             <a
-              class="button button--secondary"
+              class="button button--secondary empty-state__action"
               href="../recherche/recherche.html"
             >
               <i class="ph ph-arrow-left icon" aria-hidden="true"></i>
@@ -282,7 +287,7 @@
               href="../accueil/index.html"
               aria-label="Tokeyi, accueil"
             >
-              <img src="../assets/brand/logo-tokeyi-dark-v2.png" alt="Tokeyi">
+              <img src="../assets/brand/tokeyi-logo-on-dark.png" alt="Tokeyi">
             </a>
             <p>Vos trajets du quotidien, partagés simplement à Brazzaville.</p>
             <span class="footer-location">
@@ -340,10 +345,10 @@
               <span>Mes trajets</span>
             </a>
           </li>
-          <li class="bottom-nav__item--session">
-            <a href="../login/login.html">
-              <i class="ph ph-user-circle icon" aria-hidden="true"></i>
-              <span>Compte</span>
+          <li>
+            <a href="../dashboard/dashboard.html">
+              <i class="ph ph-chart-bar icon" aria-hidden="true"></i>
+              <span>Activité</span>
             </a>
           </li>
         </ul>

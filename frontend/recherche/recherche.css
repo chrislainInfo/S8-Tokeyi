@@ -175,7 +175,7 @@
 
 .btn-voir {
     padding: var(--space-3) var(--space-5);
-    border: 1px solid var(--color-accent-strong);
+    border: 0;
     border-radius: var(--radius-sm);
     background: var(--color-accent);
     color: var(--color-ink);
@@ -188,7 +188,6 @@
 }
 
 .btn-voir:hover {
-  border-color: var(--color-accent-deep);
   background: var(--color-accent-deep);
   color: var(--color-canvas);
   transform: translateY(-1px);

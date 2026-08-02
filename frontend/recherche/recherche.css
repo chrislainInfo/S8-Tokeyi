@@ -1,0 +1,206 @@
+.mg-block {
+    margin-block: var(--space-12);
+}
+
+.search-heading {
+  display: flex;
+  align-items: end;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.search-heading > div {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.search-heading h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.search-heading p {
+  max-width: 54ch;
+  color: var(--color-muted);
+}
+
+.search-heading__location {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--color-accent-soft);
+  color: var(--color-accent-deep);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.search-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    align-items: center;
+    min-height: 5rem;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    background: var(--color-canvas);
+    box-shadow: var(--shadow-float);
+    width: min(100% - 3rem, 750px);
+    margin-inline: auto;
+}
+
+.search-submit {
+    justify-self: center;
+}
+
+.entete {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-8);
+}
+
+#results-title {
+    font-size: clamp(1rem, 2.5vw, 2rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin-bottom: var(--space-2);
+}
+
+.btn-filtre {
+    margin-left: var(--space-4);
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-weight: 500;
+    font-size: var(--text-sm);
+    cursor: pointer;
+}
+
+.btn-filtre:first-child {
+    margin-left: 0;
+    background-color: var(--color-ink);
+    color: var(--color-accent);
+}
+
+.btn-filtre:hover {
+    background-color: var(--color-ink);
+    color: var(--color-accent);
+}
+
+.grid-trajets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-6);
+}
+
+.carte-trajet {
+    padding: 0;
+    position: relative;
+}
+
+.carte-trajet::before {
+    content: "";
+    width: 100%;
+    min-height: 9.5rem;
+    background-position: center;
+    background-size: cover;
+    border-top-left-radius: var(--radius-lg);
+    border-top-right-radius: var(--radius-lg);
+}
+
+.carte-trajet:nth-child(3n+1)::before {
+    background-image: url("../assets/images/route-bacongo-poto-poto.webp");
+}
+
+.carte-trajet:nth-child(3n+2)::before {
+    background-image: url("../assets/images/route-moungali-centre-ville.webp");
+}
+
+.carte-trajet:nth-child(3n+3)::before {
+    background-image: url("../assets/images/route-talangai-plateau.webp");
+}
+
+.carte-trajet {
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition);
+}
+
+.carte-trajet:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-float);
+  transform: translateY(-2px);
+}
+
+.carte-trajet:hover .carte-trajet::before {
+    transform: scale(1.05);
+}
+
+.carte-trajet h3 {
+  margin: 0;
+  color: var(--color-ink);
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+
+.carte-trajet p{
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.carte-trajet .heure,
+.carte-trajet .prix {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+.carte-trajet .prix {
+  font-size: var(--text-lg);
+}
+
+.btn-voir {
+    padding: var(--space-3) var(--space-5);
+    border: 1px solid var(--color-accent-strong);
+    border-radius: var(--radius-md);
+    background: var(--color-accent-strong);
+    color: var(--color-canvas);
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    width: calc(100% - var(--space-8));
+    margin: var(--space-4);
+}
+
+.btn-voir:hover {
+  border-color: var(--color-accent-deep);
+  background: var(--color-accent-deep);
+  color: var(--color-canvas);
+  transform: translateY(-1px);
+}
+
+.badge {
+    position: absolute;
+    top: var(--space-3);
+    left: var(--space-3);
+}
+
+.titre, .heure, .conducteur, .prix {
+    padding: 0 var(--space-4);
+}
+
+.heure::before {
+    content: "Depart : ";
+}
+
+.prix::before {
+    content: "Prix : ";
+}

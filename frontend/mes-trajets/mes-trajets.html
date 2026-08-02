@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tokeyi — Mes trajets</title>
   <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="mes-trajets.css">
+  <link rel="stylesheet" href="mes-trajets.css?v=2">
 </head>
 <body id="page-mes-trajets">
   <a class="skip-link" href="#main-content">Aller au contenu</a>
@@ -68,13 +68,21 @@
           </button>
         </section>
 
-        <div class="mes-trajets-summary">
-          <span>Total dépensé</span>
-          <strong id="mt-total">—</strong>
-        </div>
+        <section class="mes-trajets-results" aria-labelledby="mes-trajets-results-title">
+          <div class="mes-trajets-summary">
+            <div>
+              <h2 id="mes-trajets-results-title">Vos réservations</h2>
+              <p>Les trajets associés au numéro renseigné apparaissent ici.</p>
+            </div>
+            <div class="mes-trajets-total">
+              <span>Total dépensé</span>
+              <strong id="mt-total">—</strong>
+            </div>
+          </div>
 
-        <!-- NE PAS MODIFIER l'id : main.js injecte les réservations ici. -->
-        <section id="mt-liste" aria-live="polite"></section>
+          <!-- NE PAS MODIFIER l'id : main.js injecte les réservations ici. -->
+          <div id="mt-liste" aria-live="polite"></div>
+        </section>
       </div>
     </main>
 

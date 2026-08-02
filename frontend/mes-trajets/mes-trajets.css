@@ -1,10 +1,16 @@
 .mes-trajets-page {
   display: grid;
-  gap: var(--space-8);
+  gap: var(--space-10);
+}
+
+.mes-trajets-page > .page-header {
+  margin-bottom: 0;
 }
 
 .mes-trajets-search {
-  grid-template-columns: minmax(0, 1.6fr) minmax(12rem, 0.7fr) auto;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) auto;
+  width: min(100%, 46.875rem);
+  margin-inline: auto;
 }
 
 .mes-trajets-search .search-segment:nth-child(2) {
@@ -13,19 +19,44 @@
 
 .mes-trajets-summary {
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: space-between;
-  gap: var(--space-4);
-  padding: var(--space-4) 0;
-  border-block: 1px solid var(--color-line);
+  gap: var(--space-6);
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--color-line);
 }
 
-.mes-trajets-summary span {
+.mes-trajets-summary h2 {
+  margin: 0;
+  font-size: var(--text-2xl);
+  font-weight: 500;
+}
+
+.mes-trajets-summary p {
+  margin: var(--space-1) 0 0;
   color: var(--color-muted);
   font-size: var(--text-sm);
 }
 
-.mes-trajets-summary strong {
+.mes-trajets-results {
+  display: grid;
+  gap: var(--space-5);
+  min-width: 0;
+}
+
+.mes-trajets-total {
+  display: grid;
+  gap: var(--space-1);
+  min-width: max-content;
+  text-align: right;
+}
+
+.mes-trajets-total span {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+}
+
+.mes-trajets-total strong {
   color: var(--color-ink);
   font-size: var(--text-xl);
 }
@@ -97,6 +128,15 @@
 }
 
 @media (max-width: 46.5rem) {
+  .mes-trajets-summary {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .mes-trajets-total {
+    text-align: left;
+  }
+
   #page-mes-trajets .carte-reservation {
     grid-template-columns: 1fr;
     gap: var(--space-3);

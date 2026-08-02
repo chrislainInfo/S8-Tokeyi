@@ -61,20 +61,24 @@
     gap: var(--space-2);
   }
 
-  .session-menu__identity {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
+  #nav-session:has(#btn-deconnexion) {
+    width: 3rem;
+    padding: var(--space-1);
     overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+    color: transparent;
   }
 
-  .session-menu__trigger {
-    gap: var(--space-1);
-    padding-inline: var(--space-1);
+  #nav-session:has(#btn-deconnexion)::before {
+    left: var(--space-1);
+  }
+
+  #btn-deconnexion {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    padding: 0;
+    background: transparent;
+    color: transparent;
   }
 
   .mode-switch__label {
@@ -514,17 +518,17 @@
 }
 
 @media (max-width: 23rem) {
-  .session-auth {
+  #nav-session {
     gap: var(--space-1);
   }
 
-  .session-auth__link {
+  #nav-session > a {
     min-height: 2.5rem;
     padding-inline: var(--space-2);
     font-size: var(--text-xs);
   }
 
-  .session-auth__link--primary {
+  #nav-session > a + a {
     padding-inline: var(--space-3);
   }
 

@@ -1,13 +1,16 @@
-.standalone-page {
+.auth-shell-page {
   min-height: 100vh;
   background: var(--color-surface);
 }
 
-.standalone-main {
+.auth-main {
   display: grid;
   place-items: center;
-  min-height: 100vh;
-  padding: clamp(var(--space-3), 3vh, var(--space-6)) var(--space-4);
+  min-height: calc(100svh - var(--header-height));
+  padding: clamp(var(--space-8), 8vh, var(--space-16)) var(--space-4);
+  background:
+    linear-gradient(rgb(7 18 14 / 24%), rgb(7 18 14 / 24%)),
+    url("../assets/images/auth-carpool-brazzaville.jpg") center / cover no-repeat;
 }
 
 .auth-page {
@@ -15,7 +18,7 @@
   grid-template-columns: minmax(18rem, 0.9fr) minmax(20rem, 1.1fr);
   width: min(100%, 58rem);
   overflow: hidden;
-  border: 1px solid var(--color-line);
+  border: 0;
   border-radius: var(--radius-lg);
   background: var(--color-canvas);
   box-shadow: var(--shadow-card);
@@ -117,9 +120,9 @@
 }
 
 @media (max-width: 48rem) {
-  .standalone-main {
+  .auth-main {
     align-items: start;
-    padding-block: var(--space-4);
+    padding-block: var(--space-6);
   }
 
   .auth-page {
@@ -143,14 +146,12 @@
 }
 
 @media (max-width: 30rem) {
-  .standalone-main {
-    padding: 0;
+  .auth-main {
+    padding: var(--space-4);
   }
 
   .auth-page {
-    min-height: 100vh;
-    border: 0;
-    border-radius: 0;
+    border-radius: var(--radius-md);
   }
 
   .auth-page__intro,

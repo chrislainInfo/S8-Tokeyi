@@ -9,11 +9,32 @@
   <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
   <link rel="manifest" href="../site.webmanifest">
   <meta name="theme-color" content="#55d396">
-  <link rel="stylesheet" href="../css/main.css?v=8">
-  <link rel="stylesheet" href="inscription.css?v=2">
+  <link rel="stylesheet" href="../css/main.css?v=11">
+  <link rel="stylesheet" href="inscription.css?v=7">
 </head>
-<body id="page-inscription" class="standalone-page">
-  <main class="standalone-main" id="main-content">
+<body id="page-inscription" class="auth-shell-page">
+  <a class="skip-link" href="#main-content">Aller au contenu</a>
+  <div class="site-shell">
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../accueil/index.html" aria-label="Tokeyi, accueil">
+          <span class="brand-logo">
+            <img src="../assets/brand/tokeyi-logo-on-light.png" alt="">
+          </span>
+        </a>
+        <nav class="desktop-nav" aria-label="Navigation principale">
+          <a href="../accueil/index.html">Accueil</a>
+          <a href="../recherche/recherche.html">Rechercher</a>
+          <a href="../mes-trajets/mes-trajets.html">Mes trajets</a>
+          <a href="../dashboard/dashboard.html">Activité</a>
+        </nav>
+        <div class="header-actions">
+          <div id="nav-session" aria-live="polite"></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="auth-main" id="main-content">
     <section class="auth-page" aria-labelledby="signup-page-title">
       <div class="auth-page__intro">
         <a class="brand-icon" href="../accueil/index.html" aria-label="Retour à l’accueil Tokeyi">
@@ -65,7 +86,49 @@
         </div>
       </form>
     </section>
-  </main>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a class="footer-brand__logo" href="../accueil/index.html" aria-label="Tokeyi, accueil">
+            <img src="../assets/brand/tokeyi-logo-on-dark.png" alt="Tokeyi">
+          </a>
+          <p>Vos trajets du quotidien, partagés simplement à Brazzaville.</p>
+          <span class="footer-location"><i class="ph ph-map-pin icon" aria-hidden="true"></i>Brazzaville</span>
+        </div>
+        <nav class="footer-column" aria-label="Navigation principale du pied de page">
+          <strong>Navigation</strong>
+          <a href="../accueil/index.html">Accueil</a>
+          <a href="../recherche/recherche.html">Trouver un trajet</a>
+          <a href="../mes-trajets/mes-trajets.html">Mes trajets</a>
+        </nav>
+        <nav class="footer-column" aria-label="Navigation conducteur">
+          <strong>Conducteur</strong>
+          <a href="../proposer/proposer.html">Proposer un trajet</a>
+          <a href="../dashboard/dashboard.html">Activité</a>
+        </nav>
+        <nav class="footer-column" aria-label="Navigation du compte">
+          <strong>Compte</strong>
+          <a href="../inscription/inscription.html">Créer un compte</a>
+          <a href="../login/login.html">Se connecter</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Tokeyi</span>
+        <span>Le paiement s’effectue directement entre passager et conducteur.</span>
+      </div>
+    </footer>
+  </div>
+
+  <nav class="bottom-nav" aria-label="Navigation mobile principale">
+    <ul class="bottom-nav__list">
+      <li><a href="../accueil/index.html"><i class="ph ph-house icon" aria-hidden="true"></i><span>Accueil</span></a></li>
+      <li><a href="../recherche/recherche.html"><i class="ph ph-magnifying-glass icon" aria-hidden="true"></i><span>Rechercher</span></a></li>
+      <li><a href="../mes-trajets/mes-trajets.html"><i class="ph ph-ticket icon" aria-hidden="true"></i><span>Mes trajets</span></a></li>
+      <li><a href="../dashboard/dashboard.html"><i class="ph ph-chart-bar icon" aria-hidden="true"></i><span>Activité</span></a></li>
+    </ul>
+  </nav>
 
   <script src="../functions.js"></script>
   <script src="../main.js"></script>

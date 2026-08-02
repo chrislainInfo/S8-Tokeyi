@@ -7,7 +7,7 @@
   display: grid;
   place-items: center;
   min-height: 100vh;
-  padding: var(--space-8) var(--space-4);
+  padding: clamp(var(--space-3), 3vh, var(--space-6)) var(--space-4);
 }
 
 .auth-page {
@@ -24,8 +24,8 @@
 .auth-page__intro {
   display: grid;
   align-content: center;
-  gap: var(--space-8);
-  padding: var(--space-10);
+  gap: var(--space-6);
+  padding: var(--space-8);
   background: var(--color-dark-surface);
   color: var(--color-canvas);
 }
@@ -64,6 +64,7 @@
 .brand-icon {
   display: block;
   width: min(100%, 9rem);
+  border-radius: var(--radius-sm);
 }
 
 .brand-icon img {
@@ -72,26 +73,18 @@
   height: auto;
 }
 
-.auth-page__form {
-  align-self: center;
-  padding: var(--space-8) var(--space-10) var(--space-10);
-}
-
-.auth-home-link {
-  display: inline-flex;
-  margin-bottom: var(--space-8);
-  border-radius: var(--radius-sm);
-}
-
-.auth-home-link img {
-  display: block;
-  width: auto;
-  height: 2.25rem;
-}
-
-.auth-home-link:focus-visible {
+.brand-icon:focus-visible {
   outline: 3px solid var(--color-accent);
   outline-offset: 4px;
+}
+
+.auth-page__form {
+  align-self: center;
+  padding: var(--space-6) var(--space-8);
+}
+
+.auth-page__form .stack--lg {
+  gap: var(--space-4);
 }
 
 .auth-page__form h2 {
@@ -147,9 +140,6 @@
     font-size: var(--text-2xl);
   }
 
-  .auth-home-link {
-    margin-bottom: var(--space-6);
-  }
 }
 
 @media (max-width: 30rem) {

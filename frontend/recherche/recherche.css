@@ -105,6 +105,7 @@
 .carte-trajet {
     padding: 0;
     position: relative;
+    grid-template-rows: 9.5rem repeat(4, auto) 1fr auto;
 }
 
 .carte-trajet::before {
@@ -115,6 +116,7 @@
     background-size: cover;
     border-top-left-radius: var(--radius-lg);
     border-top-right-radius: var(--radius-lg);
+    transition: transform var(--transition);
 }
 
 .carte-trajet:nth-child(3n+1)::before {

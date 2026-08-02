@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Tokeyi — Proposer un trajet</title>
-  <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="proposer.css">
+  <link rel="stylesheet" href="../css/main.css?v=3">
+  <link rel="stylesheet" href="proposer.css?v=3">
 </head>
 <body id="page-proposer">
   <a class="skip-link" href="#main-content">Aller au contenu</a>
@@ -46,6 +46,7 @@
              mise en forme de la liste <ul><li> injectée par main.js.
              NE PAS MODIFIER l'id. -->
         <div id="erreurs-form" class="error-banner" hidden></div>
+        <div id="erreur-globale" class="state-panel state-panel--error state-panel--compact" role="alert" aria-live="assertive" hidden></div>
 
         <div class="proposer-layout">
           <!-- =====================================================================
@@ -57,14 +58,14 @@
             <div class="form-group">
               <label for="p-depart">Quartier de départ</label>
               <select id="p-depart" required>
-                <option value="" disabled selected>Sélectionnez un quartier</option>
+                <option value="" disabled selected>Chargement des quartiers…</option>
               </select>
             </div>
 
             <div class="form-group">
               <label for="p-arrivee">Quartier d'arrivée</label>
               <select id="p-arrivee" required>
-                <option value="" disabled selected>Sélectionnez un quartier</option>
+                <option value="" disabled selected>Chargement des quartiers…</option>
                 <!-- Rempli dynamiquement par main.js via /api/quartiers -->
               </select>
             </div>
@@ -172,9 +173,6 @@
       </ul>
     </nav>
   </div>
-
-  <!-- NE PAS MODIFIER : Élément pour erreurs globales + scripts JS backend -->
-  <div id="erreur-globale" hidden></div>
 
   <script src="../functions.js"></script>
   <script src="../main.js"></script>

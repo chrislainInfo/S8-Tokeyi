@@ -102,6 +102,44 @@
     row-gap: var(--space-8);
 }
 
+.search-result-skeleton {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+  padding: var(--space-4);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+}
+
+.search-result-skeleton .skeleton--visual {
+  height: 8rem;
+}
+
+#page-recherche:has(#erreur-globale:not([hidden])) #liste-trajets {
+  display: none;
+}
+
+#page-recherche .aucun-resultat {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-3);
+  padding-block: var(--space-10);
+  border-style: solid;
+  background: transparent;
+}
+
+#page-recherche .aucun-resultat::before {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  color: var(--color-accent-deep);
+  font-weight: 700;
+  content: "∅";
+}
+
 .carte-trajet {
     padding: 0;
     position: relative;

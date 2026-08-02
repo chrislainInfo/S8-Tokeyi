@@ -63,6 +63,28 @@
   display: none;
 }
 
+#erreur-globale[hidden],
+#erreurs-form[hidden] {
+  display: none !important;
+}
+
+#erreur-globale.state-panel {
+  margin-block: 0;
+  padding: var(--space-8) var(--space-6);
+  border-inline: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: var(--text-base);
+}
+
+#erreur-globale.state-panel--compact {
+  padding: var(--space-4);
+  border: 1px solid var(--color-danger);
+  border-radius: var(--radius-md);
+  background: var(--color-danger-soft);
+  font-size: var(--text-sm);
+}
+
 /* Résultats de recherche générés par main.js */
 .carte-trajet,
 .carte-reservation {

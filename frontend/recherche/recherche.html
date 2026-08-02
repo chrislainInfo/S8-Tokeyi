@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tokeyi — Recherche</title>
-  <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="recherche.css">
+  <link rel="stylesheet" href="../css/main.css?v=3">
+  <link rel="stylesheet" href="recherche.css?v=3">
 </head>
 <body id="page-recherche">
 
@@ -96,37 +96,27 @@
           <button class="btn-filtre" >Prix croissant</button>
         </div>
       </div>
+      <div id="erreur-globale" class="state-panel state-panel--error" role="alert" aria-live="assertive" hidden></div>
       <div class="grid-trajets" id="liste-trajets">
-        <!-- <article class="carte-trajet">
-          <h3 class="titre">Quartier A → Quartier B</h3>
-          <p class="heure">15h30</p>
-          <p class="conducteur">Conducteur : Jean Dupont</p>
-          <p class="prix">2000 FCFA</p>
-          <span class="badge badge-dispo">Places disponibles</span>
-          <a href="#" class="btn-voir">Voir le trajet</a>
+        <article class="search-result-skeleton" aria-hidden="true">
+          <span class="skeleton skeleton--visual"></span>
+          <span class="skeleton skeleton--line"></span>
+          <span class="skeleton skeleton--line skeleton--line-short"></span>
         </article>
-        <article class="carte-trajet">
-          <h3 class="titre">Quartier A → Quartier B</h3>
-          <p class="heure">15h30</p>
-          <p class="conducteur">Conducteur : Jean Dupont</p>
-          <p class="prix">2000 FCFA</p>
-          <span class="badge badge-limite">Places limitées</span>
-          <a href="#" class="btn-voir">Voir le trajet</a>
+        <article class="search-result-skeleton" aria-hidden="true">
+          <span class="skeleton skeleton--visual"></span>
+          <span class="skeleton skeleton--line"></span>
+          <span class="skeleton skeleton--line skeleton--line-short"></span>
         </article>
-        <article class="carte-trajet">
-          <h3 class="titre">Quartier A → Quartier B</h3>
-          <p class="heure">15h30</p>
-          <p class="conducteur">Conducteur : Jean Dupont</p>
-          <p class="prix">2000 FCFA</p>
-          <span class="badge badge-dispo">Places disponibles</span>
-          <a href="#" class="btn-voir">Voir le trajet</a>
-        </article> -->
-        <!-- <p class="aucun-resultat">Aucun trajet trouvé.</p> -->
+        <article class="search-result-skeleton" aria-hidden="true">
+          <span class="skeleton skeleton--visual"></span>
+          <span class="skeleton skeleton--line"></span>
+          <span class="skeleton skeleton--line skeleton--line-short"></span>
+        </article>
+        <span class="sr-only">Chargement des trajets disponibles…</span>
       </div>
     </section>
   </main>
-
-   <div id="erreur-globale" hidden></div>
 
   <footer class="site-footer">
     <div class="container footer-grid">

@@ -904,6 +904,60 @@
   color: var(--color-muted);
 }
 
+.state-panel {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  min-height: 10rem;
+  padding: var(--space-8) var(--space-6);
+  border-block: 1px solid var(--color-line);
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.state-panel::before {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--color-surface-strong);
+  color: var(--color-ink);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  content: "i";
+}
+
+.state-panel--error {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+.state-panel--error::before {
+  background: var(--color-danger-soft);
+  color: var(--color-danger);
+  content: "!";
+}
+
+.state-panel--compact {
+  grid-template-columns: auto minmax(0, 1fr);
+  justify-items: start;
+  min-height: 0;
+  padding: var(--space-4);
+  text-align: left;
+}
+
+.state-panel--compact::before {
+  width: 2rem;
+  height: 2rem;
+  font-size: var(--text-sm);
+}
+
+.state-panel[hidden] {
+  display: none;
+}
+
 .skeleton {
   position: relative;
   overflow: hidden;

@@ -126,6 +126,32 @@
   outline-offset: 2px;
 }
 
+.aucun-resultat,
+#mt-liste > p {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-3);
+  margin: 0;
+  padding: var(--space-10) var(--space-6);
+  border: 0;
+  background: transparent;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.aucun-resultat::before,
+#mt-liste > p::before {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  color: var(--color-accent-deep);
+  font-weight: 700;
+  content: "∅";
+}
+
 .badge-dispo,
 .badge-limite,
 .badge-complet,

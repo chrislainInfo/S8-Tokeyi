@@ -54,11 +54,11 @@
           </a>
 
           <section
-            class="trip-error"
+            class="trip-error empty-state empty-state--error"
             role="alert"
             aria-labelledby="trip-error-title"
           >
-            <div class="trip-error__visual" aria-hidden="true">
+            <div class="empty-state__icon-stack" aria-hidden="true">
               <span><i class="ph ph-car-profile icon-lg"></i></span>
               <span><i class="ph ph-cloud-slash icon-lg"></i></span>
               <span><i class="ph ph-warning-circle icon-lg"></i></span>
@@ -67,9 +67,9 @@
             <p class="trip-error__help">
               Impossible d’afficher les informations de ce trajet pour le moment.
             </p>
-            <p id="erreur-globale" hidden></p>
+            <p id="erreur-globale" class="sr-only" hidden></p>
             <a
-              class="button button--secondary"
+              class="button button--secondary empty-state__action"
               href="../recherche/recherche.html"
             >
               <i class="ph ph-arrow-left icon" aria-hidden="true"></i>

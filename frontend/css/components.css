@@ -893,15 +893,27 @@
   color: var(--color-canvas);
 }
 
+.empty-state h1,
 .empty-state h2,
-.empty-state h3 {
+.empty-state h3,
+.empty-state > strong {
   margin-bottom: var(--space-2);
+  color: var(--color-ink);
   font-size: var(--text-xl);
+  font-weight: 600;
 }
 
 .empty-state p {
+  max-width: 36rem;
   margin-bottom: var(--space-6);
   color: var(--color-muted);
+  font-size: var(--text-sm);
+  text-wrap: pretty;
+}
+
+.empty-state__action {
+  min-height: 2.5rem;
+  padding: var(--space-2) var(--space-4);
 }
 
 .state-panel {
@@ -911,7 +923,6 @@
   width: 100%;
   min-height: 10rem;
   padding: var(--space-8) var(--space-6);
-  border-block: 1px solid var(--color-line);
   color: var(--color-muted);
   text-align: center;
 }
@@ -930,8 +941,7 @@
 }
 
 .state-panel--error {
-  border-color: var(--color-danger);
-  color: var(--color-danger);
+  color: var(--color-body);
 }
 
 .state-panel--error::before {

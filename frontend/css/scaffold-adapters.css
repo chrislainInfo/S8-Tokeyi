@@ -31,7 +31,7 @@
 #erreur-globale.state-panel {
   margin-block: 0;
   padding: var(--space-8) var(--space-6);
-  border-inline: 0;
+  border: 0;
   border-radius: 0;
   background: transparent;
   font-size: var(--text-base);

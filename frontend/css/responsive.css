@@ -62,23 +62,16 @@
   }
 
   #nav-session:has(#btn-deconnexion) {
-    width: 3rem;
-    padding: var(--space-1);
-    overflow: hidden;
-    color: transparent;
-  }
-
-  #nav-session:has(#btn-deconnexion)::before {
-    left: var(--space-1);
-  }
-
-  #btn-deconnexion {
-    position: absolute;
-    inset: 0;
-    width: 100%;
+    width: auto;
+    min-height: 0;
     padding: 0;
-    background: transparent;
+    overflow: visible;
     color: transparent;
+    font-size: 0;
+  }
+
+  #nav-session > #btn-deconnexion {
+    font-size: var(--text-sm);
   }
 
   .mode-switch__label {

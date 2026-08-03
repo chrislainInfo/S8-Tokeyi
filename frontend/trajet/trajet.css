@@ -232,6 +232,8 @@
 
 .booking-form input {
   min-height: 3rem;
+  color: var(--color-ink);
+  caret-color: var(--color-ink);
 }
 
 .booking-form .button {

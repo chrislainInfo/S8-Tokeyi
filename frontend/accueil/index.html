@@ -13,8 +13,8 @@
   <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
   <link rel="manifest" href="../site.webmanifest">
   <meta name="theme-color" content="#55d396">
-  <link rel="stylesheet" href="../css/main.css?v=11">
-  <link rel="stylesheet" href="accueil.css">
+  <link rel="stylesheet" href="../css/main.css?v=15">
+  <link rel="stylesheet" href="accueil.css?v=2">
 </head>
 <body id="page-accueil">
   <a class="skip-link" href="#main-content">Aller au contenu</a>
@@ -43,18 +43,18 @@
     </header>
 
     <main id="main-content">
-      <section class="container home-hero" aria-labelledby="hero-title">
+      <section class="container home-hero hero-enter" aria-labelledby="hero-title">
         <div class="home-hero__copy">
-          <p class="home-hero__label">
+          <p class="home-hero__label hero-enter__item hero-enter__item--1">
             <i class="ph ph-map-pin icon" aria-hidden="true"></i>
             Covoiturage local à Brazzaville
           </p>
-          <h1 id="hero-title">Votre prochain trajet est peut-être déjà prévu.</h1>
-          <p>
+          <h1 id="hero-title" class="hero-enter__item hero-enter__item--2">Votre prochain trajet est peut-être déjà prévu.</h1>
+          <p class="hero-enter__item hero-enter__item--3">
             Tokeyi met en relation les conducteurs et les passagers qui se
             déplacent dans la même direction, au même moment.
           </p>
-          <div class="home-hero__actions">
+          <div class="home-hero__actions hero-enter__item hero-enter__item--4">
             <a class="button button--primary" href="../recherche/recherche.html">
               <i class="ph ph-magnifying-glass icon" aria-hidden="true"></i>
               Rechercher un trajet
@@ -68,7 +68,7 @@
       </section>
 
       <section class="container section service-pulse" aria-labelledby="pulse-heading">
-        <div class="section-header">
+        <div class="section-header scroll-reveal scroll-reveal--up">
           <div>
             <h2 id="pulse-heading">Tokeyi aujourd’hui</h2>
             <p>Un aperçu de l’activité de covoiturage à Brazzaville.</p>
@@ -79,7 +79,7 @@
         </div>
 
         <section
-          class="empty-state empty-state--error home-error"
+          class="empty-state empty-state--error home-error scroll-reveal scroll-reveal--up"
           role="alert"
           aria-labelledby="home-error-title"
           aria-describedby="home-error-help erreur-globale"
@@ -100,7 +100,7 @@
           </a>
         </section>
 
-        <div class="metric-strip" role="group" aria-label="Indicateurs du service">
+        <div class="metric-strip scroll-reveal scroll-reveal--up scroll-reveal--late" role="group" aria-label="Indicateurs du service">
           <article class="carte-indicateur">
             <span class="carte-indicateur__icon" aria-hidden="true">
               <i class="ph ph-car-profile icon-lg"></i>
@@ -165,7 +165,7 @@
       </section>
 
       <section class="container section explainer" aria-labelledby="how-heading">
-        <div class="explainer__intro">
+        <div class="explainer__intro scroll-reveal scroll-reveal--left">
           <h2 id="how-heading">Un trajet partagé en trois temps</h2>
           <p>
             De la recherche au point de rencontre, chaque étape reste simple
@@ -176,7 +176,7 @@
           </a>
         </div>
 
-        <ol class="process-list">
+        <ol class="process-list scroll-reveal scroll-reveal--right scroll-reveal--late">
           <li>
             <span class="process-list__index">1</span>
             <div>
@@ -202,14 +202,14 @@
       </section>
 
       <section class="container section reasons" aria-labelledby="reasons-heading">
-        <div class="section-header">
+        <div class="section-header scroll-reveal scroll-reveal--up">
           <div>
             <h2 id="reasons-heading">Pourquoi partager vos trajets ?</h2>
             <p>Une mobilité plus accessible, plus sobre et plus locale.</p>
           </div>
         </div>
 
-        <div class="reason-list">
+        <div class="reason-list scroll-reveal scroll-reveal--up scroll-reveal--late">
           <article>
             <i class="ph ph-wallet icon-lg" aria-hidden="true"></i>
             <h3>Économique</h3>

@@ -5,7 +5,11 @@
   display: grid;
   align-content: center;
   gap: var(--space-10);
-  min-height: 34rem;
+  min-height: clamp(
+    28rem,
+    calc(100svh - var(--header-height) - var(--space-6)),
+    34rem
+  );
   margin-block: var(--space-6) 0;
   padding: clamp(3rem, 6vw, 5rem);
   overflow: hidden;
@@ -82,6 +86,26 @@
 /* État d'erreur de l'activité */
 .home-error {
   margin-top: var(--space-6);
+}
+
+/* Les écrans d'ordinateur peu hauts gardent le hero dans le premier viewport. */
+@media (min-width: 48rem) and (max-height: 48rem) {
+  .home-hero {
+    gap: var(--space-6);
+    padding: clamp(2rem, 4.5vh, 3rem);
+  }
+
+  .home-hero__copy {
+    gap: var(--space-3);
+  }
+
+  .home-hero__copy h1 {
+    font-size: clamp(2.75rem, 5vw, 4rem);
+  }
+
+  .home-hero__actions {
+    margin-top: 0;
+  }
 }
 
 .home-error:has(#erreur-globale[hidden]),

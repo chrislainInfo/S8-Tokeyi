@@ -8,7 +8,7 @@
  * résultat dans le DOM. Vous n'avez rien à modifier ici.
  */
 
-const API = "http://localhost:5000/api";
+const API = "https://s8-tokeyi-backend.onrender.com";
 
 async function api(path, options = {}) {
     const r = await fetch(`${API}${path}`, options);

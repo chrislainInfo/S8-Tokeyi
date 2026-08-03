@@ -8,3 +8,4 @@ node_modules/
 .env
 /_solution_CP
 /CLAUDE.md
+.venv

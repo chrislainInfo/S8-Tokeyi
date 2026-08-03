@@ -26,7 +26,9 @@ function compterTrajetsAujourdhui(trajets, dateAujourdhui) {
      * @return {number} - nombre de trajets à cette date
      * Exemple : compterTrajetsAujourdhui([{date:"2026-07-27"},{date:"2026-07-28"}], "2026-07-27") → 1
      */
-    // TODO
+    if (!Array.isArray(trajets)) return 0;
+
+    return trajets.filter(trajet => trajet && trajet.date === dateAujourdhui).length;
 }
 
 function formaterQuartierPrincipal(compteParQuartier) {
@@ -36,7 +38,19 @@ function formaterQuartierPrincipal(compteParQuartier) {
      * @return {string} - ex: "Poto-Poto (8 trajets)"
      * Si l'objet est vide, retourne "Aucun trajet".
      */
-    // TODO
+    if (!compteParQuartier || typeof compteParQuartier !== "object") {
+        return "Aucun trajet";
+    }
+
+    const quartiers = Object.entries(compteParQuartier);
+    if (quartiers.length === 0) return "Aucun trajet";
+
+    const [quartier, nombreTrajets] = quartiers.reduce((principal, courant) => {
+        return courant[1] > principal[1] ? courant : principal;
+    });
+    const libelleTrajet = nombreTrajets === 1 ? "trajet" : "trajets";
+
+    return `${quartier} (${nombreTrajets} ${libelleTrajet})`;
 }
 
 // ============================================================================
@@ -51,7 +65,8 @@ function filtrerParQuartierDepart(trajets, quartier) {
      * @return {Array} - trajets filtrés
      * Si quartier est vide ou null, retourne tous les trajets.
      */
-    // TODO
+    if (!quartier) return trajets;
+    return trajets.filter(trajet => trajet && trajet.quartier_depart === quartier);
 }
 
 function rechercherParMotCle(trajets, motCle) {
@@ -64,6 +79,15 @@ function rechercherParMotCle(trajets, motCle) {
      * Si motCle est vide, retourne tous les trajets.
      */
     // TODO
+    if (!motCle) return trajets;
+    const motCleMinuscule = motCle.toLowerCase();
+    return trajets.filter(trajet => {
+        return (
+            (trajet.quartier_depart && trajet.quartier_depart.toLowerCase().includes(motCleMinuscule)) ||
+            (trajet.quartier_arrivee && trajet.quartier_arrivee.toLowerCase().includes(motCleMinuscule)) ||
+            (trajet.commentaire && trajet.commentaire.toLowerCase().includes(motCleMinuscule))
+        );
+    });
 }
 
 // ============================================================================
@@ -77,7 +101,7 @@ function formaterPrix(prix) {
      * @return {string} - "5 000 FCFA"
      * Exemple : formaterPrix(500) → "500 FCFA", formaterPrix(1500) → "1 500 FCFA"
      */
-    // TODO
+    return `${prix.toLocaleString('fr-FR').replace(/\s/g, ' ')} FCFA`;
 }
 
 function formaterHeure(heure) {
@@ -86,7 +110,7 @@ function formaterHeure(heure) {
      * @param {string} heure - format "HH:MM" (ex: "07:30")
      * @return {string} - "07h30"
      */
-    // TODO
+     return `${heure.replace(':' , 'h')}`;
 }
 
 // ============================================================================
@@ -107,6 +131,51 @@ function validerFormulaireProposer(formulaire) {
      * - prix_place > 0
      */
     // TODO
+    const erreurs = [];
+
+    // 1. Validation du quartier de départ
+    if (!formulaire.quartier_depart || formulaire.quartier_depart.trim() === "") {
+        erreurs.push("Le quartier de départ est obligatoire.");
+    }
+
+    // 2. Validation du quartier d'arrivée
+    if (!formulaire.quartier_arrivee || formulaire.quartier_arrivee.trim() === "") {
+        erreurs.push("Le quartier d'arrivée est obligatoire.");
+    }
+
+    // 3. Vérification que les quartiers de départ et d'arrivée sont différents
+    if (
+        formulaire.quartier_depart && 
+        formulaire.quartier_arrivee && 
+        formulaire.quartier_depart.trim() !== "" &&
+        formulaire.quartier_depart === formulaire.quartier_arrivee
+    ) {
+        erreurs.push("Le quartier de départ et le quartier d'arrivée doivent être différents.");
+    }
+
+    // 4. Validation de l'heure (Format HH:MM obligatoire)
+    const regexHeure = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+    if (!formulaire.heure || !regexHeure.test(formulaire.heure.trim())) {
+        erreurs.push("L'heure de départ doit être renseignée au format valide HH:MM (ex: 07:30).");
+    }
+
+    // 5. Validation des places disponibles (nombre entier entre 1 et 8)
+    const places = Number(formulaire.places_dispo);
+    if (isNaN(places) || places < 1 || places > 8 || !Number.isInteger(places)) {
+        erreurs.push("Le nombre de places disponibles doit être un nombre entier compris entre 1 et 8.");
+    }
+
+    // 6. Validation du prix par place (nombre supérieur à 0)
+    const prix = Number(formulaire.prix_place);
+    if (isNaN(prix) || prix <= 0) {
+        erreurs.push("Le prix par place doit être un nombre supérieur à 0 FCFA.");
+    }
+
+    // Résultat final de la validation
+    return {
+        valide: erreurs.length === 0,
+        erreurs: erreurs
+    };
 }
 
 function formaterMessageConfirmation(nom, quartierDepart, quartierArrivee, heure) {
@@ -118,6 +187,7 @@ function formaterMessageConfirmation(nom, quartierDepart, quartierArrivee, heure
      *   → "Bonjour Marie, votre réservation pour Bacongo → Poto-Poto à 07:30 a été enregistrée."
      */
     // TODO
+    return `Bonjour ${nom}, votre réservation pour ${quartierDepart} → ${quartierArrivee} à ${heure} a été enregistrée.`;
 }
 
 // ============================================================================
@@ -131,7 +201,8 @@ function filtrerReservationsParStatut(reservations, statut) {
      * @param {string} statut - "effectue", "en_attente", "annule" ou "" pour toutes
      * @return {Array} - réservations correspondantes
      */
-    // TODO
+    if (!statut) return reservations || [];
+    return (reservations || []).filter(reservation => reservation.statut === statut);
 }
 
 function calculerTotalDepenseParPassager(reservations) {
@@ -144,7 +215,12 @@ function calculerTotalDepenseParPassager(reservations) {
      *   3 réservations : 500 (effectue), 700 (en_attente), 400 (annule)
      *   → 1200
      */
-    // TODO
+    return (reservations || []).reduce((total, reservation) => {
+        if (reservation.statut !== "annule") {
+            return total + (reservation.trajet ? reservation.trajet.prix_place : 0);
+        }
+        return total;
+    }, 0);
 }
 
 // ============================================================================
@@ -160,7 +236,15 @@ function calculerPourcentageOccupation(placesOccupees, placesTotales) {
      * Exemple : 2 places sur 4 → 50
      * Si placesTotales est 0, retourne 0.
      */
-    // TODO
+    const total = Number(placesTotales);
+    const occupees = Number(placesOccupees);
+
+    if (!Number.isFinite(total) || total <= 0 || !Number.isFinite(occupees)) {
+        return 0;
+    }
+
+    const pourcentage = Math.round((occupees / total) * 100);
+    return Math.min(100, Math.max(0, pourcentage));
 }
 
 function getBadgeDisponibilite(placesRestantes) {
@@ -174,7 +258,18 @@ function getBadgeDisponibilite(placesRestantes) {
      * - 1 place  → {libelle: "1 place", classe: "badge-limite"}
      * - 2+ places → {libelle: "N places", classe: "badge-dispo"}  (N = placesRestantes)
      */
-    // TODO
+    const places = Number(placesRestantes);
+    const total = Number.isFinite(places) ? Math.max(0, Math.trunc(places)) : 0;
+
+    if (total === 0) {
+        return {libelle: "Complet", classe: "badge-complet"};
+    }
+
+    if (total === 1) {
+        return {libelle: "1 place", classe: "badge-limite"};
+    }
+
+    return {libelle: `${total} places`, classe: "badge-dispo"};
 }
 
 // ============================================================================
@@ -192,7 +287,31 @@ function validerFormulaireInscription(formulaire) {
      * - telephone obligatoire, au moins 9 chiffres
      * - mot_de_passe obligatoire, au moins 4 caractères
      */
-    // TODO
+    const erreurs = [];
+
+    // Validation du nom
+    if (!formulaire.nom || formulaire.nom.trim() === "") {
+        erreurs.push("Le nom est obligatoire.");
+    }
+
+    // Validation du téléphone
+    if (!formulaire.telephone || formulaire.telephone.trim() === "") {
+        erreurs.push("Le numéro de téléphone est obligatoire.");
+    } else if (!/^\d{9,}$/.test(formulaire.telephone.trim())) {
+        erreurs.push("Le numéro de téléphone doit contenir au moins 9 chiffres.");
+    }
+
+    // Validation du mot de passe
+    if (!formulaire.mot_de_passe || formulaire.mot_de_passe.trim() === "") {
+        erreurs.push("Le mot de passe est obligatoire.");
+    } else if (formulaire.mot_de_passe.trim().length < 4) {
+        erreurs.push("Le mot de passe doit contenir au moins 4 caractères.");
+    }
+
+    return {
+        valide: erreurs.length === 0,
+        erreurs: erreurs
+    };
 }
 
 function validerFormulaireLogin(formulaire) {
@@ -205,7 +324,23 @@ function validerFormulaireLogin(formulaire) {
      * - telephone obligatoire
      * - mot_de_passe obligatoire
      */
-    // TODO
+    const erreurs = [];
+    console.log("Formulaire reçu :", formulaire); // <-- Ajoutez ceci pour déboguer
+
+    // Validation du téléphone
+    if (!formulaire.telephone || formulaire.telephone.trim() === "") {
+        erreurs.push("Le numéro de téléphone est obligatoire.");
+    }
+
+    // Validation du mot de passe
+    if (!formulaire.mot_de_passe || formulaire.mot_de_passe.trim() === "") {
+        erreurs.push("Le mot de passe est obligatoire.");
+    }
+
+    return {
+        valide: erreurs.length === 0,
+        erreurs: erreurs
+    };
 }
 
 // ============================================================================

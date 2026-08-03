@@ -3,15 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BraCovoit — Recherche</title>
-  <link rel="stylesheet" href="recherche.css">
+  <title>Recherche | Tokeyi</title>
+  <link rel="icon" href="../assets/brand/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+  <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
+  <meta name="theme-color" content="#55d396">
+  <link rel="stylesheet" href="../css/main.css?v=11">
+  <link rel="stylesheet" href="recherche.css?v=6">
 </head>
 <body id="page-recherche">
+  <div class="site-shell">
 
   <!-- NAVIGATION — TODO (Dev FS2) -->
+   <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../accueil/index.html" aria-label="Tokeyi, accueil">
+        <span class="brand-logo" aria-hidden="true">
+          <img src="../assets/brand/tokeyi-logo-on-light.png" alt="">
+        </span>
+      </a>
 
-  <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
-  <div id="nav-session"></div>
+        <nav class="desktop-nav" aria-label="Navigation principale">
+          <a href="../accueil/index.html" >Accueil</a>
+          <a href="recherche.html" aria-current="page">Rechercher</a>
+          <a href="../mes-trajets/mes-trajets.html">Mes trajets</a>
+          <a href="../dashboard/dashboard.html">Activité</a>
+        </nav>
+
+        <div class="header-actions">
+          <!-- NE PAS MODIFIER l'id : main.js y affiche l'état de connexion. -->
+          <div id="nav-session" aria-live="polite"></div>
+        </div>
+    </div>
+  </header>
 
   <main>
     <!-- =====================================================================
@@ -22,10 +47,34 @@
 
          *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
          ===================================================================== -->
-    <section class="barre-filtres">
-      <select id="filtre-depart"></select>
-      <input type="text" id="champ-recherche" placeholder="Rechercher un quartier, un mot-clé...">
-      <button id="btn-rechercher">Rechercher</button>
+    
+    <section class="search-heading mg-block container">
+      <div>
+        <h1>Trouver un trajet</h1>
+        <p>Choisissez votre quartier de départ ou recherchez une destination.</p>
+      </div>
+      <span class="search-heading__location">
+        <i class="ph ph-map-pin icon" aria-hidden="true"></i>
+        Brazzaville
+      </span>
+    </section>
+
+    <section class="barre-filtres search-bar mg-block" role="search" aria-label="Rechercher un trajet">
+
+      <label class="search-segment">
+        <span class="search-segment__label">Départ</span>
+        <select id="filtre-depart" class="search-segment__input"></select>
+      </label>
+
+      <label class="search-segment">
+        <span class="search-segment__label">Destination</span>
+        <input type="text" id="champ-recherche" class="search-segment__input" placeholder="Rechercher un quartier, un mot-clé...">
+      </label>
+
+      <button id="btn-rechercher" class="search-submit" aria-label="Rechercher">
+        <i class="ph ph-magnifying-glass icon-lg" aria-hidden="true"></i>
+      </button>
+
     </section>
 
     <!-- =====================================================================
@@ -41,10 +90,105 @@
 
          *** NE PAS MODIFIER l'id ci-dessous ***
          ===================================================================== -->
-    <section id="liste-trajets"></section>
+    <section class="container mg-block">
+      <div class="entete">
+        <div>
+          <h2 id="results-title">Trajets disponibles</h2>
+          <p>Les trajets correspondant à votre recherche apparaissent ici. <i class="ph ph-arrow-down"></i></p>
+        </div>
+        <div class="entete__actions">
+          <button class="btn-filtre">Tous</button>
+          <button class="btn-filtre" >Avant 16h</button>
+          <button class="btn-filtre" >Prix croissant</button>
+        </div>
+      </div>
+      <div id="erreur-globale" class="state-panel state-panel--error" role="alert" aria-live="assertive" hidden></div>
+      <div class="grid-trajets" id="liste-trajets">
+        <article class="search-result-skeleton" aria-hidden="true">
+          <span class="skeleton skeleton--visual"></span>
+          <span class="skeleton skeleton--line"></span>
+          <span class="skeleton skeleton--line skeleton--line-short"></span>
+        </article>
+        <article class="search-result-skeleton" aria-hidden="true">
+          <span class="skeleton skeleton--visual"></span>
+          <span class="skeleton skeleton--line"></span>
+          <span class="skeleton skeleton--line skeleton--line-short"></span>
+        </article>
+        <article class="search-result-skeleton" aria-hidden="true">
+          <span class="skeleton skeleton--visual"></span>
+          <span class="skeleton skeleton--line"></span>
+          <span class="skeleton skeleton--line skeleton--line-short"></span>
+        </article>
+        <span class="sr-only">Chargement des trajets disponibles…</span>
+      </div>
+    </section>
   </main>
 
-  <div id="erreur-globale" hidden></div>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="footer-brand__logo" href="../accueil/index.html" aria-label="Tokeyi, accueil">
+          <img src="../assets/brand/tokeyi-logo-on-dark.png" alt="Tokeyi">
+        </a>
+        <p>Vos trajets du quotidien, partagés simplement à Brazzaville.</p>
+        <span class="footer-location">
+          <i class="ph ph-map-pin icon" aria-hidden="true"></i>
+          Brazzaville
+        </span>
+      </div>
+
+      <nav class="footer-column" aria-label="Navigation principale du pied de page">
+        <strong>Navigation</strong>
+        <a href="../accueil/index.html">Accueil</a>
+        <a href="#filtre-depart">Trouver un trajet</a>
+        <a href="../mes-trajets/mes-trajets.html">Mes trajets</a>
+      </nav>
+      <nav class="footer-column" aria-label="Navigation conducteur">
+        <strong>Conducteur</strong>
+        <a href="../proposer/proposer.html">Proposer un trajet</a>
+        <a href="../dashboard/dashboard.html">Activité</a>
+      </nav>
+      <nav class="footer-column" aria-label="Navigation du compte">
+        <strong>Compte</strong>
+        <a href="../inscription/inscription.html">Créer un compte</a>
+        <a href="../login/login.html">Se connecter</a>
+      </nav>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 Tokeyi</span>
+      <span>Le paiement s’effectue directement entre passager et conducteur.</span>
+    </div>
+  </footer>
+
+  <nav class="bottom-nav" aria-label="Navigation mobile principale">
+    <ul class="bottom-nav__list">
+      <li>
+        <a href="../accueil/index.html">
+          <i class="ph ph-house icon" aria-hidden="true"></i>
+          <span>Accueil</span>
+        </a>
+      </li>
+      <li>
+        <a href="recherche.html" aria-current="page">
+          <i class="ph ph-magnifying-glass icon" aria-hidden="true"></i>
+          <span>Rechercher</span>
+        </a>
+      </li>
+      <li>
+        <a href="../mes-trajets/mes-trajets.html">
+          <i class="ph ph-ticket icon" aria-hidden="true"></i>
+          <span>Mes trajets</span>
+        </a>
+      </li>
+      <li>
+        <a href="../dashboard/dashboard.html">
+          <i class="ph ph-chart-bar icon" aria-hidden="true"></i>
+          <span>Activité</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  </div>
 
   <!-- NE PAS MODIFIER -->
   <script src="../functions.js"></script>

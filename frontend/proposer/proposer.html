@@ -2,57 +2,182 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BraCovoit — Proposer un trajet</title>
-  <link rel="stylesheet" href="proposer.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Proposer un trajet | Tokeyi</title>
+  <link rel="icon" href="../assets/brand/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+  <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
+  <meta name="theme-color" content="#55d396">
+  <link rel="stylesheet" href="../css/main.css?v=11">
+  <link rel="stylesheet" href="proposer.css?v=3">
 </head>
 <body id="page-proposer">
+  <a class="skip-link" href="#main-content">Aller au contenu</a>
 
-  <!-- NAVIGATION — TODO (Dev FS4) -->
+  <div class="site-shell">
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../accueil/index.html" aria-label="Tokeyi, accueil">
+          <span class="brand-logo" aria-hidden="true">
+            <img src="../assets/brand/tokeyi-logo-on-light.png" alt="Tokeyi">
+          </span>
+        </a>
 
-  <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
-  <div id="nav-session"></div>
+        <nav class="desktop-nav" aria-label="Navigation principale">
+          <a href="../accueil/index.html">Accueil</a>
+          <a href="../recherche/recherche.html">Rechercher</a>
+          <a href="../mes-trajets/mes-trajets.html">Mes trajets</a>
+          <a href="../dashboard/dashboard.html">Activité</a>
+        </nav>
 
-  <main>
-    <!-- =====================================================================
-         FORMULAIRE — TODO (Dev FS4)
-         Mettre en forme le formulaire de proposition de trajet : les deux
-         sélecteurs de quartier (départ/arrivée) sont remplis dynamiquement
-         par main.js via l'API /api/quartiers, vous stylez leur apparence.
-         Prévoir un layout clair en colonne, avec des labels visibles pour
-         chaque champ.
+        <div class="header-actions">
+          <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
+          <div id="nav-session" aria-live="polite"></div>
+        </div>
+      </div>
+    </header>
 
-         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
-         ===================================================================== -->
-    <form id="form-proposer">
-      <label for="p-depart">Quartier de départ</label>
-      <select id="p-depart"></select>
+    <!-- CONTENU PRINCIPAL -->
+    <main id="main-content" class="container section">
+      <div class="proposer-wrapper">
+        
+        <header class="section-header">
+          <h1>Proposer un trajet</h1>
+          <p>Partagez votre véhicule pour vos trajets quotidiens à Brazzaville.</p>
+        </header>
 
-      <label for="p-arrivee">Quartier d'arrivée</label>
-      <select id="p-arrivee"></select>
+        <!-- Zone d'erreurs de validation — TODO (Dev FS4) :
+             mise en forme de la liste <ul><li> injectée par main.js.
+             NE PAS MODIFIER l'id. -->
+        <div id="erreurs-form" class="error-banner" hidden></div>
+        <div id="erreur-globale" class="state-panel state-panel--error state-panel--compact" role="alert" aria-live="assertive" hidden></div>
 
-      <label for="p-heure">Heure (HH:MM)</label>
-      <input type="text" id="p-heure" placeholder="07:30">
+        <div class="proposer-layout">
+          <!-- =====================================================================
+               FORMULAIRE — TODO (Dev FS4)
+               *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
+               ===================================================================== -->
+          <form id="form-proposer" class="form-proposer">
+            
+            <div class="form-group">
+              <label for="p-depart">Quartier de départ</label>
+              <select id="p-depart" required>
+                <option value="" disabled selected>Chargement des quartiers…</option>
+              </select>
+            </div>
 
-      <label for="p-places">Places disponibles</label>
-      <input type="number" id="p-places" min="1" max="8">
+            <div class="form-group">
+              <label for="p-arrivee">Quartier d'arrivée</label>
+              <select id="p-arrivee" required>
+                <option value="" disabled selected>Chargement des quartiers…</option>
+                <!-- Rempli dynamiquement par main.js via /api/quartiers -->
+              </select>
+            </div>
 
-      <label for="p-prix">Prix par place (FCFA)</label>
-      <input type="number" id="p-prix" min="1">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="p-heure">Heure de départ</label>
+                <input type="time" id="p-heure" required>
+              </div>
 
-      <button type="submit">Publier mon trajet</button>
-    </form>
+              <div class="form-group">
+                <label for="p-places">Places disponibles</label>
+                <input type="number" id="p-places" min="1" max="8" placeholder="3" required>
+              </div>
+            </div>
 
-    <!-- Zone d'erreurs de validation — TODO (Dev FS4) : mettre en forme la
-         liste <ul><li> injectée par main.js en cas de formulaire invalide.
-         NE PAS MODIFIER l'id. -->
-    <div id="erreurs-form" hidden></div>
+            <div class="form-group">
+              <label for="p-prix">Prix par place (FCFA)</label>
+              <input type="number" id="p-prix" min="1" placeholder="500" required>
+            </div>
 
-    <!-- BLOC D'AIDE — TODO (Dev FS4) : encart explicatif optionnel
-         (ex. rappel que le prix est libre, conseils de sécurité) -->
-  </main>
+            <button type="submit" class="button button--primary btn-submit">Publier mon trajet</button>
+          </form>
 
-  <div id="erreur-globale" hidden></div>
+          <!-- BLOC D'AIDE — TODO (Dev FS4) : Encart explicatif -->
+          <aside class="help-card">
+            <h2>Conseils aux conducteurs</h2>
+            <ul class="help-list">
+              <li>
+                <strong>Prix libre :</strong> Fixez un prix juste pour couvrir vos frais de carburant.
+              </li>
+              <li>
+                <strong>Ponctualité :</strong> Soyez au rendez-vous à l'heure indiquée pour vos passagers.
+              </li>
+              <li>
+                <strong>Paiement direct :</strong> Les passagers vous règlent directement en main propre lors du trajet.
+              </li>
+            </ul>
+          </aside>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- PIED DE PAGE GLOBAL -->
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a class="footer-brand__logo" href="../accueil/index.html" aria-label="Tokeyi, accueil">
+            <img src="../assets/brand/tokeyi-logo-on-dark.png" alt="Tokeyi">
+          </a>
+          <p>Vos trajets du quotidien, partagés simplement à Brazzaville.</p>
+        </div>
+
+        <nav class="footer-column" aria-label="Navigation principale du pied de page">
+          <strong>Navigation</strong>
+          <a href="../accueil/index.html">Accueil</a>
+          <a href="../recherche/recherche.html">Trouver un trajet</a>
+          <a href="../mes-trajets/mes-trajets.html">Mes trajets</a>
+        </nav>
+        <nav class="footer-column" aria-label="Navigation conducteur">
+          <strong>Conducteur</strong>
+          <a href="proposer.html" aria-current="page">Proposer un trajet</a>
+          <a href="../dashboard/dashboard.html">Activité</a>
+        </nav>
+        <nav class="footer-column" aria-label="Navigation du compte">
+          <strong>Compte</strong>
+          <a href="../inscription/inscription.html">Créer un compte</a>
+          <a href="../login/login.html">Se connecter</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Tokeyi</span>
+        <span>Le paiement s’effectue directement entre passager et conducteur.</span>
+      </div>
+    </footer>
+
+    <!-- NAVIGATION MOBILE -->
+    <nav class="bottom-nav" aria-label="Navigation mobile principale">
+      <ul class="bottom-nav__list">
+        <li>
+          <a href="../accueil/index.html">
+            <i class="ph ph-house icon" aria-hidden="true"></i>
+            <span>Accueil</span>
+          </a>
+        </li>
+        <li>
+          <a href="../recherche/recherche.html">
+            <i class="ph ph-magnifying-glass icon" aria-hidden="true"></i>
+            <span>Rechercher</span>
+          </a>
+        </li>
+        <li>
+          <a href="../mes-trajets/mes-trajets.html">
+            <i class="ph ph-ticket icon" aria-hidden="true"></i>
+            <span>Mes trajets</span>
+          </a>
+        </li>
+        <li>
+          <a href="../dashboard/dashboard.html">
+            <i class="ph ph-chart-bar icon" aria-hidden="true"></i>
+            <span>Activité</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 
   <script src="../functions.js"></script>
   <script src="../main.js"></script>

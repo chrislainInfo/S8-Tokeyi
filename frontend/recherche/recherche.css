@@ -1,0 +1,192 @@
+.mg-block {
+    margin-block: var(--space-12);
+}
+
+.barre-filtres {
+    width: min(calc(100% - 2rem), 46.875rem);
+    margin-inline: auto;
+}
+
+.search-heading {
+  display: flex;
+  align-items: end;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.search-heading > div {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.search-heading h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.search-heading p {
+  max-width: 54ch;
+  color: var(--color-muted);
+}
+
+.search-heading__location {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--color-accent-soft);
+  color: var(--color-accent-deep);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.entete {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-8);
+}
+
+#results-title {
+    font-size: clamp(1rem, 2.5vw, 2rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin-bottom: var(--space-2);
+}
+
+.btn-filtre {
+    margin-left: var(--space-4);
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-weight: 500;
+    font-size: var(--text-sm);
+    cursor: pointer;
+}
+
+.btn-filtre:first-child {
+    margin-left: 0;
+    background-color: var(--color-ink);
+    color: var(--color-accent);
+}
+
+.btn-filtre:hover {
+    background-color: var(--color-ink);
+    color: var(--color-accent);
+}
+
+.grid-trajets {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 1.5vw;
+    row-gap: var(--space-8);
+}
+
+.search-result-skeleton {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+  padding: var(--space-4);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+}
+
+.search-result-skeleton .skeleton--visual {
+  height: 8rem;
+}
+
+#page-recherche:has(#erreur-globale:not([hidden])) #liste-trajets {
+  display: none;
+}
+
+.carte-trajet {
+    padding: 0;
+    position: relative;
+    grid-template-rows: 9.5rem repeat(4, auto) 1fr auto;
+    overflow: hidden;
+}
+
+.carte-trajet::before {
+    content: "";
+    width: 100%;
+    min-height: 9.5rem;
+    background-position: center;
+    background-size: cover;
+    border-top-left-radius: var(--radius-lg);
+    border-top-right-radius: var(--radius-lg);
+    transition: transform var(--transition);
+}
+
+.carte-trajet:nth-child(3n+1)::before {
+    background-image: url("../assets/images/route-bacongo-poto-poto.webp");
+}
+
+.carte-trajet:nth-child(3n+2)::before {
+    background-image: url("../assets/images/route-moungali-centre-ville.webp");
+}
+
+.carte-trajet:nth-child(3n+3)::before {
+    background-image: url("../assets/images/route-talangai-plateau.webp");
+}
+
+.carte-trajet:hover::before {
+    transform: scale(1.05);
+}
+
+.carte-trajet h3 ,.carte-trajet p, .carte-trajet .heure,
+.carte-trajet .prix {
+    padding: 0 var(--space-4);
+}
+
+.btn-voir {
+    padding: var(--space-3) var(--space-5);
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: var(--color-accent);
+    color: var(--color-ink);
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    width: calc(100% - var(--space-8));
+    margin: var(--space-4);
+    margin-top: auto;
+}
+
+.btn-voir:hover {
+  background: var(--color-accent-deep);
+  color: var(--color-canvas);
+  transform: translateY(-1px);
+}
+
+.badge {
+    position: absolute;
+    top: var(--space-3);
+    left: var(--space-3);
+}
+
+.heure::before {
+    content: "Depart : ";
+}
+
+.prix::before {
+    content: "Prix : ";
+}
+
+@media (max-width: 850px) {
+    .grid-trajets {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 550px) {
+    .grid-trajets {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,8 +1,29 @@
-# BraCovoit — Covoiturage inter-quartiers, Brazzaville
+# Tokeyi — Covoiturage inter-quartiers, Brazzaville
 
-Bienvenue dans votre startup. Ce dépôt est le **squelette** de l'application : un mini-site de 9 pages pour organiser le covoiturage entre habitants des quartiers de Brazzaville. La structure est déjà en place ; **votre équipe complète les fonctions manquantes et construit les pages**.
+Bienvenue dans notre startup Urbanix Tech Group. Ce dépôt est le **squelette** de l'application : un mini-site de 9 pages pour organiser le covoiturage entre habitants des quartiers de Brazzaville. La structure est déjà en place ; **votre équipe complète les fonctions manquantes et construit les pages**.
 
-Vous avez **quelques jours** pour ce projet.
+Nous avons  realisé ce projet en **quelques jours**.
+
+## 👥 Équipe du projet
+
+Le projet est réalisé par deux équipes complémentaires : **Full Stack** et **Data Science**. Chaque membre possède un identifiant utilisé dans la documentation du projet.
+
+### 💻 Équipe Full Stack
+
+| Identifiant | Nom | Rôle dans l'équipe |
+|-------------|-----|--------------------|
+| FS1 | Balonga Emmanuel Osiris | Lead Full Stack et Développeur Full Stack |
+| FS2 | Mouyockolo Chrislain |Repository Administrator et Développeur Full Stack |
+| FS3 | BAYENDA Excel Arden | Développeur Full Stack |
+| FS4 | BOKITOMO José Gloire | Développeur Full Stack |
+| FS5 | WASSANGOU Flamme Du Ciel Jourdrigue | Développeur Full Stack |
+| FS6 | Balonga Emmanuel Osiris | Développeur Full Stack |
+| FS7 | WASSANGOU Flamme Du Ciel Jourdrigue | Développeur Full Stack |
+
+
+
+> **Remarque :** Les identifiants (FS1, FS2, DS1...) sont utilisés dans toute la documentation du projet pour répartir les tâches.
+
 
 ## Lancer le projet en local
 

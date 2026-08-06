@@ -6,11 +6,60 @@ Nous avons  realisé ce projet en **quelques jours**.
 
 ## 👥 Équipe du projet
 
-Le projet est réalisé par deux équipes complémentaires : **Full Stack** et **Data Science**. Chaque membre possède un identifiant utilisé dans la documentation du projet.
+Le projet est réalisé par cinq équipes complémentaires : **Product Manager**, **Digital Market**, **Business Analyst**, **Data Science** et  **Full Stack** . Chaque membre ayant travaillé sur des taches bien precises listées ci-dessous 👇.
+
+### 🫡 Équipe Product Manager
+
+
+- BABEKE BELLONE (Lead de l'équipe):
+    - Discovery;
+    - Cadrage BA;
+    - Construction du personas avec le DM
+
+### 👏 Équipe Digital Market
+
+- LEPOUTOU NGOTENI Jeancia Enock:
+    - Construction du personas avec le PM;
+    - Proposition de valeur;
+    - Landing page
+
+### 📊 Équipe Business Analyst
+
+- MABIKA-IVORA Darchina-Laurice (lead):
+    - FRD;
+    - User stories;
+    - BPMN
+
+- MFOURGA Dulcinée Nelchela:
+    - Cahier des charges;
+    - Backlog;
+    - Presentation
+
+### 💻 Équipe DATA
+
+| Zone | # | Fonction | Auteur |
+|------|---|----------|----------------|
+| **Zone A** | 1 | `filtrer_trajets_disponibles` | **MOLOGBAMA NDOANAYAHVEH** Abishadaï Malkiyeshoua |
+| | 2 | `filtrer_par_quartier_depart` | **MBANDOU** Sublime |
+| | 3 | `filtrer_par_trajet_complet` | **MBANDOU** Sublime |
+| | 4 | `trier_par_heure` | **MOLOGBAMA NDOANAYAHVEH** Abishadaï Malkiyeshoua |
+| | 5 | `trier_par_prix_croissant` | **MOLOGBAMA NDOANAYAHVEH** Abishadaï Malkiyeshoua |
+| **Zone B** | 6 | `compter_reservations_par_trajet` | **MBANDOU** Sublime |
+| | 7 | `verifier_place_disponible` | **MOLOGBAMA NDOANAYAHVEH** Abishadaï Malkiyeshoua |
+| | 8 | `filtrer_reservations_par_statut` | **MBANDOU** Sublime |
+| | 9 | `historique_reservations_passager` | **MBANDOU** Sublime |
+| | 10 | `calculer_taux_annulation` | **MBANDOU** Sublime | 
+| **Zone C** | 11 | `compter_trajets_par_quartier_depart` | **MOLOGBAMA NDOANAYAHVEH** Abishadaï Malkiyeshoua |
+| | 12 | `top_conducteurs_par_note` | **MOLOGBAMA NDOANAYAHVEH** Abishadaï Malkiyeshoua |
+| | 13 | `calculer_prix_moyen_par_quartier` | **MOLOGBAMA NDOANAYAHVEH** Abishadaï Malkiyeshoua |
+| | 14 | `identifier_trajet_le_plus_reserve` | **MOLOGBAMA NDOANAYAHVEH** Abishadaï Malkiyeshoua |
+| | 15 | `calculer_indicateurs_dashboard` | **MOLOGBAMA NDOANAYAHVEH** Abishadaï Malkiyeshoua |
+| **Zone D** | 16 | `verifier_telephone_disponible` | **MBANDOU** Sublime |
+| | 17 | `trouver_compte_par_telephone` | **MBANDOU** Sublime |
 
 ### 💻 Équipe Full Stack
 
-| Identifiant | Nom | Rôle dans l'équipe |
+| Identifiant | Auteur | Rôle dans l'équipe |
 |-------------|-----|--------------------|
 | FS1 | Balonga Emmanuel Osiris | Lead Full Stack et Développeur Full Stack |
 | FS2 | Mouyockolo Chrislain |Repository Administrator et Développeur Full Stack |
